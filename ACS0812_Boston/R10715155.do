@@ -48,21 +48,20 @@ drop PCT_T113_011 B07011001 B07011002 B07011003 B07011004 B07011005 B07011006 B0
 drop B07011003s B07011004s B07011005s B07011006s B25099001s B25099002s B25099003s 
 drop B25099001 B25099002 B25099003
 
-* missing variables: 
-*households
-*pcthhchild
-*pctocc_profmanage
-*pctinc by $5K 
-*medhhincome
-*pctpoverty
-*pctpublicassist
-*units
-*pctrent by price
-*pctncomerent_30_more
-*pctincomemortgage_30_more
-*pctincome_nomortgage_30_more
-*pctsameres
-*pctunits_newres
+merge 1:1 tractid10 using "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\ACS0812_Boston\ACS0812_Boston_addvars.dta", nogenerate
 
+order households, after(totalpop)
+order pcthhchild, after(households)
+order pctocc_profmanage, after( pctind_professional)
+order pctcollege, after( pctocc_profmanage)
+order pctinc_0_10K pctinc_10K_15K pctinc_15K_20K pctinc_20K_25K pctinc_25K_30K pctinc_30K_35K pctinc_35K_40K pctinc_40K_45K pctinc_45K_50K pctinc_50K_60K pctinc_60K_75K pctinc_75K_100K pctinc_100K_125K pctinc_125K_150K pctinc_150K_200K pctinc_200K_more, after(pctcollege)
+order medhhincome, after( pctinc_200K_more)
+order pctpoverty, after( medhhincome)
+order pctpublicassist, after(pctpoverty)
+order units, after(pctpublicassist)
+order pctrent_0_300 pctrent_300_600 pctrent_600_800 pctrent_800_1000 pctrent_1000_1250 pctrent_1250_1500 pctrent_1500_2000 pctrent_2000_more, after(medianvalue)
+rename pctincomerent pctincomerent_30_more
+order pctinc_mortgage_30_more pctinc_nomortgage_30_more, after( medianpctincomerent)
 
+outsheet using "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\ACS0812_Boston\ACS0812_Boston.csv", comma replace
 
