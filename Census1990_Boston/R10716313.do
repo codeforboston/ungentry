@@ -4,7 +4,8 @@
 *
 * If you have any questions or need assistance contact info@socialexplorer.com.
 */
-cd "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\Census1990_Boston"
+clear	
+cd "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_Boston"
 ///set mem 512m
 set more off
 infile using "R10716313.dct", using("R10716313_SL140.txt")
@@ -135,8 +136,8 @@ order pctcollege, after(pctocc_profmanage)
 order pctinc_10K_15K pctinc_15K_20K pctinc_20K_25K pctinc_25K_30K pctinc_30K_35K pctinc_35K_40K pctinc_40K_45K pctinc_45K_50K, after( pctinc_5K_10K)
 order pctincomerent_30_more, after( medianrent)
 
-merge 1:1 tractid90 using "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\Census1990_Boston\Census1990_Boston_addvars.dta", nogenerate
+merge 1:1 tractid90 using "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_Boston\Census1990_Boston_addvars.dta", nogenerate
 
 order pctpoverty, after(medhhincome)
 
-outsheet using "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\Census1990_Boston\Census1990_Boston.csv", comma replace
+outsheet using "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_Boston\Census1990_Boston.csv", comma replace

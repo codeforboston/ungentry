@@ -4,7 +4,7 @@
 *
 * If you have any questions or need assistance contact info@socialexplorer.com.
 */
-cd "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\Census2000_Boston"
+cd "C:\Users\Jackie\Documents\GitHub\ungentry\Census2000_Boston"
 ///set mem 512m
 set more off
 infile using "R10732419.dct", using("R10732419_SL140.txt")

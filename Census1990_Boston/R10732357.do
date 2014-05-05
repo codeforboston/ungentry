@@ -4,7 +4,7 @@
 *
 * If you have any questions or need assistance contact info@socialexplorer.com.
 */
-cd "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\Census1990_Boston"
+cd "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_Boston"
 ///set mem 512m
 set more off
 infile using "R10732357.dct", using("R10732357_SL140.txt")
@@ -24,3 +24,4 @@ drop PCT_P043_011 PCT_P043_012 PCT_P043_013 PCT_P043_014 PCT_P043_015
 gen pctunits_newres = PCT_H028_002 + PCT_H028_003
 drop H028_001 H028_002 H028_003 H028_004 H028_005 H028_006 H028_007 PCT_H028_002 PCT_H028_003 PCT_H028_004 PCT_H028_005 PCT_H028_006 PCT_H028_007
 
+save "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_Boston\Census1990_Boston_addvars.dta", replace

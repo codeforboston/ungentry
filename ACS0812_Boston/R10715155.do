@@ -4,7 +4,8 @@
 *
 * If you have any questions or need assistance contact info@socialexplorer.com.
 */
-cd "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\ACS0812_Boston"
+clear
+cd "C:\Users\Jackie\Documents\GitHub\ungentry\ACS0812_Boston"
 ///set mem 512m
 set more off
 infile using "R10715155.dct", using("R10715155_SL080.txt")
@@ -48,7 +49,7 @@ drop PCT_T113_011 B07011001 B07011002 B07011003 B07011004 B07011005 B07011006 B0
 drop B07011003s B07011004s B07011005s B07011006s B25099001s B25099002s B25099003s 
 drop B25099001 B25099002 B25099003
 
-merge 1:1 tractid10 using "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\ACS0812_Boston\ACS0812_Boston_addvars.dta", nogenerate
+merge 1:1 tractid10 using "C:\Users\Jackie\Documents\GitHub\ungentry\ACS0812_Boston\ACS0812_Boston_addvars.dta", nogenerate
 
 order households, after(totalpop)
 order pcthhchild, after(households)
@@ -63,5 +64,5 @@ order pctrent_0_300 pctrent_300_600 pctrent_600_800 pctrent_800_1000 pctrent_100
 rename pctincomerent pctincomerent_30_more
 order pctinc_mortgage_30_more pctinc_nomortgage_30_more, after( medianpctincomerent)
 
-outsheet using "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\ACS0812_Boston\ACS0812_Boston.csv", comma replace
+outsheet using "C:\Users\Jackie\Documents\GitHub\ungentry\ACS0812_Boston\ACS0812_Boston.csv", comma replace
 

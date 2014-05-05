@@ -4,7 +4,8 @@
 *
 * If you have any questions or need assistance contact info@socialexplorer.com.
 */
-cd "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\Census2000_Boston"
+clear
+cd "C:\Users\Jackie\Documents\GitHub\ungentry\Census2000_Boston"
 ///set mem 512m
 set more off
 infile using "R10716314.dct", using("R10716314_SL140.txt")
@@ -30,7 +31,7 @@ drop T025_011 T025_012 T025_013 T025_014 T025_015 T025_016 T025_017 T025_018
 drop PCT_T025_002 PCT_T025_003 PCT_T025_004 PCT_T025_005 PCT_T025_007 PCT_T025_008 PCT_T025_009 PCT_T025_010 
 drop PCT_T025_011 PCT_T025_012 PCT_T025_013 PCT_T025_014 PCT_T025_015 PCT_T025_016 PCT_T025_017 PCT_T025_018
 
-gen pctcollege = PCT_T040_005 + PCT_T040_005 + PCT_T040_006 + PCT_T040_007 + PCT_T040_008
+gen pctcollege = PCT_T040_005 + PCT_T040_006 + PCT_T040_007 + PCT_T040_008
 drop T040_001 T040_002 T040_003 T040_004 T040_005 T040_006 T040_007 T040_008 
 drop PCT_T040_002 PCT_T040_003 PCT_T040_004 PCT_T040_005 PCT_T040_006 PCT_T040_007 PCT_T040_008 
 drop T041_001 T041_002 T041_003 T041_004 T041_005 T041_006 T041_007 T041_008 
@@ -86,7 +87,7 @@ rename PCT_T092_012 pctinc_60K_75K
 rename PCT_T092_013 pctinc_75K_100K
 rename PCT_T092_014 pctinc_100K_125K
 rename PCT_T092_015 pctinc_125K_150K
-gen pctinc_150K_more = T092_016 + T092_017
+gen pctinc_150K_more = PCT_T092_016 + PCT_T092_017
 drop T092_001 T092_002 T092_003 T092_004 T092_005 T092_006 T092_007 T092_008 T092_009 T092_010 
 drop T092_011 T092_012 T092_013 T092_014 T092_015 T092_016 T092_017 PCT_T092_016 PCT_T092_017
 
@@ -132,8 +133,8 @@ drop PCT_T166_002 PCT_T166_003 PCT_T166_004 PCT_T166_005 PCT_T166_006
 rename T167_001 medianrent
 rename T168_001 medianpctincomerent
 drop T169_001 T171_001 T171_002 T171_003 T171_004 T171_005 T171_006 T171_007 T171_008
-gen pctinc_mortgage_30_more = PCT_T172_004 + PCT_T172_005
-gen pctinc_nomortgage_30_more = PCT_T172_009 + PCT_T172_010
+gen pctinc_mortgage_30_more = PCT_T172_004 
+gen pctinc_nomortgage_30_more = PCT_T172_009
 drop PCT_T171_002 PCT_T171_003 PCT_T171_004 PCT_T171_005 PCT_T171_006 PCT_T171_007 PCT_T171_008 
 drop T172_001 T172_002 T172_003 T172_004 T172_005 T172_006 T172_007 T172_008 T172_009 T172_010 
 drop T172_011 PCT_T172_002 PCT_T172_003 PCT_T172_004 PCT_T172_005 PCT_T172_006 PCT_T172_007 PCT_T172_008 PCT_T172_009 PCT_T172_010 PCT_T172_011
@@ -148,8 +149,8 @@ order pctocc_profmanage, after(pctind_professional)
 order pctinc_150K_more, after(pctinc_125K_150K)
 order pctincomerent_30_more, after(medianrent)
 
-merge 1:1 tractid00 using "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\Census2000_Boston\Census2000_Boston_addvars.dta", nogenerate
+merge 1:1 tractid00 using "C:\Users\Jackie\Documents\GitHub\ungentry\Census2000_Boston\Census2000_Boston_addvars.dta", nogenerate
 
 order pctpoverty, after(medhhincome)
 
-outsheet using "C:\Users\Jackie\Dropbox\Civic Tech\CFB_Gentrification\Census2000_Boston\Census2000_Boston.csv", comma replace
+outsheet using "C:\Users\Jackie\Documents\GitHub\ungentry\Census2000_Boston\Census2000_Boston.csv", comma replace
