@@ -140,6 +140,6 @@ merge 1:1 tractid90 using "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_
 
 order pctpoverty, after(medhhincome)
 
-merge 1:1 tractid90 using "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_Boston\Census1990_Boston_norfolk.dta", nogenerate
+append using "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_Boston\Census1990_Boston_norfolk.dta"
 
 outsheet using "C:\Users\Jackie\Documents\GitHub\ungentry\Census1990_Boston\Census1990_Boston.csv", comma replace

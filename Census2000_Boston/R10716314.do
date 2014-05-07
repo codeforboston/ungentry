@@ -153,4 +153,6 @@ merge 1:1 tractid00 using "C:\Users\Jackie\Documents\GitHub\ungentry\Census2000_
 
 order pctpoverty, after(medhhincome)
 
+append using "C:\Users\Jackie\Documents\GitHub\ungentry\Census2000_Boston\Census2000_Boston_norfolk.dta"
+
 outsheet using "C:\Users\Jackie\Documents\GitHub\ungentry\Census2000_Boston\Census2000_Boston.csv", comma replace
