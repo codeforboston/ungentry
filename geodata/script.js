@@ -11,8 +11,20 @@
       },
 	  style: function(feature){
 	    var featureId = feature.id;
+		var d = censusData[2008][featureId].totalpop;
+		var fill = d > 5944 ? '#800026' :
+			       d > 5323  ? '#BD0026' :
+			       d > 4777  ? '#E31A1C' :
+			       d > 4146  ? '#FC4E2A' :
+			       d > 3552   ? '#FD8D3C' :
+			       d > 2970   ? '#FEB24C' :
+			       d > 2215   ? '#FED976' :
+			                  '#FFEDA0';
+
 	  	return {
-			weight: 1
+			weight: 1,
+			color: "#ff0000",
+			fillColor: fill
 		};
 	}
   }).addTo(map);
