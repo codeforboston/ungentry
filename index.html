@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/journal/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<link rel="stylesheet" href="geodata/style.css">
 
 
 
@@ -19,22 +20,21 @@
 </head>
 <body>
 
-	<!--Leaflet script-->
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
-<div class="container-fluid">
-  <nav class="navbar navbar-default" role="navigation">
-  
-    <!--Brand and Toggle get grouped for better mobile display-->
+
+
+ <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tax-navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand logo-nav" href="index.html"><span class="glyphicon glyphicon-dashboard"></span></a>
-    </div>  
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
    
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -79,28 +79,18 @@
 </nav>
 
 
+ <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+ <script src="http://rawgit.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.js"></script>
+ <script src="http://d3js.org/topojson.v1.min.js"></script>
+   
+   
+ 
+  
+<div id="map"></div>
 
-
-   <div class="container">
-	  <div id="map">
-
-
-
-	  
-   <script type="text/javascript">
-
-      var map = L.map('map').setView([42.354, -71.065], 13);
-
-      L.tileLayer('http://{s}.tiles.mapbox.com/v3/MapID/{z}/{x}/{y}.png', {
-           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + 
-              '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 
-              'Imagery © <a href="http://mapbox.com">Mapbox</a>',	
-             maxZoom: 18
-      }).addTo(map);
-
-   </script>
-      </div>
-   </div>
+	 
+      
+<script src="geodata/script.js"></script>
 
 
 
