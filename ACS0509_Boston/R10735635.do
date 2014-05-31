@@ -9,9 +9,10 @@ cd "C:\Users\Jackie\Documents\GitHub\ungentry\ACS0509_Boston"
 ///set mem 512m
 set more off
 infile using "R10735635.dct", using("R10735635_SL080.txt")
+gen tractid00 = STATE + COUNTY + TRACT
+order tractid00, before(FIPS)
+drop FIPS
 
-
-rename FIPS tractid00
 drop GEOID NAME QName STUSAB SUMLEV GEOCOMP FILEID LOGRECNO US REGION DIVISION STATECE 
 drop STATE COUNTY COUSUB PLACE PLACESE TRACT BLKGRP CONCIT AIANHH AIANHHFP AIHHTLI AITSCE AITS ANRC 
 drop CBSA CSA METDIV MACC MEMI NECTA CNECTA NECTADIV UA UACP CDCURR SLDU SLDL VTD ZCTA3 ZCTA5 
@@ -116,5 +117,7 @@ order pctcollege, after( pctocc_profmanage)
 order pctpoverty, after( medhhincome)
 order pctincomerent_30_more, after( medianrent)
 order pctinc_150K_more, after( pctinc_125K_150K)
+
+append using "C:\Users\Jackie\Documents\GitHub\ungentry\ACS0509_Boston\ACS0509_Boston_norfolk.dta"
 
 outsheet using "C:\Users\Jackie\Documents\GitHub\ungentry\ACS0509_Boston\ACS0509_Boston.csv", comma replace
