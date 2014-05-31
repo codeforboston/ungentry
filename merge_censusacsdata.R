@@ -18,6 +18,12 @@ dat0509 <- read.csv("ACS0509_Boston.csv")
 setwd("C:/Users/Jackie/Documents/GitHub/ungentry/ACS0812_Boston")
 dat0812 <- read.csv("ACS0812_Boston.csv")
 
+# drop tracts with no population
+dat90 <- dat90[dat90$totalpop != 0 & is.na(dat90$totalpop) == FALSE, ]
+dat00 <- dat00[dat00$totalpop != 0 & is.na(dat00$totalpop) == FALSE, ]
+dat0509 <- dat0509[dat0509$totalpop != 0 & is.na(dat0509$totalpop) == FALSE, ]
+dat0812 <- dat0812[dat0812$totalpop != 0 & is.na(dat0812$totalpop) == FALSE, ]
+
 # create year variable ####
 dat90$year <- rep(1990, nrow(dat90))
 dat00$year <- rep(2000, nrow(dat00))
