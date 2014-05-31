@@ -52,7 +52,7 @@
   });
   
   var censusData;
-  L.Util.ajax('allcensusacsdata.json').then(function(data) {
+  L.Util.ajax('geodata/allcensusacsdata.json').then(function(data) {
 	  censusData = data;
   });
  
