@@ -19,22 +19,21 @@
 </head>
 <body>
 
-	<!--Leaflet script-->
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
-<div class="container-fluid">
-  <nav class="navbar navbar-default" role="navigation">
-  
-    <!--Brand and Toggle get grouped for better mobile display-->
+
+
+ <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tax-navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand logo-nav" href="index.html"><span class="glyphicon glyphicon-dashboard"></span></a>
-    </div>  
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
    
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -79,27 +78,29 @@
 </nav>
 
 
+ <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+ <script src="/geodata/script.js"></script>
+   
+   <!-- 
+   <div class="container-fluid">
+   -->
+	  <div id="map"></div>
 
+	  <!--leaflet stuff>
+        <script type="text/javascript">
 
-   <div class="container">
-	  <div id="map">
+          var map = L.map('map').setView([42.354, -71.065], 13);
 
-
-
-	  
-   <script type="text/javascript">
-
-      var map = L.map('map').setView([42.354, -71.065], 13);
-
-      L.tileLayer('http://{s}.tiles.mapbox.com/v3/MapID/{z}/{x}/{y}.png', {
-           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + 
+          L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + 
               '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 
-              'Imagery © <a href="http://mapbox.com">Mapbox</a>',	
+              'Imagery © <a href="http://mapbox.com">Mapbox</a>,',	
              maxZoom: 18
-      }).addTo(map);
+          }).addTo(map);
 
-   </script>
-      </div>
+        </script>
+    -->
+      
    </div>
 
 
