@@ -35,7 +35,8 @@
       fillOpacity: 0.8
   };
   var c2m = {
-      radius: 8,
+      radius: 6,
+      fillColor: "#99ff22",
       opacity: 0.3,
       fillOpacity: 0.2
   };
@@ -56,6 +57,67 @@
         marker.bindPopup(this.incident_type_description);
       });
   });
+
+// Credit Foursquare for their wonderful data
+map.attributionControl
+    .addAttribution('<a href="https://foursquare.com/">Places data from Foursquare</a>');
+// Create a Foursquare developer account: https://developer.foursquare.com/
+// NOTE: CHANGE THESE VALUES TO YOUR OWN:
+// Otherwise they can be cycled or deactivated with zero notice.
+var CLIENT_ID = 'WKWAY3UZFRFNRN2XOC2FQ1WEPMYMBKP0SD2AUEHSWEYBTIVX';
+var CLIENT_SECRET = 'ZILRPJDFUY3DWCCRCD2U2SQUA0DFPTDESGOLSXS5O1BRKJYL';
+
+var API_ENDPOINT = 'https://api.foursquare.com/v2/venues/explore' +
+  '?client_id=CLIENT_ID' +
+  '&client_secret=CLIENT_SECRET' +
+  '&radius=10000' + 
+  '&limit=50' +
+  '&v=20140531' +
+  '&ll=LATLON';
+
+var foursquarePlaces = L.layerGroup().addTo(map);  
+
+var API_ENDPOINT2 = 'https://api.foursquare.com/v2/venues/VENUEID' +
+  '?client_id=CLIENT_ID' +
+  '&client_secret=CLIENT_SECRET' +
+  '&v=20140531' +
+  '&callback=?';
+
+// Use jQuery to make an AJAX request to Foursquare to load markers data.
+  $.getJSON(API_ENDPOINT
+      .replace('CLIENT_ID', CLIENT_ID)
+      .replace('CLIENT_SECRET', CLIENT_SECRET)
+      .replace('LATLON', map.getCenter().lat +
+          ',' + map.getCenter().lng), function(result, status) {
+
+      if (status !== 'success') return alert('Request to Foursquare failed');
+
+      var items = result.response.groups[0].items;
+      // console.log(items);
+
+      // Transform each venue result into a marker on the map.
+      for (var i = 0; i < items.length; i++) {
+          $.getJSON(API_ENDPOINT2
+            .replace('CLIENT_ID', CLIENT_ID)
+            .replace('CLIENT_SECRET', CLIENT_SECRET)
+            .replace('VENUEID', items[i].venue.id), function(result2, status) {
+
+              if (status !== 'success') return alert('Request to Foursquare failed');
+
+              // add venue details to popup on its marker on the map.
+              var details = result2.response.venue;
+              var latlng = L.latLng(details.location.lat,details.location.lng);
+              var price;
+              if (details.price !== undefined) { price = details.price.currency } else { price = "No price available." };
+              // if ("undefined" = details.price.message) { } else {price = details.price.message;} 
+              var marker = L.marker(latlng)
+              .bindPopup('<strong><a href="https://foursquare.com/v/' + details.id + '">' +
+                  details.name + '</a></strong><br>' + price)
+              .addTo(foursquarePlaces);  
+            });
+      }
+  });
+
 
   var baseLayers = {
     "Map Quest": mapQuest
