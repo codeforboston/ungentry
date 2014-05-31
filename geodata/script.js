@@ -1,5 +1,5 @@
 (function () {
-  var map = new L.Map('map').setView([42.3334, -71.0270], 13);
+  var map = new L.Map('map').setView([42.354, -71.065], 14);
   var mapQuest = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
     attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
     subdomains: '1234'
