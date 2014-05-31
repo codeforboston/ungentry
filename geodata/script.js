@@ -4,12 +4,12 @@
     attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
     subdomains: '1234'
   }).addTo(map);
-  var tracts2010 = L.geoJson.ajax("tracts2010.json",{
+  var tracts2010 = L.geoJson.ajax("geodata/tracts2010.json",{
       middleware:function(data){
         return topojson.feature(data, data.objects.tracts2010);
       }
   }).addTo(map);
-  var tracts2000 = L.geoJson.ajax("tracts2000.json",{
+  var tracts2000 = L.geoJson.ajax("geodata/tracts2000.json",{
       middleware:function(data){
         return topojson.feature(data, data.objects.tracts2000);
       }
