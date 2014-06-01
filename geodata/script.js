@@ -12,13 +12,7 @@
     subdomains: '1234'
   });
 
-  // synchronize three maps
-mapA.sync(mapB);
-mapA.sync(mapC);
-mapB.sync(mapA);
-mapB.sync(mapC);
-mapC.sync(mapA);
-mapC.sync(mapB);
+
 
   /* Map 1: 2000 tracts */
   var map1 = new L.Map('map1').setView([42.354, -71.065], 14);
@@ -174,6 +168,15 @@ mapC.sync(mapB);
 
     // TODO: ADD MAP LEGENDS
     L.control.layers(baseLayers0, overlays0).addTo(map0);
+
+
+      // synchronize three maps
+      map0.sync(map2);
+      map0.sync(map3);
+      map2.sync(map0);
+      map2.sync(map3);
+      map3.sync(map0);
+      map3.sync(map2);
 
     
 
