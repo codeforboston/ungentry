@@ -18,7 +18,11 @@
       },
       style: function(feature){
         var featureId = feature.id;
-        var d = censusData[2008][featureId].totalpop;
+        try {
+          var d = censusData[2008][featureId].totalpop;
+        } catch (e) {
+          console.log(e)
+        }
         var fill = d > 5944 ? '#800026' :
                    d > 5323 ? '#BD0026' :
                    d > 4777 ? '#E31A1C' :
@@ -41,7 +45,11 @@
       },
       style: function(feature){
         var featureId = feature.id;
-        var d = censusData[2000][featureId].totalpop;
+        try {
+          var d = censusData[2000][featureId].totalpop;
+        } catch (e) {
+          console.log(e)
+        }
         var fill = d > 5944 ? '#800026' :
                    d > 5323 ? '#BD0026' :
                    d > 4777 ? '#E31A1C' :
