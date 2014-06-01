@@ -18,3 +18,8 @@ Check out our brain storm on our [hackpad](https://codeforboston.hackpad.com/How
 If you have information or ideas that you think would be helpful, add it there.
 
 As we get further in the design process, we will update there and here in the readme.
+
+
+We're using Waffle.io to organize our issues. Click the badge to find out what's going on.
+
+[![Stories in Ready](https://badge.waffle.io/codeforboston/ungentry.png?label=ready&title=Ready)](http://waffle.io/codeforboston/ungentry)
