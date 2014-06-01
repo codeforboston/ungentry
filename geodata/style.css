@@ -59,3 +59,46 @@ body { height: 100%;
     margin-right: 8px;
     opacity: 0.7;
 }
+#map0head {
+  float:left;
+  left: 14%;
+  position: absolute;
+  text-shadow: 2px 2px 2px #333333;
+  text-outline: 
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;  
+  
+  color: #FFFFFF;
+  z-index:1000;
+}
+
+#map1head {
+  float:left;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 1px #333333;
+  text-outline: 
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;  
+  left: 48%;
+  position: absolute;
+  z-index:1000;
+}
+
+#map2head {
+  float: left;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 2px #333333;
+  text-outline: 
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;  
+  left: 82%;
+  position: absolute;
+  z-index:1000;
+}
+
