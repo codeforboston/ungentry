@@ -1,13 +1,13 @@
 (function () {
   var map = new L.Map('map').setView([42.354, -71.065], 14);
-  var layer = new L.StamenTileLayer("toner");
+  var toner = new L.StamenTileLayer("toner").addTo(map);
   var mapc = L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-          attribution: 'Tiles by <a href="http://www.mapc.org/">Metropolitan Area Planning Council</a>.'
-            });
+    attribution: 'Tiles by <a href="http://www.mapc.org/">Metropolitan Area Planning Council</a>.'
+  });
   var mapQuest = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
     attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
     subdomains: '1234'
-  }).addTo(map);
+  });
 
   L.Util.ajax('geodata/allcensusacsdata.json').then(function(data) {
     var censusData = data;
@@ -32,7 +32,7 @@
                    d > 2215 ? '#FED976' :
                               '#FFEDA0';
           return {
-            weight: 3,
+            weight: 0,
             color: "#0000ff",
             fillColor: fill
           };
@@ -59,17 +59,17 @@
                    d > 2215 ? '#FED976' :
                               '#FFEDA0';
         return {
-          weight: 3,
+          weight: 0,
           color: "#ff0000",
           fillColor: fill
         };
       }
-    }).addTo(map);
+    });
 
 
     var baseLayers = {
       "Map Quest": mapQuest,
-      "Toner": layer,
+      "Toner": toner,
       "MAPC": mapc
     };
 
@@ -78,13 +78,9 @@
         "2000 Tracts": tracts2000
     };
 
+    // TODO: ADD MAP LEGENDS
     L.control.layers(baseLayers, overlays).addTo(map);
-
-
   });
-
-  
-  
 
   //pulls Boston data from Socrata
   var constructionSites = "http://data.cityofboston.gov/resource/ktrb-k8k6.json?$select=project_name,project_uses,location";
@@ -129,132 +125,60 @@
   //     });
   // });
 
-// Credit Foursquare for their wonderful data
-map.attributionControl
-    .addAttribution('<a href="https://foursquare.com/">Places data from Foursquare</a>');
-// Create a Foursquare developer account: https://developer.foursquare.com/
-// NOTE: CHANGE THESE VALUES TO YOUR OWN:
-// Otherwise they can be cycled or deactivated with zero notice.
-// var CLIENT_ID = 'WKWAY3UZFRFNRN2XOC2FQ1WEPMYMBKP0SD2AUEHSWEYBTIVX';
-// var CLIENT_SECRET = 'ZILRPJDFUY3DWCCRCD2U2SQUA0DFPTDESGOLSXS5O1BRKJYL';
+  // Add foursquare API
+  // initialize empty layer group for data
+  var foursquarePlaces = L.layerGroup().addTo(map); 
+  map.attributionControl.addAttribution('<a href="https://foursquare.com/">Places data from Foursquare</a>');
 
-var API_ENDPOINT = 'https://api.foursquare.com/v2/venues/explore' +
-  '?client_id=CLIENT_ID' +
-  '&client_secret=CLIENT_SECRET' +
-  '&radius=10000' + 
-  '&limit=50' +
-  '&v=20140531' +
-  '&ll=LATLON';
+  // Cristen's foursquare account
+  // var CLIENT_ID = 'WKWAY3UZFRFNRN2XOC2FQ1WEPMYMBKP0SD2AUEHSWEYBTIVX';
+  // var CLIENT_SECRET = 'ZILRPJDFUY3DWCCRCD2U2SQUA0DFPTDESGOLSXS5O1BRKJYL';
 
-var foursquarePlaces = L.layerGroup().addTo(map);  
+  var API_ENDPOINT = 'https://api.foursquare.com/v2/venues/explore' +
+    '?client_id=CLIENT_ID' +
+    '&client_secret=CLIENT_SECRET' +
+    '&radius=10000' + 
+    '&limit=50' +
+    '&v=20140531' +
+    '&ll=LATLON'; //explore the venues on the map. max results the API likes is 50.
 
-var API_ENDPOINT2 = 'https://api.foursquare.com/v2/venues/VENUEID' +
-  '?client_id=CLIENT_ID' +
-  '&client_secret=CLIENT_SECRET' +
-  '&v=20140531' +
-  '&callback=?';
+  var API_ENDPOINT2 = 'https://api.foursquare.com/v2/venues/VENUEID' +
+    '?client_id=CLIENT_ID' +
+    '&client_secret=CLIENT_SECRET' +
+    '&v=20140531' +
+    '&callback=?'; //get the details for a specific venue (needed to get price info)
 
-// Use jQuery to make an AJAX request to Foursquare to load markers data.
+  // Use jQuery to make an AJAX request to Foursquare to find venues
   $.getJSON(API_ENDPOINT
-      .replace('CLIENT_ID', CLIENT_ID)
-      .replace('CLIENT_SECRET', CLIENT_SECRET)
-      .replace('LATLON', map.getCenter().lat +
-          ',' + map.getCenter().lng), function(result, status) {
+    .replace('CLIENT_ID', CLIENT_ID)
+    .replace('CLIENT_SECRET', CLIENT_SECRET)
+    .replace('LATLON', map.getCenter().lat +
+        ',' + map.getCenter().lng), function(result, status) {
 
-      if (status !== 'success') return alert('Request to Foursquare failed');
+    if (status !== 'success') return alert('Request to Foursquare failed');
 
-      var items = result.response.groups[0].items;
-      // console.log(items);
-
-      // Transform each venue result into a marker on the map.
-      for (var i = 0; i < items.length; i++) {
-          $.getJSON(API_ENDPOINT2
-            .replace('CLIENT_ID', CLIENT_ID)
-            .replace('CLIENT_SECRET', CLIENT_SECRET)
-            .replace('VENUEID', items[i].venue.id), function(result2, status) {
-
-              if (status !== 'success') return alert('Request to Foursquare failed');
-
-              // add venue details to popup on its marker on the map.
-              var details = result2.response.venue;
-              var latlng = L.latLng(details.location.lat,details.location.lng);
-              var price;
-              if (details.price !== undefined) { price = details.price.currency } else { price = "No price available." };
-              // if ("undefined" = details.price.message) { } else {price = details.price.message;} 
-              var marker = L.marker(latlng)
-              .bindPopup('<strong><a href="https://foursquare.com/v/' + details.id + '">' +
-                  details.name + '</a></strong><br>' + price)
-              .addTo(foursquarePlaces);  
-            });
-      }
-  });
-
-}());
+    var items = result.response.groups[0].items;
     
-  var censusData;
-  L.Util.ajax('geodata/allcensusacsdata.json').then(function(data) {
-	  censusData = data;
+    // Get details for each venue and add as a marker on the map.
+    for (var i = 0; i < items.length; i++) {
+      $.getJSON(API_ENDPOINT2
+        .replace('CLIENT_ID', CLIENT_ID)
+        .replace('CLIENT_SECRET', CLIENT_SECRET)
+        .replace('VENUEID', items[i].venue.id), function(result2, status) {
 
-    var tracts2010 = L.geoJson.ajax("geodata/tracts2010.json",{
-          middleware:function(data){
-            return topojson.feature(data, data.objects.tracts2010);
-          },
-        style: function(feature){
-          var featureId = feature.id;
-          try {
-            var d = censusData[2008][featureId].totalpop;
-          } catch (e) {
-            console.log(e);
-          }
-          var fill = d > 5944 ? '#800026' :
-                   d > 5323  ? '#BD0026' :
-                   d > 4777  ? '#E31A1C' :
-                   d > 4146  ? '#FC4E2A' :
-                   d > 3552   ? '#FD8D3C' :
-                   d > 2970   ? '#FEB24C' :
-                   d > 2215   ? '#FED976' :
-                              '#FFEDA0';
+        if (status !== 'success') return alert('Request to Foursquare failed');
 
-          return {
-          weight: 1,
-          color: "#ff0000",
-          fillColor: fill
-        };
-      }
-      }).addTo(map);
-      var tracts2000 = L.geoJson.ajax("geodata/tracts2000.json",{
-          middleware:function(data){
-            return topojson.feature(data, data.objects.tracts2000);
-          },
-        style: function(feature){
-          var featureId = feature.id;
-        var d = censusData[2000][featureId].totalpop;
-        var fill = d > 5944 ? '#800026' :
-                 d > 5323  ? '#BD0026' :
-                 d > 4777  ? '#E31A1C' :
-                 d > 4146  ? '#FC4E2A' :
-                 d > 3552   ? '#FD8D3C' :
-                 d > 2970   ? '#FEB24C' :
-                 d > 2215   ? '#FED976' :
-                            '#FFEDA0';
-
-          return {
-          weight: 1,
-          color: "#ff0000",
-          fillColor: fill
-        };
-        }
+        // add venue details to popup on its marker on the map.
+        var details = result2.response.venue;
+        var latlng = L.latLng(details.location.lat,details.location.lng);
+        var price;
+        if (details.price !== undefined) { price = details.price.currency } else { price = "No price available." };
+        var marker = L.marker(latlng)
+        .bindPopup('<strong><a href="https://foursquare.com/v/' + details.id + '">' +
+            details.name + '</a></strong><br>' + price)
+        .addTo(foursquarePlaces);  
       });
-
-    var baseLayers = {
-      "Map Quest": mapQuest
-    };
-
-    var overlays = {
-        "2010 Tracts": tracts2010,
-        "2000 Tracts": tracts2000
-    };
-
-    L.control.layers(baseLayers, overlays).addTo(map);
+    }
   });
 
+  }());
