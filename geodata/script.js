@@ -171,12 +171,12 @@
 
 
       // synchronize three maps
+      map0.sync(map1);
       map0.sync(map2);
-      map0.sync(map3);
+      map1.sync(map0);
+      map1.sync(map2);
       map2.sync(map0);
-      map2.sync(map3);
-      map3.sync(map0);
-      map3.sync(map2);
+      map2.sync(map1);
 
     
 
