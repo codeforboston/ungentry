@@ -21,4 +21,5 @@ As we get further in the design process, we will update there and here in the re
 
 
 We're using Waffle.io to organize our issues. Click the badge to find out what's going on.
+
 [![Stories in Ready](https://badge.waffle.io/codeforboston/ungentry.png?label=ready&title=Ready)](http://waffle.io/codeforboston/ungentry)
