@@ -12,6 +12,14 @@
     subdomains: '1234'
   });
 
+  // synchronize three maps
+mapA.sync(mapB);
+mapA.sync(mapC);
+mapB.sync(mapA);
+mapB.sync(mapC);
+mapC.sync(mapA);
+mapC.sync(mapB);
+
   /* Map 1: 2000 tracts */
   var map1 = new L.Map('map1').setView([42.354, -71.065], 14);
   var toner = new L.StamenTileLayer("toner").addTo(map1);
