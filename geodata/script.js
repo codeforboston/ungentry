@@ -43,6 +43,8 @@
     }).addTo(map1);
 
 
+
+
     var baseLayers = {
       "Map Quest": mapQuest,
       "Toner": toner,
@@ -52,6 +54,10 @@
     var overlays = {
         "2000 Tracts": tracts2000
     };
+
+        // TODO: ADD MAP LEGENDS
+    L.control.layers(baseLayers, overlays).addTo(map1);
+
 
 /* map 2: 2010 tracts */
   var map2 = new L.Map('map2').setView([42.354, -71.065], 14);
