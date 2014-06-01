@@ -94,7 +94,8 @@
         return {
           weight: 0,
           color: "#0000ff",
-          fillColor: fill
+          fillColor: fill,
+          fillOpacity: .75
           };
          }
     }).addTo(map2);
@@ -121,7 +122,8 @@
         return {
           weight: 0,
           color: "#0000ff",
-          fillColor: fill
+          fillColor: fill,
+          fillOpacity: .75
           };
          }
     }).addTo(map1);
@@ -148,7 +150,8 @@
         return {
           weight: 0,
           color: "#0000ff",
-          fillColor: fill
+          fillColor: fill,
+          fillOpacity: .75
           };
          }
     }).addTo(map0);
