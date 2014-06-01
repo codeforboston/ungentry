@@ -102,3 +102,6 @@ body { height: 100%;
   z-index:1000;
 }
 
+.dropdown-menu {
+  z-index: 1001;
+}
