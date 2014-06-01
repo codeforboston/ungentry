@@ -1,10 +1,65 @@
+
+/* Map 1: 2000 tracts */
 (function () {
-  var map = new L.Map('map').setView([42.354, -71.065], 14);
-  var toner = new L.StamenTileLayer("toner").addTo(map);
+  var map1 = new L.Map('map1').setView([42.354, -71.065], 14);
+  var toner = new L.StamenTileLayer("toner").addTo(map1);
   var mapc = L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
     attribution: 'Tiles by <a href="http://www.mapc.org/">Metropolitan Area Planning Council</a>.'
   });
   var mapQuest = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
+    attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    subdomains: '1234'
+  });
+
+  L.Util.ajax('geodata/allcensusacsdata.json').then(function(data) {
+    var censusData = data;
+
+
+    var tracts2000 = L.geoJson.ajax("geodata/tracts2000.json",{
+      middleware:function(data){
+        return topojson.feature(data, data.objects.tracts2000);
+      },
+      style: function(feature){
+        var featureId = feature.id;
+        try {
+          var d = censusData[2000][featureId].totalpop;
+        } catch (e) {
+          console.log(e)
+        }
+        var fill = d > 5944 ? '#800026' :
+                   d > 5323 ? '#BD0026' :
+                   d > 4777 ? '#E31A1C' :
+                   d > 4146 ? '#FC4E2A' :
+                   d > 3552 ? '#FD8D3C' :
+                   d > 2970 ? '#FEB24C' :
+                   d > 2215 ? '#FED976' :
+                              '#FFEDA0';
+        return {
+          weight: 0,
+          color: "#ff0000",
+          fillColor: fill
+        };
+      }
+    }).addTo(map1);
+
+
+    var baseLayers = {
+      "Map Quest": mapQuest,
+      "Toner": toner,
+      "MAPC": mapc
+    };
+
+    var overlays = {
+        "2000 Tracts": tracts2000
+    };
+
+/* map 2: 2010 tracts */
+  var map2 = new L.Map('map2').setView([42.354, -71.065], 14);
+  var toner2 = new L.StamenTileLayer("toner").addTo(map2);
+  var mapc2 = L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+    attribution: 'Tiles by <a href="http://www.mapc.org/">Metropolitan Area Planning Council</a>.'
+  });
+  var mapQuest2 = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
     attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
     subdomains: '1234'
   });
@@ -37,49 +92,23 @@
             fillColor: fill
           };
        }
-    }).addTo(map);
-
-    var tracts2000 = L.geoJson.ajax("geodata/tracts2000.json",{
-      middleware:function(data){
-        return topojson.feature(data, data.objects.tracts2000);
-      },
-      style: function(feature){
-        var featureId = feature.id;
-        try {
-          var d = censusData[2000][featureId].totalpop;
-        } catch (e) {
-          console.log(e)
-        }
-        var fill = d > 5944 ? '#800026' :
-                   d > 5323 ? '#BD0026' :
-                   d > 4777 ? '#E31A1C' :
-                   d > 4146 ? '#FC4E2A' :
-                   d > 3552 ? '#FD8D3C' :
-                   d > 2970 ? '#FEB24C' :
-                   d > 2215 ? '#FED976' :
-                              '#FFEDA0';
-        return {
-          weight: 0,
-          color: "#ff0000",
-          fillColor: fill
-        };
-      }
-    });
+    }).addTo(map2); 
 
 
-    var baseLayers = {
-      "Map Quest": mapQuest,
-      "Toner": toner,
-      "MAPC": mapc
+
+    var baseLayers2 = {
+      "Map Quest": mapQuest2,
+      "Toner": toner2,
+      "MAPC": mapc2
     };
 
-    var overlays = {
-        "2010 Tracts": tracts2010,
-        "2000 Tracts": tracts2000
+    var overlays2 = {
+        "2010 Tracts": tracts2010
     };
+
 
     // TODO: ADD MAP LEGENDS
-    L.control.layers(baseLayers, overlays).addTo(map);
+    L.control.layers(baseLayers2, overlays2).addTo(map2);
   });
 
   //pulls Boston data from Socrata
@@ -180,5 +209,5 @@
       });
     }
   });
-
+  });
   }());
