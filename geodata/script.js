@@ -1,6 +1,20 @@
+
 (function () {
-  var map = new L.Map('map').setView([42.354, -71.065], 14);
-  var toner = new L.StamenTileLayer("toner").addTo(map);
+
+  /*Map 0: 1990 tracts */
+  var map0 = new L.Map('map0').setView([42.354, -71.065], 14);
+  var toner0 = new L.StamenTileLayer("toner").addTo(map0);
+  var mapc0 = L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+    attribution: 'Tiles by <a href="http://www.mapc.org/">Metropolitan Area Planning Council</a>.'
+  });
+  var mapQuest0 = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
+    attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    subdomains: '1234'
+  });
+
+  /* Map 1: 2000 tracts */
+  var map1 = new L.Map('map1').setView([42.354, -71.065], 14);
+  var toner = new L.StamenTileLayer("toner").addTo(map1);
   var mapc = L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
     attribution: 'Tiles by <a href="http://www.mapc.org/">Metropolitan Area Planning Council</a>.'
   });
@@ -12,32 +26,6 @@
   L.Util.ajax('geodata/allcensusacsdata.json').then(function(data) {
     var censusData = data;
 
-    var tracts2010 = L.geoJson.ajax("geodata/tracts2010.json",{
-      middleware:function(data){
-        return topojson.feature(data, data.objects.tracts2010);
-      },
-      style: function(feature){
-        var featureId = feature.id;
-        try {
-          var d = censusData[2008][featureId].totalpop;
-        } catch (e) {
-          console.log(e)
-        }
-        var fill = d > 5944 ? '#800026' :
-                   d > 5323 ? '#BD0026' :
-                   d > 4777 ? '#E31A1C' :
-                   d > 4146 ? '#FC4E2A' :
-                   d > 3552 ? '#FD8D3C' :
-                   d > 2970 ? '#FEB24C' :
-                   d > 2215 ? '#FED976' :
-                              '#FFEDA0';
-          return {
-            weight: 0,
-            color: "#0000ff",
-            fillColor: fill
-          };
-       }
-    }).addTo(map);
 
     var tracts2000 = L.geoJson.ajax("geodata/tracts2000.json",{
       middleware:function(data){
@@ -64,7 +52,7 @@
           fillColor: fill
         };
       }
-    });
+    }).addTo(map1);
 
 
     var baseLayers = {
@@ -74,13 +62,112 @@
     };
 
     var overlays = {
-        "2010 Tracts": tracts2010,
         "2000 Tracts": tracts2000
     };
 
     // TODO: ADD MAP LEGENDS
-    L.control.layers(baseLayers, overlays).addTo(map);
-  });
+    L.control.layers(baseLayers, overlays).addTo(map1);
+
+    /* map 2: 2010 tracts */
+      var map2 = new L.Map('map2').setView([42.354, -71.065], 14);
+      var toner2 = new L.StamenTileLayer("toner").addTo(map2);
+      var mapc2 = L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+        attribution: 'Tiles by <a href="http://www.mapc.org/">Metropolitan Area Planning Council</a>.'
+      });
+      var mapQuest2 = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg', {
+        attribution: 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        subdomains: '1234'
+      });
+
+    var tracts2010 = L.geoJson.ajax("geodata/tracts2010.json",{
+      middleware:function(data){
+        return topojson.feature(data, data.objects.tracts2010);
+      },
+      style: function(feature){
+        var featureId = feature.id;
+        try {
+          var d = censusData[2008][featureId].totalpop;
+        } catch (e) {
+          console.log(e)
+        }
+        var fill = d > 5944 ? '#800026' :
+                   d > 5323 ? '#BD0026' :
+                   d > 4777 ? '#E31A1C' :
+                   d > 4146 ? '#FC4E2A' :
+                   d > 3552 ? '#FD8D3C' :
+                   d > 2970 ? '#FEB24C' :
+                   d > 2215 ? '#FED976' :
+                              '#FFEDA0';
+          return {
+            weight: 0,
+            color: "#0000ff",
+            fillColor: fill
+          };
+       }
+    }).addTo(map2); 
+
+
+
+    var baseLayers2 = {
+      "Map Quest": mapQuest2,
+      "Toner": toner2,
+      "MAPC": mapc2
+    };
+
+    var overlays2 = {
+        "2010 Tracts": tracts2010
+    };
+
+
+    // TODO: ADD MAP LEGENDS
+    L.control.layers(baseLayers2, overlays2).addTo(map2);
+
+
+    /* map 0: 1990 tracts */
+    var tracts1990 = L.geoJson.ajax("geodata/tracts1990.json",{
+      middleware:function(data){
+        return topojson.feature(data, data.objects.tracts1990);
+      },
+      style: function(feature){
+        var featureId = feature.id;
+        try {
+          var d = censusData[1990][featureId].totalpop;
+        } catch (e) {
+          console.log(e)
+        }
+        var fill = d > 5944 ? '#800026' :
+                   d > 5323 ? '#BD0026' :
+                   d > 4777 ? '#E31A1C' :
+                   d > 4146 ? '#FC4E2A' :
+                   d > 3552 ? '#FD8D3C' :
+                   d > 2970 ? '#FEB24C' :
+                   d > 2215 ? '#FED976' :
+                              '#FFEDA0';
+        return {
+          weight: 3,
+          color: "#ff0000",
+          opacity: 0.1,
+          fillColor: fill
+        };
+      }
+    }).addTo(map0);
+
+
+    var baseLayers0 = {
+      "Map Quest": mapQuest0,
+      "Toner": toner0,
+      "MAPC": mapc0
+    };
+
+    var overlays0 = {
+        "1990 Tracts": tracts1990
+    };
+
+
+    // TODO: ADD MAP LEGENDS
+    L.control.layers(baseLayers0, overlays0).addTo(map0);
+
+    
 
   //pulls Boston data from Socrata
   var constructionSites = "http://data.cityofboston.gov/resource/ktrb-k8k6.json?$select=project_name,project_uses,location";
@@ -180,5 +267,5 @@
       });
     }
   });
-
+  });
   }());

@@ -1,16 +1,35 @@
-html { height: 100% }
 
+/*
+html { height: 100% }
+*/
+
+/*
 body { height: 100%; 
 	   margin: 0; 
 	   padding: 0;
 	}
+*/
 
+.row {
+	height: 675px;
+	margin: 0;
+}
 
+#map0{ height: 91% ;
+      margin: 0;
 
-#map{ height: 91% ;
+}
+
+#map1{ height: 91% ;
       margin: 0;
       
 }
+
+#map2{ height: 91% ;
+      margin: 0;
+      
+}
+
 
 .navbar{
 	margin-bottom: 0;
