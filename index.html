@@ -14,9 +14,7 @@
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 <link rel="stylesheet" href="geodata/style.css">
 
-<!-- Leaflet Sidebar
-<link rel="stylesheet" href="leaflet_sidebar/L.Control.Sidebar.css">
--->
+
 
 
 
@@ -60,7 +58,7 @@
             <li><a href="#">% Individual Profesional</a></li>
             <li><a href="#">% College Educated</a></li>
             <li class="divider"></li>
-            <li><a href="#">Median Household Income</a></li>
+            <li><a href="income.html">Median Household Income</a></li>
             <li><a href="#">% Poverty</a></li>
           </ul>
         </li>
@@ -82,11 +80,12 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Something else</a></li>
+            <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeforboston.github.io/ungentry/" data-text="See what data says about your neighborhood" data-lang="en"></a></li>
+            <li><div class="fb-share-button" data-href="http://codeforboston.github.io/ungentry/" data-type="button_count"></div></li>
+            <li><a></a></li>  
             <li class="divider"></li>
-            <li><a href="#">Github</a></li>
+            <li><iframe src="http://ghbtns.com/github-btn.html?user=codeforboston&repo=ungentry&type=fork&count=true"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></li>
           </ul>
         </li>
       </ul>
@@ -108,10 +107,15 @@
 
  <div class="row"> 
 
+   <span>
+   <h2 id="map0head">1990</h2>
    <div id="map0" class="col-md-4"></div>
+ </span>
     
+   <h2 id="map1head">2000</h2>
    <div id="map1" class="col-md-4"></div>
 
+   <h2 id="map2head">2010</h2>
    <div id="map2" class="col-md-4"></div>
 
    
@@ -150,12 +154,18 @@
 
 
 
-<!-- Custom JS -->
-<script src="geodata/script.js"></script>
+<!--Twitter share button script -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
 
-<!-- Sidebar script
-<script src="L.Control.Sidebar.js"></script>
--->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=262994210406910&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 </html>
