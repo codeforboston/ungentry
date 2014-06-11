@@ -2,6 +2,7 @@ ungentry
 ========
 *Code for Boston cares about innovation and technology.  It also cares about the ways it affects its surroundings.*
 
+http://codeforboston.github.io/ungentry/
 
 Why are we doing this?
 ----------------------
