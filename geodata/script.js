@@ -59,18 +59,19 @@
     }
 
     // console.log(poparray);
-    var popstats2010 = new geostats(poparray2010);
-    var a2010 = popstats2010.getClassQuantile(5);
-    var range2010 = popstats2010.ranges;
-
-    var popstats2000 = new geostats(poparray2000);
-    var a2000 = popstats2000.getClassQuantile(5);
-    var range2000 = popstats2000.ranges;
-
-    var popstats1990 = new geostats(poparray1990);
-    var a1990 = popstats1990.getClassQuantile(5);
+	// use Jenks natural breaks for 1990 for cloropleth
+	// use same breaks for all years
+	var popstats1990 = new geostats(poparray1990);
+    var a1990 = popstats1990.getClassJenks(5);
     var range1990 = popstats1990.ranges;
 
+    var popstats2000 = new geostats(poparray2000);
+	var a2000 = a1990;
+    var range2000 = range1990;
+
+    var popstats2010 = new geostats(poparray2010);
+    var a2010 = a1990;
+    var range2010 = range1990;
 
     var tracts2010 = L.geoJson.ajax("geodata/tracts2010.json",{
       middleware:function(data){
