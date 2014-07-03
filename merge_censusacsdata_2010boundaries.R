@@ -21,8 +21,9 @@ dat10 <- read.csv("ACS0812_Boston.csv")
 alldat <- merge(dat90, dat00, 
 								by = "tractid10", all = TRUE, 
 								suffixes = c("_90", "_00"))
+
 alldat <- merge(alldat, dat10, 
-								by = "tractid10", all = TRUE, 
+								by = "tractid10", all.y = TRUE, 
 								suffixes = c("", "_10"))
 
 # add column year labels ####
@@ -76,6 +77,14 @@ alldat <- alldat[alldat$totalpop_90 != 0 &
 								 	is.na(alldat$totalpop_90) == FALSE & 
 								 	is.na(alldat$totalpop_00) == FALSE & 
 								 	is.na(alldat$totalpop_10) == FALSE, ]
+# drop tracts with no households
+alldat <- alldat[alldat$households_90 != 0 & 
+								 	alldat$households_00 != 0 & 
+								 	alldat$households_10 != 0 & 
+								 	is.na(alldat$households_90) == FALSE & 
+								 	is.na(alldat$households_00) == FALSE & 
+								 	is.na(alldat$households_10) == FALSE, ]
+
 
 # create common variables where possible and reorder ####
 alldat$pctinc_0_10k_90 <- 
@@ -106,9 +115,9 @@ alldat$medianvalue_10 <- alldat$medianvalue_10 * 1.01
 alldat$medianrent_10 <- alldat$medianrent_10 * 1.01
 
 # reorder columns ####
-alldat <- alldat[, c(1, 2:13, 133:134, 14:41, 
+alldat <- alldat[, c(1, 2:13, 132, 14:21, 133, 22:41, 
 								 42:86, 
-								 87:108, 135, 109:132)]
+								 87:108, 134, 109:131)]
 
 setwd("C:/Users/Jackie/Documents/GitHub/ungentry")
 write.csv(alldat, file = "allcensusacsdata_2010boundaries.csv", 

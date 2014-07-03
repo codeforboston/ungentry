@@ -115,4 +115,6 @@ drop B25026011s B25026012s B25026013s B25026014s B25026015s
 drop PCT_B25026002 PCT_B25026003 PCT_B25026004 PCT_B25026005 PCT_B25026006 PCT_B25026007 PCT_B25026008 PCT_B25026009 PCT_B25026010
 drop PCT_B25026011 PCT_B25026012 PCT_B25026013 PCT_B25026014 PCT_B25026015
 
+collapse (sum) totalpop households pcthhchild pctind_info pctind_finance pctind_professional pctocc_profmanage pctcollege pctinc_0_10K pctinc_10K_15K pctinc_15K_20K pctinc_20K_25K pctinc_25K_30K pctinc_30K_35K pctinc_35K_40K pctinc_40K_45K pctinc_45K_50K pctinc_50K_60K pctinc_60K_75K pctinc_75K_100K pctinc_100K_125K pctinc_125K_150K pctinc_150K_200K pctinc_200K_more pctpoverty pctpublicassist units pctown pctrent pctvacant pctrent_0_300 pctrent_300_600 pctrent_600_800 pctrent_800_1000 pctrent_1000_1250 pctrent_1250_1500 pctrent_1500_2000 pctrent_2000_more pctinc_mortgage_30_more pctinc_nomortgage_30_more pctsameres pctunits_newres_2010 pctincomerent_30_more (median) medhhincome medianvalue medianrent medianpctincomerent, by (tractid10)
+
 outsheet using "C:\Users\Jackie\Documents\GitHub\ungentry\ACS0812_Boston\ACS0812_Boston.csv", comma replace
