@@ -26,7 +26,7 @@ var MapRouter = Backbone.Router.extend ({
 	  	         "pctsameres" : "showPctsameres",
 	  	         "pctind_info" : "showPctind_info",
 	  	         "pctunits_newres_2000" : "showPctunits_newres_2000",
-	  	         "pctunits_newres" : "showPctunits_newres",
+	  	         "pctunits_newres" : "showPctunits_newres"
 
 	  },
 
