@@ -19,6 +19,7 @@ public class SHPtoJson {
 
 	public static String prettyJson(String iJsonData){
 		
+		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonParser jp = new JsonParser();
 		JsonElement je = jp.parse(iJsonData);
@@ -64,25 +65,28 @@ public class SHPtoJson {
 		CSVReader aReader1 = new CSVReader(iCensus);
 		aReader1.read();
 		
-		System.out.println(aReader1.toString());
+		//System.out.println(aReader1.toString());
 
 		CSVReader aReader2 = new CSVReader(iACS);
 		aReader2.read();
 		
-		System.out.println(aReader2.toString());
+		//System.out.println(aReader2.toString());
+			
 		
-		aReader1.merge("Geoid10", "\"%s\"", aReader2, iMerge, "%s");
+		System.out.println("Merging CENSUS and ACS ref:"+iMerge);
+		aReader1.merge("Geoid10", "%s", aReader2, iMerge, "%s");
 		
 		System.out.println(aReader1.toString());
 		
+		//System.exit(0);
 		
 		ShpFileReader aReader = new ShpFileReader(iSHP);
 		aReader.read();
 		
 		
-		String[] aAccepted = { "medianrent", iMerge , "rowid", "Geoid10", "pctpoverty" };
-		String[] aUnits = { "$", "" , "", "", "%" };
-		String[] aTitles = { "Avg. Rent", "" , "", "", "% Poverty" };
+		String[] aAccepted = { "\"medianrent_00\"", "\"medianrent_90\"", "\"medianrent_10\"", iMerge , "rowid", "Geoid10", "\"pctpoverty_00\"" , "\"pctpoverty_90\"", "\"pctpoverty_10\"" };
+		String[] aUnits = { "$", "$", "$", "" , "", "", "%" , "%", "%" };
+		String[] aTitles = { "Avg. Rent", "Avg. Rent", "Avg. Rent", "" , "", "", "% Poverty" , "% Poverty", "% Poverty" };
 		
 		aReader.getGroupRecord().merge(aReader1, "rowid", aAccepted, aUnits, aTitles);
 		
@@ -152,12 +156,12 @@ public class SHPtoJson {
 		
 		generateMapData(
 		"./data/shp/in/2010/CENSUS_DBF.csv",
-		"./data/shp/in/2010/ACS0812_Boston.csv",
+		"./data/shp/in/2010/allcensusacsdata_2010boundaries.csv",
 		"./data/shp/in/2010/CENSUS2010TRACTS_POLY.shp",
-		"tractid10",
-		"2010");
+		"\"tractid10\"",
+		"common");
 		
-		
+		/*
 		generateMapData(
 		"./data/shp/in/2000/CENSUS_DBF.csv",
 		"./data/shp/in/2000/ACS0509_Boston.csv",
@@ -171,6 +175,7 @@ public class SHPtoJson {
 		"./data/shp/in/2010/CENSUS2010TRACTS_POLY.shp",
 		"tractid90", 
 		"1990");
+		*/
 		
 	}
 

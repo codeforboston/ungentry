@@ -111,7 +111,7 @@ public class CSVReader {
 			aIndex2.get(aHashedValue).add(new EntryImp<String,Integer>(aHashedValue,entrySet.getKey()));
 			
 			if (aIndex2.get(aHashedValue).size()>1) {
-				System.err.println(aHashedValue+" hash overlap:"+aIndex2.get(aHashedValue));
+				System.err.println(aHashedValue+" ("+iCol2+") hash overlap:"+aIndex2.get(aHashedValue)+ " Value:"+ entrySet.getValue() );
 				//System.exit(0);
 			}
 			//System.out.println("hash("+iCol2+"):"+aHashedValue);
@@ -120,7 +120,7 @@ public class CSVReader {
 		for (Entry<Integer,TreeMap<String,String>> entrySet: _data.entrySet()){
 		
 			String aValueToFind = String.format(iFormat1, entrySet.getValue().get(iCol1));
-			//System.out.print("tofd("+iCol1+"):"+aValueToFind);
+			System.out.print("tofd("+iCol1+"):"+aValueToFind);
 			Vector<EntryImp<String,Integer>> aIndex = aIndex2.get(aValueToFind);
 			if (aIndex!=null) {
 				

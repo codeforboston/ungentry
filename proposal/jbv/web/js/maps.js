@@ -74,10 +74,6 @@ function Datamap(ident, lat, lon, datapath){
 		var remove = $(this.parts).not(this.todisplay_parts).get();
 		var add =  $(this.todisplay_parts).not(this.parts).get();
 
-		//console.log("add");
-		//console.log(add);
-		//console.log("remove");
-		//console.log(remove);
 
 		for (var i=0; i<remove.length; i++) {
 	
@@ -110,7 +106,7 @@ function Datamap(ident, lat, lon, datapath){
  				 	var color = 100*(val-prop.min)/div;
 				 	return {color: "#"+self.colors.colourAt(color) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
 				 } else {
-					return {color: "#7F7F7F", "weight": 0 , "fillOpacity": 0.0};
+					return {color: "#7F7F7F", "weight": 0 , "fillOpacity": 0.6};
 				 }	
 
 			    }

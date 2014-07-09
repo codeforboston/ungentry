@@ -4,26 +4,26 @@ var datamap0, datamap1, datamap2;
 function setProperty(name, color1, color2) {
 
 	 datamap0.setGradient(color1, color2);
-	 datamap0.setDisplayProperty(name);
+	 datamap0.setDisplayProperty(name+"_90");
 
 	 datamap1.setGradient(color1, color2);
-	 datamap1.setDisplayProperty(name);
+	 datamap1.setDisplayProperty(name+"_00");
 
 	 datamap2.setGradient(color1, color2);
-	 datamap2.setDisplayProperty(name);
+	 datamap2.setDisplayProperty(name+"_10");
 
 }
 
 function initDataMap(){
 
 	  /*Setup Map 0: 1990 tracts */
-	  datamap0 = new Datamap('map0', 42.354, -71.065, "./data/1990/dataset/" );	
+	  datamap0 = new Datamap('map0', 42.354, -71.065, "./data/common/dataset/" );	
 	  	
 	  /* Setup Map 1: 2000 tracts */
-	  datamap1 = new Datamap('map1', 42.354, -71.065, "./data/2000/dataset/" );	
+	  datamap1 = new Datamap('map1', 42.354, -71.065, "./data/common/dataset/" );	
 	  
 	  /* Setup map 2: 2010 tracts */
-	  datamap2 = new Datamap('map2', 42.354, -71.065, "./data/2010/dataset/" );	
+	  datamap2 = new Datamap('map2', 42.354, -71.065, "./data/common/dataset/" );	
 	  
 	  setProperty("medianrent", "yellow", "red");
 

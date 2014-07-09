@@ -64,7 +64,7 @@ public class Record extends Shape{
 			Object[] aKeys = _properties.keySet().toArray();
 			for (int i=0; i<aKeys.length; i++) {
 				aBuffer.append("\"");
-				aBuffer.append((String) aKeys[i]);
+				aBuffer.append(((String) aKeys[i]).replace("\"", ""));
 				aBuffer.append("\" :");
 				aBuffer.append(valid(_properties.get((String) aKeys[i])));
 				if (i!=aKeys.length-1) {

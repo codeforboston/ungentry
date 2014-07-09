@@ -69,7 +69,7 @@ public class GroupRecord extends Shape {
 			
 			
 			aBuf.append("\"");
-			aBuf.append(aKeys[i]);
+			aBuf.append(aKeys[i].replace("\"", ""));
 			aBuf.append("\" : {");
 			
 			aBuf.append("\"min\" : ");
@@ -181,7 +181,9 @@ public class GroupRecord extends Shape {
 			Record aRecord = _shapes.get(aIntValue);
 			if (aRecord!=null) {
 				
+				
 				for (Entry<String,String> aKV : aEntry.getValue().entrySet()){
+					
 					
 					if ((!aKV.getKey().equals(iCol)) && (aSet.contains(aKV.getKey()))
 						&& ( !aKV.getValue().equals(""))) {
