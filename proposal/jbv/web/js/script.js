@@ -46,6 +46,9 @@ $(function() {
 
 	  initDataMap();
 
+	  initMapRouter();
+
+	  /*
 	  $("#pctpoverty").click( function(){
 			setProperty("pctpoverty", "#07E500", "blue"); 
 	  });
@@ -53,6 +56,7 @@ $(function() {
        $("#medianrent").click( function(){
 			setProperty("medianrent", "yellow", "red"); 
 	  });
+	  */
       
 
   });

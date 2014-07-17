@@ -1,4 +1,4 @@
-import csv.CSVReader;
+import json.converter.csv.CSVReader;
 
 
 public class CSVtoJson {

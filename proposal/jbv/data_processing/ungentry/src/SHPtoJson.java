@@ -1,18 +1,20 @@
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import json.converter.csv.CSVReader;
+import json.converter.shp.ShpFileReader;
+import json.geojson.FeatureCollection;
+import json.geojson.objects.Polygon;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
-import csv.CSVReader;
 
-import record.GroupRecord;
-import shape.Polygon;
-import shp.ShpFileReader;
 
 
 public class SHPtoJson {
@@ -93,7 +95,7 @@ public class SHPtoJson {
 		int aN = 8;
 		int aM = 8;
 		
-		GroupRecord[][] aGroupGrid = aReader.getGroupRecord().groupGridDivide(aN, aM);
+		FeatureCollection[][] aGroupGrid = aReader.getGroupRecord().groupGridDivide(aN, aM);
 	
 		int[] precision = { 10, 20, 60, 200 };
 		
@@ -117,7 +119,7 @@ public class SHPtoJson {
 					
 					String aFileName = "MA_"+i+"_"+j+".json";
 					
-					GroupRecord aRec = aGroupGrid[i][j];
+					FeatureCollection aRec = aGroupGrid[i][j];
 					recordFile(aDir+aFileName, prettyJson(aRec.toJson()) );
 					
 					aMapBound.append("{ \"file\" : \"");
