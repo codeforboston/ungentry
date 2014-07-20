@@ -98,7 +98,7 @@ function Datamap(ident, lat, lon, datapath){
 					return self.itemStyle(feature);
 			      }
 				 
-				 var val = feature.properties[self.currentProperty];
+				 var val = parseFloat(feature.properties[self.currentProperty]);
 				 var prop = self.properties_data[self.currentProperty];
 				 var div = prop.max-prop.min;
 				
@@ -127,6 +127,7 @@ function Datamap(ident, lat, lon, datapath){
 	}
 
 	this.computGeoJsonBound = function(data){
+
 
 		var bounds = this.map.getBounds();
 		
@@ -177,8 +178,9 @@ function Datamap(ident, lat, lon, datapath){
 				$.getJSON( url , (function(url) { return function( data ) {
 
 					//console.log("Loaded ...");
-					self.map_cache[url] = data;			
-					self.computGeoJsonBound( data );
+					var aFeature = topojson.feature(data, data.objects.MA);
+					self.map_cache[url] = aFeature;			
+					self.computGeoJsonBound( aFeature );
 
 				};} ) (url));	
 

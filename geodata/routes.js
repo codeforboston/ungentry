@@ -31,7 +31,7 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPcthchild: function(){
-
+		
 	  },
 
 	  showPct_finance: function(){
@@ -71,7 +71,7 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPctpoverty: function(){
-
+		setProperty("pctpoverty", "#07E500", "blue"); 
 	  },
 
 	  showPctpublicassist: function(){
@@ -124,7 +124,14 @@ var MapRouter = Backbone.Router.extend ({
 
 	  showPctunits_newres_2000: function(){
 
-	  },
+	  }
 
 	  
 });
+
+
+function initMapRouter(){
+	var router = new MapRouter();
+	Backbone.history.start();
+}
+
