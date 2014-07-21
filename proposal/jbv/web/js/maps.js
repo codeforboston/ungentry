@@ -38,12 +38,43 @@ function Datamap(ident, lat, lon, datapath){
 	this.bounds_to_be_loaded = []; 
 	this.map_cache = {};
 
+	this.geostats_cache = {};
+
 	this.setItemStyle = function(iItemStyleFunction){
 		this.itemStyle = iItemStyleFunction;
 	}
 
 	this.setGradient = function(iC1,iC2){
 		this.colors.setSpectrum(iC1 , iC2); 
+	}
+
+	this.getGeoStat = function(iName,iProp) {
+
+		if (this.geostats_cache[iName]) {
+
+			return this.geostats_cache[iName];
+
+		} else {
+
+			var geo = new geostats(iProp.serie);
+			//this.geostats_cache[iName] = geo.getClassJenks(5);
+			this.geostats_cache[iName] = geo.getClassJenks(5);
+			return this.geostats_cache[iName];
+
+		}
+
+	}
+
+	this.getColor = function(geo,val){
+
+		for (var i in geo) {
+			if ((val-geo[i]>=0) && (val-geo[parseInt(i)+1]<0)) {
+				color = "#"+this.colors.colourAt(100*(parseFloat(i)/(geo.length-1)));
+				return color;
+			}
+		}
+		return "#7F7F7F";
+
 	}
 
 	this.computZoomLevel = function(){
@@ -97,14 +128,13 @@ function Datamap(ident, lat, lon, datapath){
 				 if (self.itemStyle){
 					return self.itemStyle(feature);
 			      }
-				 
-				 var val = parseFloat(feature.properties[self.currentProperty]);
-				 var prop = self.properties_data[self.currentProperty];
-				 var div = prop.max-prop.min;
 				
-				 if ((div!=0) && (val)) {
- 				 	var color = 100*(val-prop.min)/div;
-				 	return {color: "#"+self.colors.colourAt(color) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
+			      var prop = self.properties_data[self.currentProperty];
+				 var geo = self.getGeoStat(self.currentProperty, prop);
+				
+				 var val = parseFloat(feature.properties[self.currentProperty]);
+				 if (val) {
+				 	return {color: self.getColor(geo,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
 				 } else {
 					return {color: "#7F7F7F", "weight": 0 , "fillOpacity": 0.6};
 				 }	
@@ -152,8 +182,7 @@ function Datamap(ident, lat, lon, datapath){
 			}
 
 		}
-
-		//console.log(this.bounds_to_be_loaded);	
+	
 		this.loadBoundProcess();
 
 	}
@@ -288,13 +317,15 @@ function Datamap(ident, lat, lon, datapath){
 		this.legend.onAdd = function (map) {
 		
 			var prop = self.properties_data[self.currentProperty];
-		
+			var geo = self.getGeoStat(self.currentProperty, prop);
+			
 			var div = L.DomUtil.create('div', 'info legend');
 			div.innerHTML += '<h4>'+prop.title+' per tract</h4>';
 			for (var i = 0; i < 5; i++) {
-			    var range_min = ((prop.max-prop.min)*i/5+prop.min).toFixed(0);
-			    var range_max = ((prop.max-prop.min)*(i+1)/5+prop.min).toFixed(0);
-			    div.innerHTML += '<i style="background: #' + self.colors.colourAt(100*((i+0.5)/5)) + ';"></i> ' + range_min + prop.unit + " - " + range_max + prop.unit + '<br>';
+			    var range_min = geo[i].toFixed(0);
+			    var range_max =  geo[i+1].toFixed(0);
+			    var color =  self.getColor(geo, (parseFloat(range_max)+parseFloat(range_min))/2 );
+			    div.innerHTML += '<i style="background: ' + color + ';"></i> ' + range_min + prop.unit + " - " + range_max + prop.unit + '<br>';
 			}
 			return div;
 	    	};   

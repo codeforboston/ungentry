@@ -8,6 +8,8 @@ import json.converter.csv.CSVReader;
 import json.converter.shp.ShpFileReader;
 import json.geojson.FeatureCollection;
 import json.geojson.objects.Polygon;
+import json.topojson.api.TopojsonApi;
+import json.topojson.topology.Topology;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,7 +64,7 @@ public class SHPtoJson {
 	  
    }
 	
-    public static void generateMapData(String iCensus, String iACS, String iSHP, String iMerge, String iFolderDate) {
+    public static void generateMapData(String iCensus, String iACS, String iSHP, String iMerge, String iFolderDate) throws FileNotFoundException {
 		
 		CSVReader aReader1 = new CSVReader(iCensus);
 		aReader1.read();
@@ -83,7 +85,12 @@ public class SHPtoJson {
 		//System.exit(0);
 		
 		ShpFileReader aReader = new ShpFileReader(iSHP);
-		aReader.read();
+		try {
+			aReader.read();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 		String[] aAccepted = { "\"medianrent_00\"", "\"medianrent_90\"", "\"medianrent_10\"", iMerge , "rowid", "Geoid10", "\"pctpoverty_00\"" , "\"pctpoverty_90\"", "\"pctpoverty_10\"" };
@@ -92,19 +99,31 @@ public class SHPtoJson {
 		
 		aReader.getGroupRecord().merge(aReader1, "rowid", aAccepted, aUnits, aTitles);
 		
-		int aN = 8;
-		int aM = 8;
+		int aN = 16;
+		int aM = 16;
 		
-		FeatureCollection[][] aGroupGrid = aReader.getGroupRecord().groupGridDivide(aN, aM);
-	
-		int[] precision = { 10, 20, 60, 200 };
+		FeatureCollection aCollection = aReader.getGroupRecord();
+		
+		aCollection.mergeMinMaxProperties(new String[] {
+				"\"medianrent_00\"",
+				"\"medianrent_90\"",
+				"\"medianrent_10\""
+		});
+		
+		aCollection.mergeMinMaxProperties(new String[] {
+				"\"pctpoverty_00\"",
+				"\"pctpoverty_90\"",
+				"\"pctpoverty_10\""
+		});
+		
+		int[] precision = { 1, 2, 10, 100 };
 		
 		mkdir("./data/shp/"+iFolderDate+"/");
 		mkdir("./data/shp/"+iFolderDate+"/dataset/");
 		
 		for (int u=0; u<precision.length; u++) {
 		
-			Polygon.sKink = precision[u];
+			Topology[][] aGroupGrid = TopojsonApi.tileFeatureCollectionToTopojson(aCollection, aN, aM, "MA", precision[u] );
 			
 			String aDir = "./data/shp/"+iFolderDate+"/dataset/p"+u+"/";
 			
@@ -119,14 +138,15 @@ public class SHPtoJson {
 					
 					String aFileName = "MA_"+i+"_"+j+".json";
 					
-					FeatureCollection aRec = aGroupGrid[i][j];
-					recordFile(aDir+aFileName, prettyJson(aRec.toJson()) );
+					Topology aRec = aGroupGrid[i][j];
+					aRec.quantize(6); // better precision
+					recordFile(aDir+aFileName, TopojsonApi.getJson(aRec, false) ); // not compressed
 					
 					aMapBound.append("{ \"file\" : \"");
 					aMapBound.append(aFileName);
 					aMapBound.append("\" , ");
 					aMapBound.append(" \"bound\" :");
-					aMapBound.append(aRec.getBounding().toJson());
+					aMapBound.append(aRec._bnd.toJson());
 					aMapBound.append("}");
 					
 					if (j!=aM-1) {
@@ -143,7 +163,9 @@ public class SHPtoJson {
 			aMapBound.append("]");
 		
 			recordFile(aDir+"mapbounds.json", aMapBound.toString());
-			recordFile(aDir+"properties.json", aReader.getGroupRecord().toJsonMinMaxProperties());
+			recordFile(aDir+"properties.json", aReader
+					.getGroupRecord()
+					.toJsonMinMaxProperties(new String[]{"tractid10","Geoid10"}));
 			
 		}
 		
@@ -156,28 +178,17 @@ public class SHPtoJson {
 	 */
 	public static void main(String[] args) {
 		
-		generateMapData(
-		"./data/shp/in/2010/CENSUS_DBF.csv",
-		"./data/shp/in/2010/allcensusacsdata_2010boundaries.csv",
-		"./data/shp/in/2010/CENSUS2010TRACTS_POLY.shp",
-		"\"tractid10\"",
-		"common");
-		
-		/*
-		generateMapData(
-		"./data/shp/in/2000/CENSUS_DBF.csv",
-		"./data/shp/in/2000/ACS0509_Boston.csv",
-		"./data/shp/in/2000/CENSUS2010TRACTS_POLY.shp",
-		"tractid00",
-		"2000"); 
-		
-		generateMapData(
-		"./data/shp/in/2010/CENSUS_DBF.csv",
-		"./data/shp/in/1990/Census1990_Boston.csv",
-		"./data/shp/in/2010/CENSUS2010TRACTS_POLY.shp",
-		"tractid90", 
-		"1990");
-		*/
+		try {
+			generateMapData(
+			"./data/shp/in/2010/CENSUS_DBF.csv",
+			"./data/shp/in/2010/allcensusacsdata_2010boundaries.csv",
+			"./data/shp/in/2010/CENSUS2010TRACTS_POLY.shp",
+			"\"tractid10\"",
+			"common");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

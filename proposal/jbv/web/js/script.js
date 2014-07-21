@@ -46,7 +46,7 @@ $(function() {
 
 	  initDataMap();
 
-	  initMapRouter();
+	  setTimeout( initMapRouter , 2000 ); // not really clean but easy
 
 	  /*
 	  $("#pctpoverty").click( function(){

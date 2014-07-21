@@ -99,7 +99,7 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showMedianrent: function(){
-
+		setProperty("medianrent", "yellow", "red"); 
 	  },
 
 	  showPctincomerent_30_more: function(){
