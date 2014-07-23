@@ -26,12 +26,12 @@ var MapRouter = Backbone.Router.extend ({
 	  	         "pctsameres" : "showPctsameres",
 	  	         "pctind_info" : "showPctind_info",
 	  	         "pctunits_newres_2000" : "showPctunits_newres_2000",
-	  	         "pctunits_newres" : "showPctunits_newres",
+	  	         "pctunits_newres" : "showPctunits_newres"
 
 	  },
 
 	  showPcthchild: function(){
-		
+
 	  },
 
 	  showPct_finance: function(){
@@ -126,12 +126,8 @@ var MapRouter = Backbone.Router.extend ({
 
 	  }
 
-	  
 });
 
+var appRouter = new MapRouter();
 
-function initMapRouter(){
-	var router = new MapRouter();
-	Backbone.history.start();
-}
-
+Backbone.history.start();
