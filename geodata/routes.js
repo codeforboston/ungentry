@@ -32,6 +32,9 @@ var MapRouter = Backbone.Router.extend ({
 
 	  showPcthchild: function(){
 
+	  	alert("percent kids");
+	  	setProperty();
+
 	  },
 
 	  showPct_finance: function(){
