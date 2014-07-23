@@ -19,7 +19,7 @@
 * (the census changes the boundaries each year), 
 * calculates the data into percentages 
 * (a lot of the data exists as counts), 
-* and saves the final file as as .csv: "census_alldata_pcts_2010.csv"
+* and saves the final file as as .csv: "census90_alldata_pcts_2010.csv"
 
 * The crosswalk code uses aerial weights interpolation methods, 
 * and was written by  Brian J. Stults for 
