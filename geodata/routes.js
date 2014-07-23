@@ -32,6 +32,7 @@ var MapRouter = Backbone.Router.extend ({
 
 	  showPcthchild: function(){
 	  	alert("percent kids");
+	  	setProperty();
 
 	  },
 
@@ -125,7 +126,7 @@ var MapRouter = Backbone.Router.extend ({
 
 	  showPctunits_newres_2000: function(){
 
-	  },
+	  }
 
 
 });
