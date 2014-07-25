@@ -1,0 +1,48 @@
+<project default="jar">
+       
+  <property name="src" location="../src"/>
+  <property name="build" location="../ant-build"/>
+  <property name="data" location="../data"/>  
+  <property name="lib" location="../lib"/>          
+       
+  <target name="compile_java" >
+       
+    <delete dir="${build}"/>  
+    
+    <mkdir dir="${build}"/>
+      
+    <path id="classpath">
+        <pathelement path="${lib}/Jama-1.0.3.jar"/>
+    </path>
+       
+    <javac debug="true" debuglevel="lines,vars,source" srcdir="${src}" destdir="${build}">
+                <classpath refid="classpath"/>
+    </javac>
+       
+  </target> 
+       
+       
+  <target name="jar" depends="compile_java">
+       
+    <jar destfile="jmapprojlib.jar"
+         basedir="."
+         includes="**/*.class">
+                
+	    <manifest>
+	      <!-- Who is building this jar? -->
+	      <attribute name="Built-By" value="Julien BOUVIER VOLAILLE"/>
+	      <!-- Information about the program itself -->
+	      <attribute name="Implementation-Vendor" value="JBV"/>
+	      <attribute name="Implementation-Title" value=""/>
+	      <attribute name="Implementation-Version" value="1.0.0"/>
+	     
+	    </manifest>
+	    
+        <fileset dir="${build}" />
+        <fileset dir="${data}" />
+       
+    </jar>
+  </target>
+       
+</project>
+

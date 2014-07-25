@@ -8,17 +8,37 @@
 
 <title>Ungentry</title>
 
+ <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
+ <link rel="stylesheet" href="./lib/bootstrap.min.css" type="text/css">
+ <link rel="stylesheet" href="./lib/leaflet-0.7.3/leaflet.css" />
+ <link rel="stylesheet" href="./src/style.css">
 
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
-<link rel="stylesheet" href="lib/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="lib/leaflet-0.7.3/leaflet.css" />
-<link rel="stylesheet" href="src/style.css">
+ <script src="./lib/leaflet-0.7.3/leaflet.js"></script>
+ <script src="http://rawgit.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.js"></script>
+ <script src="http://d3js.org/topojson.v1.min.js"></script>
+ <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.4"></script>
 
 
+ <script src="./lib/L.Map.Sync.js"></script>  
+ <script type="text/javascript" src="./lib/rainbowvis.js"></script>
+ <script type="text/javascript" src="./src/maps.js"></script>
+
+ <!-- JQuery and JS for bootstrap -->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+ <script src="./lib/bootstrap.min.js"></script>
+
+ <script type="text/javascript" src="./lib/geostats.min.js"></script>
+
+ <script src="./lib/underscore-min.js"></script>
+ <script src="./lib/backbone-min.js"></script>
 
 
+ <script src="./src/routes.js"></script>
+ <script src="./src/script.js"></script>
 
 </head>
+
+
 <body>
 
 
@@ -51,8 +71,6 @@
             <li><a href="#pctind_info">% in Information Industry</a></li>
             <li><a href="#pctocc_profmanage">% Professional Mgmt as Occupation</a></li>
             <li><a href="#pct_finance">% of Individuals in Finance</a></li>
-            
-            
           </ul>
         </li>
         <li class="dropdown">
@@ -106,29 +124,20 @@
 </nav>
 
 
- <script src="lib/leaflet-0.7.3/leaflet.js"></script>
- <script src="http://rawgit.com/calvinmetcalf/leaflet-ajax/master/dist/leaflet.ajax.js"></script>
- <script src="http://d3js.org/topojson.v1.min.js"></script>
- <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.4"></script>
- <script src="lib/L.Map.Sync.js"></script>
 
- 
 
  <div class="row maps"> 
-  <div id="map0" class="map col-xs-12 col-md-4">
+  <div id="map0" class="map col-md-4">
    <h2>1990</h2>
   </div>
-  <div id="map1" class="map col-xs-12 col-md-4">
+  <div id="map1" class="map col-md-4">
    <h2>2000</h2>
   </div>
-  <div id="map2" class="map col-xs-12 col-md-4">
+  <div id="map2" class="map col-md-4">
    <h2>2010</h2>
   </div>
   </div>
 	     
-
-
-
 
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -148,31 +157,6 @@
 </div><!-- /.modal -->
 
 
-
-<!-- JQuery and JS for bootstrap -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="lib/bootstrap.min.js"></script>
-<script src="lib/underscore-min.js"></script>
-<script src="lib/backbone-min.js"></script>
-<script type="text/javascript" src="lib/geostats.min.js"></script>
-<script src="lib/colorbrewer.js"></script>
-<script src="src/script.js"></script>
-<script src="src/routes.js"></script>  
-
-
-
-<!--Twitter share button script -->
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-</script>
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=262994210406910&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 </html>
