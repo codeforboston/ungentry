@@ -11,6 +11,7 @@ import json.converter.csv.CSVReader;
 import json.converter.shp.ShpFileReader;
 import json.geojson.FeatureCollection;
 import json.geojson.objects.Polygon;
+import json.topojson.algorithm.ArcMap;
 import json.topojson.api.TopojsonApi;
 import json.topojson.topology.Topology;
 
@@ -147,17 +148,20 @@ public class SHPtoJson {
 		*/
 		
 		int[] grid = { 16, 8, 4, 2, 1 }; 
-		int[] precision = { 5, 10, 20, 300, 10000 };
+		int[] precision = { 5, 5, 10, 300, 10000 };
 		
 		mkdir("./data/shp/"+iFolderDate+"/");
 		mkdir("./data/shp/"+iFolderDate+"/dataset/");
+		
+		
+		ArcMap aArcMap = TopojsonApi.joinCollection(aCollection);
 		
 		for (int u=0; u<precision.length; u++) {
 		
 			int aN = grid[u];
 			int aM = grid[u];
 			
-			Topology[][] aGroupGrid = TopojsonApi.tileFeatureCollectionToTopojson(aCollection, aN, aM, "MA", precision[u] );
+			Topology[][] aGroupGrid = TopojsonApi.tileFeatureCollectionToTopojson(aCollection, aArcMap, aN, aM, "MA");
 			
 			String aDir = "./data/shp/"+iFolderDate+"/dataset/p"+u+"/";
 			
@@ -173,6 +177,7 @@ public class SHPtoJson {
 					String aFileName = "MA_"+i+"_"+j+".json";
 					
 					Topology aRec = aGroupGrid[i][j];
+					aRec.simplify(precision[u]);
 					aRec.quantize(6); // better precision
 					recordFile(aDir+aFileName, TopojsonApi.getJson(aRec, false) ); // not compressed
 					
