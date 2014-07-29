@@ -31,23 +31,23 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPcthchild: function(){
-		
+		setProperty("pcthhchild", "#FFFF33", "#FF00CC"); 
 	  },
 
 	  showPct_finance: function(){
-
+		setProperty("pctind_finance", "#CCFFCC", "#9900FF"); 
 	  },
 
 	  showPct_professional: function(){
-
+		setProperty("pctind_professional", "#FF0033", "#9933FF"); 
 	  },
 
 	  showPctocc_profmanage: function(){
-
+		setProperty("pctocc_profmanage", "#99FF66", "#000099"); 
 	  },
 
 	  showPctcollege: function(){
-
+		setProperty("pctcollege", "#FFFFFF", "#FF3333"); 
 	  },
 
 	  showPctinc_0_25k: function(){

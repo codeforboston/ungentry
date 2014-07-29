@@ -3,6 +3,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeMap;
 
 import json.converter.csv.CSVReader;
 import json.converter.shp.ShpFileReader;
@@ -64,7 +67,7 @@ public class SHPtoJson {
 	  
    }
 	
-    public static void generateMapData(String iCensus, String iACS, String iSHP, String iMerge, String iFolderDate) throws FileNotFoundException {
+    public static void generateMapData(String iCensus, String iACS, String iSHP, String iFileProperties, String iFileLinked, String iMerge,  String iFolderDate) throws FileNotFoundException {
 		
 		CSVReader aReader1 = new CSVReader(iCensus);
 		aReader1.read();
@@ -75,7 +78,7 @@ public class SHPtoJson {
 		aReader2.read();
 		
 		//System.out.println(aReader2.toString());
-			
+		
 		
 		System.out.println("Merging CENSUS and ACS ref:"+iMerge);
 		aReader1.merge("Geoid10", "%s", aReader2, iMerge, "%s");
@@ -92,18 +95,44 @@ public class SHPtoJson {
 			e.printStackTrace();
 		}
 		
+		CSVReader aReader3 = new CSVReader(iFileProperties);
+		aReader3.read();
 		
-		String[] aAccepted = { "\"medianrent_00\"", "\"medianrent_90\"", "\"medianrent_10\"", iMerge , "rowid", "Geoid10", "\"pctpoverty_00\"" , "\"pctpoverty_90\"", "\"pctpoverty_10\"" };
-		String[] aUnits = { "$", "$", "$", "" , "", "", "%" , "%", "%" };
-		String[] aTitles = { "Avg. Rent", "Avg. Rent", "Avg. Rent", "" , "", "", "% Poverty" , "% Poverty", "% Poverty" };
+		TreeMap<Integer,TreeMap<String,String>> aMap =  aReader3._data;
+		
+		Set<Integer> aKeys = aMap.keySet();
+		String[] aAccepted = new String[aKeys.size()];
+		String[] aUnits = new String[aKeys.size()];
+		String[] aTitles = new String[aKeys.size()];
+		
+		
+		for (Integer aKey:aKeys) {
+			aAccepted[aKey-1] = aMap.get(aKey).get("accepted");
+			aUnits[aKey-1] = aMap.get(aKey).get("unit");
+			aTitles[aKey-1] = aMap.get(aKey).get("title");
+		}
+		
+		//String[] aAccepted = { "\"medianrent_00\"", "\"medianrent_90\"", "\"medianrent_10\"", iMerge , "rowid", "Geoid10", "\"pctpoverty_00\"" , "\"pctpoverty_90\"", "\"pctpoverty_10\"" };
+		//String[] aUnits = { "$", "$", "$", "" , "", "", "%" , "%", "%" };
+		//String[] aTitles = { "Avg. Rent", "Avg. Rent", "Avg. Rent", "" , "", "", "% Poverty" , "% Poverty", "% Poverty" };
 		
 		aReader.getGroupRecord().merge(aReader1, "rowid", aAccepted, aUnits, aTitles);
 		
-		int aN = 16;
-		int aM = 16;
-		
 		FeatureCollection aCollection = aReader.getGroupRecord();
 		
+		CSVReader aReader4 = new CSVReader(iFileLinked);
+		aReader4.read();
+		
+		for (Integer aKey:aReader4._data.keySet()) {
+			TreeMap<String,String> aTuple = aReader4._data.get(aKey);
+			aCollection.mergeMinMaxProperties(new String[] {
+					aTuple.get("item1"),
+					aTuple.get("item2"),
+					aTuple.get("item3")
+			});
+		}
+		
+		/*
 		aCollection.mergeMinMaxProperties(new String[] {
 				"\"medianrent_00\"",
 				"\"medianrent_90\"",
@@ -115,14 +144,19 @@ public class SHPtoJson {
 				"\"pctpoverty_90\"",
 				"\"pctpoverty_10\""
 		});
+		*/
 		
-		int[] precision = { 1, 2, 10, 100 };
+		int[] grid = { 16, 8, 4, 2, 1 }; 
+		int[] precision = { 5, 10, 20, 300, 10000 };
 		
 		mkdir("./data/shp/"+iFolderDate+"/");
 		mkdir("./data/shp/"+iFolderDate+"/dataset/");
 		
 		for (int u=0; u<precision.length; u++) {
 		
+			int aN = grid[u];
+			int aM = grid[u];
+			
 			Topology[][] aGroupGrid = TopojsonApi.tileFeatureCollectionToTopojson(aCollection, aN, aM, "MA", precision[u] );
 			
 			String aDir = "./data/shp/"+iFolderDate+"/dataset/p"+u+"/";
@@ -183,6 +217,8 @@ public class SHPtoJson {
 			"./data/shp/in/2010/CENSUS_DBF.csv",
 			"./data/shp/in/2010/allcensusacsdata_2010boundaries.csv",
 			"./data/shp/in/2010/CENSUS2010TRACTS_POLY.shp",
+			"./data/properties.csv",
+			"./data/linked.csv",
 			"\"tractid10\"",
 			"common");
 		} catch (FileNotFoundException e) {

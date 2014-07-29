@@ -7,11 +7,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Vector;
 
-import org.omg.CORBA_2_3.portable.OutputStream;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.sun.org.apache.xalan.internal.utils.FeatureManager.Feature;
 
 import json.converter.shp.ShpFileReader;
 import json.geojson.FeatureCollection;
