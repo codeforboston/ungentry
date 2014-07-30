@@ -8,14 +8,14 @@
 
 
 # import datasets ####
-setwd("C:/Users/Jackie/Documents/GitHub/ungentry/Census1990_Boston")
-dat90 <- read.csv("Census1990_Boston_pcts_2010.csv")
+setwd("C:/Users/Jackie/Documents/GitHub/ungentry/inputdata/censusacsdata/Census1990_Boston")
+dat90 <- read.csv("census90_alldata_pcts_2010.csv")
 
-setwd("C:/Users/Jackie/Documents/GitHub/ungentry/Census2000_Boston")
-dat00 <- read.csv("Census2000_Boston_pcts_2010.csv")
+setwd("C:/Users/Jackie/Documents/GitHub/ungentry/inputdata/censusacsdata/Census2000_Boston")
+dat00 <- read.csv("census00_alldata_pcts_2010.csv")
 
-setwd("C:/Users/Jackie/Documents/GitHub/ungentry/ACS0812_Boston")
-dat10 <- read.csv("ACS0812_Boston.csv")
+setwd("C:/Users/Jackie/Documents/GitHub/ungentry/inputdata/censusacsdata/ACS0812_Boston")
+dat10 <- read.csv("acs0812_alldata_pcts_2010.csv")
 
 # merge all data ####
 alldat <- merge(dat90, dat00, 
@@ -119,7 +119,7 @@ alldat <- alldat[, c(1, 2:13, 132, 14:21, 133, 22:41,
 								 42:86, 
 								 87:108, 134, 109:131)]
 
-setwd("C:/Users/Jackie/Documents/GitHub/ungentry")
+setwd("C:/Users/Jackie/Documents/GitHub/ungentry/inputdata/censusacsdata")
 write.csv(alldat, file = "allcensusacsdata_2010boundaries.csv", 
 					row.names = FALSE, na = '')
 
