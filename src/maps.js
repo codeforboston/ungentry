@@ -18,9 +18,11 @@ function Datamap(ident, lat, lon, datapath){
 	this.leafletAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
 
 	this.zoom_max = 18;
-	this.zoom_area = [0,  11 , 13 , 15 , this.zoom_max];
+	this.zoom_area = [0,  11 , 13 , 15 , 17,  this.zoom_max];
 	this.zoom_level = 0;
 	this.zoom_change = true;
+
+	this.loadingProp = false;
 
 	this.mapbounds_data;
 	this.properties_data;
@@ -48,6 +50,7 @@ function Datamap(ident, lat, lon, datapath){
 		this.colors.setSpectrum(iC1 , iC2); 
 	}
 
+	/*
 	this.getGeoStat = function(iName,iProp) {
 
 		if (this.geostats_cache[iName]) {
@@ -57,13 +60,14 @@ function Datamap(ident, lat, lon, datapath){
 		} else {
 
 			var geo = new geostats(iProp.serie);
-			//this.geostats_cache[iName] = geo.getClassJenks(5);
+			this.geostats_cache[iName] = geo.getClassJenks(5);
 			this.geostats_cache[iName] = geo.getClassJenks(5);
 			return this.geostats_cache[iName];
 
 		}
 
 	}
+	*/
 
 	this.getColor = function(geo,val){
 
@@ -130,11 +134,11 @@ function Datamap(ident, lat, lon, datapath){
 			      }
 				
 			      var prop = self.properties_data[self.currentProperty];
-				 var geo = self.getGeoStat(self.currentProperty, prop);
+				 //var geo = self.getGeoStat(self.currentProperty, prop);
 				
 				 var val = parseFloat(feature.properties[self.currentProperty]);
 				 if (val) {
-				 	return {color: self.getColor(geo,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
+				 	return {color: self.getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
 				 } else {
 					return {color: "#7F7F7F", "weight": 0 , "fillOpacity": 0.6};
 				 }	
@@ -278,21 +282,31 @@ function Datamap(ident, lat, lon, datapath){
 
 		if (this.zoom_change) {
 
-			//console.log("Trying loading mapbounds");
+			//console.log("Trying loading map properties:"+this.loadingProp);
 
-			this.base_folder = this.datapath+"p"+(3-this.zoom_level)+"/";
+			this.base_folder = this.datapath+"p"+(4-this.zoom_level)+"/";
 
 			var self = this;
+			if (!this.loadingProp) {
+				this.loadingProp = true;
 
-			$.getJSON( this.base_folder + "properties.json", function( data_properties ) { // first loading properties
+				var url = this.base_folder + "properties.json";
+				//console.log("Ask to load:"+url);
+				$.getJSON( url, function( data_properties ) { // first loading properties
 
-				//console.log("Properties loaded ...");
-				//console.log(data_properties);
-				self.properties_data = data_properties;
-				self.loadMapBounds();
-				self.loadLegend();
+					//console.log("Properties loaded ...");
+					//console.log(data_properties);
+					self.loadingProp = false;
+					self.properties_data = data_properties;
+					self.loadMapBounds();
+					self.loadLegend();
 
-			});
+				}).fail(function(d) {
+                		console.log("Error occured on loading data...");
+					console.log(d);
+            		});
+
+			}
 
 		} else {
 
@@ -317,7 +331,7 @@ function Datamap(ident, lat, lon, datapath){
 		this.legend.onAdd = function (map) {
 		
 			var prop = self.properties_data[self.currentProperty];
-			var geo = self.getGeoStat(self.currentProperty, prop);
+			var geo = prop.serie;
 			
 			var div = L.DomUtil.create('div', 'info legend');
 			div.innerHTML += '<h4>'+prop.title+' per tract</h4>';

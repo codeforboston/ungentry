@@ -1,0 +1,22 @@
+accepted                 ,unit,title
+"medianrent_00"		,   $,Avg. Rent
+"medianrent_10"		,   $,Avg. Rent
+"medianrent_90"		,   $,Avg. Rent
+"pctpoverty_00"		,   %,% Poverty
+"pctpoverty_10"		,   %,% Poverty
+"pctpoverty_90"		,   %,% Poverty
+"pcthhchild_00"		,   %,% Households w. Child.
+"pcthhchild_10"		,   %,% Households w. Child.
+"pcthhchild_90"		,   %,% Households w. Child.
+"pctcollege_10"		,   %,College Educated
+"pctcollege_00"		,   %,College Educated
+"pctcollege_90"		,   %,College Educated
+"pctind_professional_10" ,   %,Pro. Indust.
+"pctind_professional_00" ,   %,Pro. Indust.
+"pctind_professional_90" ,   %,Pro. Indust.
+"pctocc_profmanage_10"   ,   %,Management
+"pctocc_profmanage_00"   ,   %,Management
+"pctocc_profmanage_90"   ,   %,Management
+"pctind_finance_10"      ,   %,Finance
+"pctind_finance_00"      ,   %,Finance
+"pctind_finance_90"      ,   %,Finance
