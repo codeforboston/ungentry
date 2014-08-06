@@ -8,7 +8,11 @@ To launch the generation of maps, just type in the folder
 ./data_processing/ungentry/
 these commands in a shell:
 
-java -jar ./ungentry-builder.jar
+on Mac you may need to increase the memory allocation with:
+
+    export _JAVA_OPTIONS='-Xmx6144m'
+
+    java -jar ./ungentry-builder.jar
 
 The program will start to build maps, the result will be placed in folder:
 ./data_processing/ungentry/data/shp/common
