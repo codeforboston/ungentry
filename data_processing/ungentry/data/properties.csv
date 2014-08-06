@@ -20,3 +20,6 @@ accepted                 ,unit,title
 "pctind_finance_10"      ,   %,Finance
 "pctind_finance_00"      ,   %,Finance
 "pctind_finance_90"      ,   %,Finance
+"pctinc_0_10k_90"        ,   %,25K per year
+"pctinc_0_10k_00"        ,   %,25K per year
+"pctinc_0_10K_10"        ,   %,25K per year
