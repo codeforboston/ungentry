@@ -42,6 +42,22 @@ function initDataMap(){
 }
 
 
+function bindAddress(){
+
+	var address=$("#address").val();
+
+    	$.ajax({
+    		type: "GET",
+    		url: "http://nominatim.openstreetmap.org/search",
+    		data: { q: address, format: "json", polygon : "1" , addressdetails :"1" }
+		})
+		.done(function( data ) {
+        	console.log(data);
+        	datamap0.getMap().setView(data[0]);
+    	});
+
+}
+
 $(function() {
 
 	  initDataMap();
@@ -57,6 +73,21 @@ $(function() {
 			setProperty("medianrent", "yellow", "red"); 
 	  });
 	  */
+
+	  
+
+    
+    $("#sendaddress").click(bindAddress);
+
+    $("#address").keypress(function(e){
+    	  if(e.which == 13){
+    	  	bindAddress();
+    	  	e.preventDefault();
+    	  }
+    });
       
 
   });
+
+
+
