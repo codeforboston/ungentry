@@ -35,23 +35,23 @@ drop FIPS
 rename T017_001 households
 rename PCT_T020_006 pcthhchild
 gen pctocc_profmanage = PCT_T050_002 + PCT_T050_003
-rename PCT_T056_002 pctinc_0_10K
-rename PCT_T056_003 pctinc_10K_15K
-rename PCT_T056_004 pctinc_15K_20K
-rename PCT_T056_005 pctinc_20K_25K
-rename PCT_T056_006 pctinc_25K_30K
-rename PCT_T056_007 pctinc_30K_35K
-rename PCT_T056_008 pctinc_35K_40K
-rename PCT_T056_009 pctinc_40K_45K
-rename PCT_T056_010 pctinc_45K_50K
-rename PCT_T056_011 pctinc_50K_60K
-rename PCT_T056_012 pctinc_60K_75K
-rename PCT_T056_013 pctinc_75K_100K
-rename PCT_T056_014 pctinc_100K_125K
-rename PCT_T056_015 pctinc_125K_150K
-rename PCT_T056_016 pctinc_150K_200K
-rename PCT_T056_017 pctinc_200K_more
-rename T057_001 medhhincome
+rename PCT_T056_002 pctinc_0_10k
+rename PCT_T056_003 pctinc_10k_15k
+rename PCT_T056_004 pctinc_15k_20k
+rename PCT_T056_005 pctinc_20k_25k
+rename PCT_T056_006 pctinc_25k_30k
+rename PCT_T056_007 pctinc_30k_35k
+rename PCT_T056_008 pctinc_35k_40k
+rename PCT_T056_009 pctinc_40k_45k
+rename PCT_T056_010 pctinc_45k_50k
+rename PCT_T056_011 pctinc_50k_60k
+rename PCT_T056_012 pctinc_60k_75k
+rename PCT_T056_013 pctinc_75k_100k
+rename PCT_T056_014 pctinc_100k_125k
+rename PCT_T056_015 pctinc_125k_150k
+rename PCT_T056_016 pctinc_150k_200k
+rename PCT_T056_017 pctinc_200k_more
+rename T057_001 medianhhincome
 rename PCT_T080_002 pctpublicassist
 rename T093_001 units
 rename PCT_T102_002 pctrent_0_300
@@ -84,9 +84,9 @@ order households, after(totalpop)
 order pcthhchild, after(households)
 order pctocc_profmanage, after( pctind_professional)
 order pctcollege, after( pctocc_profmanage)
-order pctinc_0_10K pctinc_10K_15K pctinc_15K_20K pctinc_20K_25K pctinc_25K_30K pctinc_30K_35K pctinc_35K_40K pctinc_40K_45K pctinc_45K_50K pctinc_50K_60K pctinc_60K_75K pctinc_75K_100K pctinc_100K_125K pctinc_125K_150K pctinc_150K_200K pctinc_200K_more, after(pctcollege)
-order medhhincome, after( pctinc_200K_more)
-order pctpoverty, after( medhhincome)
+order pctinc_0_10k pctinc_10k_15k pctinc_15k_20k pctinc_20k_25k pctinc_25k_30k pctinc_30k_35k pctinc_35k_40k pctinc_40k_45k pctinc_45k_50k pctinc_50k_60k pctinc_60k_75k pctinc_75k_100k pctinc_100k_125k pctinc_125k_150k pctinc_150k_200k pctinc_200k_more, after(pctcollege)
+order medianhhincome, after( pctinc_200k_more)
+order pctpoverty, after( medianhhincome)
 order pctpublicassist, after(pctpoverty)
 order units, after(pctpublicassist)
 order pctrent_0_300 pctrent_300_600 pctrent_600_800 pctrent_800_1000 pctrent_1000_1250 pctrent_1250_1500 pctrent_1500_2000 pctrent_2000_more, after(medianvalue)
@@ -136,7 +136,7 @@ drop PCT_B25026002 PCT_B25026003 PCT_B25026004 PCT_B25026005 PCT_B25026006 PCT_B
 drop PCT_B25026011 PCT_B25026012 PCT_B25026013 PCT_B25026014 PCT_B25026015
 
 //collapse multiple entries for same tract in different counties
-collapse (sum) totalpop households pcthhchild pctind_info pctind_finance pctind_professional pctocc_profmanage pctcollege pctinc_0_10K pctinc_10K_15K pctinc_15K_20K pctinc_20K_25K pctinc_25K_30K pctinc_30K_35K pctinc_35K_40K pctinc_40K_45K pctinc_45K_50K pctinc_50K_60K pctinc_60K_75K pctinc_75K_100K pctinc_100K_125K pctinc_125K_150K pctinc_150K_200K pctinc_200K_more pctpoverty pctpublicassist units pctown pctrent pctvacant pctrent_0_300 pctrent_300_600 pctrent_600_800 pctrent_800_1000 pctrent_1000_1250 pctrent_1250_1500 pctrent_1500_2000 pctrent_2000_more pctinc_mortgage_30_more pctinc_nomortgage_30_more pctsameres pctunits_newres_2010 pctincomerent_30_more (median) medhhincome medianvalue medianrent medianpctincomerent, by (tractid10)
+collapse (sum) totalpop households pcthhchild pctind_info pctind_finance pctind_professional pctocc_profmanage pctcollege pctinc_0_10k pctinc_10k_15k pctinc_15k_20k pctinc_20k_25k pctinc_25k_30k pctinc_30k_35k pctinc_35k_40k pctinc_40k_45k pctinc_45k_50k pctinc_50k_60k pctinc_60k_75k pctinc_75k_100k pctinc_100k_125k pctinc_125k_150k pctinc_150k_200k pctinc_200k_more pctpoverty pctpublicassist units pctown pctrent pctvacant pctrent_0_300 pctrent_300_600 pctrent_600_800 pctrent_800_1000 pctrent_1000_1250 pctrent_1250_1500 pctrent_1500_2000 pctrent_2000_more pctinc_mortgage_30_more pctinc_nomortgage_30_more pctsameres pctunits_newres_2010 pctincomerent_30_more (median) medianhhincome medianvalue medianrent medianpctincomerent, by (tractid10)
 
 // save as a Stata file
 saveold "C:\Users\Jackie\Documents\GitHub\ungentry\inputdata\censusacsdata\ACS0812_Boston\acs0812_alldata_pcts_2010.dta", replace

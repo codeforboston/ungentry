@@ -90,10 +90,12 @@ alldat <- alldat[alldat$households_90 != 0 &
 alldat$pctinc_0_10k_90 <- 
 	alldat$pctinc_0_5k_90 + 
 	alldat$pctinc_5k_10k_90
+
 alldat <- 
 	alldat[, !(names(alldat) %in% 
 						 	c("pctinc_0_5k_90", 
 						 		"pctinc_5k_10k_90"))]
+
 alldat$pctinc_50k_60k_90 <- 
 	alldat$pctinc_50k_55k_90 + 
 	alldat$pctinc_55k_60k_90
@@ -101,16 +103,17 @@ alldat <-
 	alldat[, !(names(alldat) %in% 
 						 	c("pctinc_50k_55k_90", 
 						 		"pctinc_55k_60k_90"))]
+
 alldat$pctinc_150k_more_10 <- 
-	alldat$pctinc_150K_200K_10 + 
-	alldat$pctinc_200K_more_10
+	alldat$pctinc_150k_200k_10 + 
+	alldat$pctinc_200k_more_10
 alldat <- 
 	alldat[, !(names(alldat) %in% 
-						 	c("pctinc_150K_200K_10", 
-						 		"pctinc_200K_more_10"))]
+						 	c("pctinc_150k_200k_10", 
+						 		"pctinc_200k_more_10"))]
 
 # correct acs data to 2013 adjusted values ####
-alldat$medhhincome_10 <- alldat$medhhincome_10 * 1.01
+alldat$medianhhincome_10 <- alldat$medianhhincome_10 * 1.01
 alldat$medianvalue_10 <- alldat$medianvalue_10 * 1.01
 alldat$medianrent_10 <- alldat$medianrent_10 * 1.01
 
