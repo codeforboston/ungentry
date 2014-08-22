@@ -54,7 +54,11 @@ function bindAddress(){
 		.done(function( data ) {
         	console.log(data);
         	datamap0.getMap().setView(data[0]);
+        	L.marker(data[0]).addTo(datamap0.getMap());
+        	L.marker(data[0]).addTo(datamap1.getMap());
+        	L.marker(data[0]).addTo(datamap2.getMap());
     	});
+
 
 }
 
