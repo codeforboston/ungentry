@@ -23,3 +23,6 @@ accepted                 ,unit,title
 "pctinc_0_10k_90"        ,   %,25K per year
 "pctinc_0_10k_00"        ,   %,25K per year
 "pctinc_0_10K_10"        ,   %,25K per year
+"medianhhincome_90"      ,   $,M. H. Income
+"medianhhincome_00"      ,   $,M. H. Income
+"medianhhincome_10"      ,   $,M. H. Income
