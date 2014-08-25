@@ -11,11 +11,10 @@
 
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
 <link rel="stylesheet" href="./lib/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="./lib/font-awesome.min.css" />
 <link rel="stylesheet" href="./lib/leaflet-0.7.3/leaflet.css" />
 <link rel="stylesheet" href="./src/style.css">
-
-
-
+<link rel="stylesheet" href="./lib/Control.FullScreen.css" />
 
 
 </head>
@@ -118,15 +117,15 @@
 
  <div class="row maps"> 
   <div id="map0" class="map col-xs-12 col-md-4">
-   <h2>1990</h2>
+   	<h2 id="date">1990</h2>
   </div>
-  <div id="map1" class="map col-xs-12 col-md-4">
-   <h2>2000</h2>
+  <div id="map1" class="map col-xs-12 col-md-4 toHide">
+   	<h2>2000</h2>
   </div>
-  <div id="map2" class="map col-xs-12 col-md-4">
-   <h2>2010</h2>
+  <div id="map2" class="map col-xs-12 col-md-4 toHide">
+   	<h2>2010</h2>
   </div>
-  </div>
+ </div>
 
 
 
@@ -161,13 +160,16 @@
  <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.4"></script>
  <script src="./lib/L.Map.Sync.js"></script>
 
+<script src="./lib/Control.FullScreen.js"></script>
+
 <script type="text/javascript" src="./lib/rainbowvis.js"></script>
 <script type="text/javascript" src="./src/maps.js"></script>
 <script type="text/javascript" src="./lib/geostats.min.js"></script>
 <script src="./lib/colorbrewer.js"></script>
-
+<script src="./lib/easy-button.js"></script>
 <script src="./lib/underscore-min.js"></script>
 <script src="./lib/backbone-min.js"></script>
+
 
 <script src="src/routes.js"></script>  
 <script src="src/script.js"></script>

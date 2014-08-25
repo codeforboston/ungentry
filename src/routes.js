@@ -2,6 +2,7 @@
 
 var MapRouter = Backbone.Router.extend ({
 	  routes: {
+			    ""          : "showMedianrent", // Default display
 	  	         "pcthchild" : "showPcthchild",
 	  	         "pct_finance" : "showPct_finance",
 	  	         "pctind_professional" : "showPct_professional",
@@ -35,11 +36,13 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPct_finance: function(){
-		setProperty("pctind_finance", "#CCFFCC", "#9900FF"); 
+		//setProperty("pctind_finance", "#CCFFCC", "#9900FF"); 
+		setPropertyBrewer("pctind_finance", "BuPu");	
 	  },
 
 	  showPct_professional: function(){
-		setProperty("pctind_professional", "#FF0033", "#9933FF"); 
+		//setProperty("pctind_professional", "#FF0033", "#9933FF"); 
+		setPropertyBrewer("pctind_professional", "BuPu"); 
 	  },
 
 	  showPctocc_profmanage: function(){
@@ -72,7 +75,8 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPctpoverty: function(){
-		setProperty("pctpoverty", "#07E500", "blue"); 
+		//setProperty("pctpoverty", "#07E500", "blue"); 
+		setPropertyBrewer("pctpoverty", "BuGn");
 	  },
 
 	  showPctpublicassist: function(){
@@ -100,7 +104,8 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showMedianrent: function(){
-		setProperty("medianrent", "yellow", "red"); 
+		//setProperty("medianrent", "yellow", "red");
+		setPropertyBrewer("medianrent", "OrRd"); 
 	  },
 
 	  showPctincomerent_30_more: function(){

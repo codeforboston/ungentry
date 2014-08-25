@@ -1,15 +1,23 @@
 
+var MODE_DIRECT=0, MODE_ALPHA=1;
+var COLOR_MODE_RAINBOW=0, COLOR_MODE_BREWER=1;
 
 function Datamap(ident, lat, lon, datapath){
 
 	//L.Path.options.clickable = false; 
 	L.FeatureGroup.EVENTS = ''; 
 
+	this.mode = MODE_DIRECT;
+
 	this.ident = ident;
 	this.lat = lat;
 	this.lon = lon;	
 	this.datapath = datapath;
 
+	this.fullscreen = false;
+	this.marker = null;
+
+	this.colorMode = COLOR_MODE_RAINBOW;
 	this.colors = new Rainbow(); 
 	this.colors.setNumberRange(0, 100);	
 
@@ -29,7 +37,12 @@ function Datamap(ident, lat, lon, datapath){
 
 	this.inner_index;
 
+	this.alpha = 0.0;
+
 	this.base_folder;
+
+	this.currentProperty="";
+	this.currentPropertyAlpha="";
 
 	this.map_layers = {};
 	this.must_load = 0;
@@ -42,43 +55,60 @@ function Datamap(ident, lat, lon, datapath){
 
 	this.geostats_cache = {};
 
+	this.remove = function(){
+		this.map.remove();
+	};
+
 	this.setItemStyle = function(iItemStyleFunction){
 		this.itemStyle = iItemStyleFunction;
-	}
+	};
 
 	this.setGradient = function(iC1,iC2){
+		this.colorMode = COLOR_MODE_RAINBOW;
 		this.colors.setSpectrum(iC1 , iC2); 
+	};
+
+	this.setColorBrewer = function(iName){
+		this.colorMode = COLOR_MODE_BREWER;
+		this.colorBrewerName = iName;
+	};
+
+	this.setMode = function(iMode) {
+		this.mode = iMode;
 	}
 
-	/*
-	this.getGeoStat = function(iName,iProp) {
-
-		if (this.geostats_cache[iName]) {
-
-			return this.geostats_cache[iName];
-
-		} else {
-
-			var geo = new geostats(iProp.serie);
-			this.geostats_cache[iName] = geo.getClassJenks(5);
-			this.geostats_cache[iName] = geo.getClassJenks(5);
-			return this.geostats_cache[iName];
-
-		}
-
+	this.setButton = function(iLogo,iTooltip,iCallback) {
+		L.easyButton(iLogo,
+				   iCallback,	
+             		   iTooltip,
+				   this.map);
 	}
-	*/
 
 	this.getColor = function(geo,val){
 
-		for (var i in geo) {
-			if ((val-geo[i]>=0) && (val-geo[parseInt(i)+1]<0)) {
-				color = "#"+this.colors.colourAt(100*(parseFloat(i)/(geo.length-1)));
-				return color;
-			}
-		}
-		return "#7F7F7F";
+		if (this.colorMode==COLOR_MODE_RAINBOW) {
+			for (var i in geo) {
+				if ((val-geo[i]>=0) && (val-geo[parseInt(i)+1]<0)) {
 
+					var pct = (val-geo[i])/(geo[parseInt(i)+1]-geo[i]);			
+					color = "#"+this.colors.colourAt(100*((parseFloat(i)+pct)/(geo.length-1)));
+
+					return color;
+				}
+			}
+			return "#7F7F7F";
+
+		} else {
+
+			for (var i in geo) {
+				if ((val-geo[i]>=0) && (val-geo[parseInt(i)+1]<0)) {
+					return colorbrewer[this.colorBrewerName][5][i];
+				}
+			}
+			return "#7F7F7F";
+
+		}
+		
 	}
 
 	this.computZoomLevel = function(){
@@ -104,6 +134,34 @@ function Datamap(ident, lat, lon, datapath){
 
 	}
 
+	this.styleFunction = function(feature) {
+
+		 if (this.itemStyle){
+			return this.itemStyle(feature);
+		 }
+	
+		 if (this.currentProperty!="") {
+
+			 var prop = this.properties_data[this.currentProperty];
+			 
+			 var val = parseFloat(feature.properties[this.currentProperty]);
+			 if (this.mode==MODE_ALPHA) {
+			 	var val1 = parseFloat(feature.properties[this.currentPropertyAlpha]);
+
+				val = (1.0-this.alpha)*val + this.alpha*val1;
+			 }
+
+			 if (val) {
+			 	return {color: this.getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
+			 } else {
+				return {color: "#7F7F7F", "weight": 0 , "fillOpacity": 0.6};
+			 }
+
+		 } 
+		 return {color: "#7F7F7F", "weight": 0 , "fillOpacity": 0.6};	
+
+     }
+
 	this.buildsGroupLayer = function(){
 
 		var remove = $(this.parts).not(this.todisplay_parts).get();
@@ -124,26 +182,8 @@ function Datamap(ident, lat, lon, datapath){
 	
 		for (var i=0; i<add.length; i++) {
 		
-			var self = this;
-
 			var geojsonLayer = L.geoJson(this.geojsondata[add[i]], {
-			    style: function(feature) {
-
-				 if (self.itemStyle){
-					return self.itemStyle(feature);
-			      }
-				
-			      var prop = self.properties_data[self.currentProperty];
-				 //var geo = self.getGeoStat(self.currentProperty, prop);
-				
-				 var val = parseFloat(feature.properties[self.currentProperty]);
-				 if (val) {
-				 	return {color: self.getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
-				 } else {
-					return {color: "#7F7F7F", "weight": 0 , "fillOpacity": 0.6};
-				 }	
-
-			    }
+			    style: $.proxy( this.styleFunction, this)
 	   		});
 
 			if (this.layers_id[add[i]]) {
@@ -267,7 +307,6 @@ function Datamap(ident, lat, lon, datapath){
 		$.getJSON( this.base_folder + "mapbounds.json", function( data ) { // here get bounding maps for 
 																 	  // json MA grid
 
-			//console.log("Mapbounds loaded ...");
 			self.mapbounds_data = data;
 	
 			self.parts = [];
@@ -282,8 +321,6 @@ function Datamap(ident, lat, lon, datapath){
 
 		if (this.zoom_change) {
 
-			//console.log("Trying loading map properties:"+this.loadingProp);
-
 			this.base_folder = this.datapath+"p"+(4-this.zoom_level)+"/";
 
 			var self = this;
@@ -291,11 +328,8 @@ function Datamap(ident, lat, lon, datapath){
 				this.loadingProp = true;
 
 				var url = this.base_folder + "properties.json";
-				//console.log("Ask to load:"+url);
 				$.getJSON( url, function( data_properties ) { // first loading properties
 
-					//console.log("Properties loaded ...");
-					//console.log(data_properties);
 					self.loadingProp = false;
 					self.properties_data = data_properties;
 					self.loadMapBounds();
@@ -330,35 +364,53 @@ function Datamap(ident, lat, lon, datapath){
 		this.legend = L.control({position: 'bottomright'});
 		this.legend.onAdd = function (map) {
 		
-			var prop = self.properties_data[self.currentProperty];
-			var geo = prop.serie;
-			
 			var div = L.DomUtil.create('div', 'info legend');
-			div.innerHTML += '<h4>'+prop.title+' per tract</h4>';
-			for (var i = 0; i < 5; i++) {
-			    var range_min = geo[i].toFixed(0);
-			    var range_max =  geo[i+1].toFixed(0);
-			    var color =  self.getColor(geo, (parseFloat(range_max)+parseFloat(range_min))/2 );
-			    div.innerHTML += '<i style="background: ' + color + ';"></i> ' + range_min + prop.unit + " - " + range_max + prop.unit + '<br>';
+			if (self.currentProperty!="") {
+
+				var prop = self.properties_data[self.currentProperty];
+				var geo = prop.serie;
+		
+				
+				div.innerHTML += '<h4>'+prop.title+'</h4>';
+				for (var i = 0; i < 5; i++) {
+				    var range_min = geo[i].toFixed(0);
+				    var range_max =  geo[i+1].toFixed(0);
+				    var color =  self.getColor(geo, (parseFloat(range_max)+parseFloat(range_min))/2 );
+				    div.innerHTML += '<i style="background: ' + color + ';"></i> ' + range_min + prop.unit + " - " + range_max + prop.unit + '<br>';
+				}
+
 			}
+
 			return div;
 	    	};   
 		this.legend.addTo(this.map);
 
 	}
 
-	this.initMap = function (){
+	this.initMap = function (iFullscreenButton){
 
-		this.map = L.map(this.ident).setView([this.lat, this.lon], 14); // Boston/Cambridge coordinates
+		
+		this.map = L.map(this.ident, iFullscreenButton ? { 
+			fullscreenControl: true, // This adds fullscreen mode functionality
+  			fullscreenControlOptions: {
+    				position: 'topleft'
+  			}
+		} : {} ).setView([this.lat, this.lon], 14); // Boston/Cambridge coordinates
+		
+		if (iFullscreenButton) {
 
-		/*
-		L.tileLayer('http://{s}.tiles.mapbox.com/v3/'+this.leafletMapId+'/{z}/{x}/{y}.png', 
-				  {
-	    				attribution: this.leafletAttr,
-	    				maxZoom: 18
-				  }).addTo(this.map);
-		*/
+			var self = this;
 
+			this.map.on('enterFullscreen', function(){
+			  self.fullscreen = true;
+			});
+
+			this.map.on('exitFullscreen', function(){
+			  self.fullscreen = false;
+			});
+
+		}
+	
 		this.tileLayer = new L.StamenTileLayer("toner").addTo(this.map);
 
 		this.computZoomLevel();
@@ -386,8 +438,6 @@ function Datamap(ident, lat, lon, datapath){
 
 		});
 
-		
-
 	}
 
 	this.refresh = function(){
@@ -401,10 +451,48 @@ function Datamap(ident, lat, lon, datapath){
 
 	}
 
+	this.refreshStyles = function(){
+		if (this.map) {
+			if (this.groupLayer){
+				
+				var self = this;
+				this.groupLayer.eachLayer(function (geojsonlayer) {				    
+					$.each(geojsonlayer._layers,function(idx,layer){
+						layer.setStyle(self.styleFunction(layer.feature));
+					});
+				});
+
+			}
+		}
+		this.loadLegend();	
+	}
+
 	this.setDisplayProperty = function(iProperty){
 		this.currentProperty = iProperty;
-		if (this.map) {
-			this.refresh();
+		this.refreshStyles();
+	}
+
+	this.setDisplayPropertyAlpha = function(iProperty1, iProperty2){
+		this.currentProperty = iProperty1;
+		this.currentPropertyAlpha = iProperty2;
+		this.refreshStyles();
+	}
+
+	this.setAlpha =  function(iAlpha){
+		this.alpha = iAlpha;
+		this.refreshStyles();
+	}
+
+	this.addMarker = function(iData){
+		this.removeMarker();
+		this.marker = L.marker(iData).addTo(this.map);
+	}
+
+	this.removeMarker = function(){
+		if (this.marker!=null) {
+			this.map.removeLayer(this.marker);
+			delete this.marker;
+			this.marker = null;
 		}
 	}
 
