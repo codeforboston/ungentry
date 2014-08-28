@@ -35,7 +35,7 @@ import delimited C:\Users\Jackie\Documents\GitHub\ungentry\inputdata\censusacsda
 rename GEO_FIPS tractid00
 rename T001_001 totalpop
 rename T020_001 households
-rename T020_002 hhfam
+rename T025_003 hhfam
 rename T025_006 hhchild
 rename PCT_T025_006 pcthhchild
 gen poverty = T183_002 + T183_005
@@ -54,36 +54,36 @@ rename PCT_T197_002 pctsameres
 rename H038001 unitsocc
 gen units_newres = H038010 + H038011 + H038003 + H038004
 gen pctunits_newres = PCT_H038010 + PCT_H038011 + PCT_H038003 + PCT_H038004
-rename T092_002 inc_0_10K
-rename T092_003 inc_10K_15K
-rename T092_004 inc_15K_20K
-rename T092_005 inc_20K_25K
-rename T092_006 inc_25K_30K
-rename T092_007 inc_30K_35K
-rename T092_008 inc_35K_40K
-rename T092_009 inc_40K_45K
-rename T092_010 inc_45K_50K
-rename T092_011 inc_50K_60K
-rename T092_012 inc_60K_75K
-rename T092_013 inc_75K_100K
-rename T092_014 inc_100K_125K
-rename T092_015 inc_125K_150K
-rename PCT_T092_002 pctinc_0_10K
-rename PCT_T092_003 pctinc_10K_15K
-rename PCT_T092_004 pctinc_15K_20K
-rename PCT_T092_005 pctinc_20K_25K
-rename PCT_T092_006 pctinc_25K_30K
-rename PCT_T092_007 pctinc_30K_35K
-rename PCT_T092_008 pctinc_35K_40K
-rename PCT_T092_009 pctinc_40K_45K
-rename PCT_T092_010 pctinc_45K_50K
-rename PCT_T092_011 pctinc_50K_60K
-rename PCT_T092_012 pctinc_60K_75K
-rename PCT_T092_013 pctinc_75K_100K
-rename PCT_T092_014 pctinc_100K_125K
-rename PCT_T092_015 pctinc_125K_150K
-gen inc_150K_more = T092_016 + T092_017
-gen pctinc_150K_more = PCT_T092_016 + PCT_T092_017
+rename T092_002 inc_0_10k
+rename T092_003 inc_10k_15k
+rename T092_004 inc_15k_20k
+rename T092_005 inc_20k_25k
+rename T092_006 inc_25k_30k
+rename T092_007 inc_30k_35k
+rename T092_008 inc_35k_40k
+rename T092_009 inc_40k_45k
+rename T092_010 inc_45k_50k
+rename T092_011 inc_50k_60k
+rename T092_012 inc_60k_75k
+rename T092_013 inc_75k_100k
+rename T092_014 inc_100k_125k
+rename T092_015 inc_125k_150k
+rename PCT_T092_002 pctinc_0_10k
+rename PCT_T092_003 pctinc_10k_15k
+rename PCT_T092_004 pctinc_15k_20k
+rename PCT_T092_005 pctinc_20k_25k
+rename PCT_T092_006 pctinc_25k_30k
+rename PCT_T092_007 pctinc_30k_35k
+rename PCT_T092_008 pctinc_35k_40k
+rename PCT_T092_009 pctinc_40k_45k
+rename PCT_T092_010 pctinc_45k_50k
+rename PCT_T092_011 pctinc_50k_60k
+rename PCT_T092_012 pctinc_60k_75k
+rename PCT_T092_013 pctinc_75k_100k
+rename PCT_T092_014 pctinc_100k_125k
+rename PCT_T092_015 pctinc_125k_150k
+gen inc_150k_more = T092_016 + T092_017
+gen pctinc_150k_more = PCT_T092_016 + PCT_T092_017
 rename T093_001 medhhincome
 rename T142_002 publicassist
 rename PCT_T142_002 pctpublicassist
@@ -123,14 +123,15 @@ rename PCT_T172_004 pctinc_mortgage_30_more
 rename PCT_T172_009 pctinc_nomortgage_30_more
 rename T069_005 popuempl
 rename T171_002 unitsmortgage
+rename T171_008 unitsnomortgage
 
 drop T069_001 T069_002 T069_003 T069_004 T069_006 T069_007
-drop T171_001 T171_003 T171_004 T171_005 T171_006 T171_007 T171_008
+drop T171_001 T171_003 T171_004 T171_005 T171_006 T171_007 
 drop T183_001 T183_002 T183_003 T183_004 T183_005 T183_006
 drop PCT_T183_002 PCT_T183_003 PCT_T183_005 PCT_T183_006
-drop T020_003 T020_004 T020_005 T020_006 T020_007 T020_008 T020_009
+drop T020_002 T020_003 T020_004 T020_005 T020_006 T020_007 T020_008 T020_009
 drop PCT_T020_002 PCT_T020_003 PCT_T020_004 PCT_T020_005 PCT_T020_006 PCT_T020_007 PCT_T020_008 PCT_T020_009
-drop T025_001 T025_002 T025_003 T025_004 T025_005
+drop T025_001 T025_002 T025_004 T025_005
 drop T025_007 T025_008 T025_009 T025_010
 drop T025_011 T025_012 T025_013 T025_014 T025_015
 drop T025_016 T025_017 T025_018
@@ -199,7 +200,7 @@ global output_file "C:\Users\Jackie\Documents\GitHub\ungentry\inputdata\censusac
 global crosswalk_file "C:\Users\Jackie\Documents\GitHub\ungentry\inputdata\censusacsdata\Census2000_Boston\crosswalk_2000_2010.dta"
 global crosswalk_year "00"
 global input_idvar "tractid"
-global counts "totalpop households hhfam hhchild popu25 popuempl ind_finance ind_professional inc_0_10K inc_10K_15K inc_15K_20K inc_20K_25K inc_25K_30K inc_30K_35K inc_35K_40K inc_40K_45K inc_45K_50K inc_50K_60K inc_60K_75K inc_75K_100K inc_100K_125K inc_125K_150K publicassist units own rent unitsocc vacant unitsrent rent_0_300 rent_300_600 rent_600_800 rent_800_1000 rent_1000_1250 rent_1250_1500 rent_1500_2000 rent_2000_more unitsmortgage inc_mortgage_30_more inc_nomortgage_30_more popu5 sameres units_newres  college occ_profmanage inc_150K_more  incomerent_30_more poverty"
+global counts "totalpop households hhfam hhchild popu25 popuempl ind_finance ind_professional inc_0_10k inc_10k_15k inc_15k_20k inc_20k_25k inc_25k_30k inc_30k_35k inc_35k_40k inc_40k_45k inc_45k_50k inc_50k_60k inc_60k_75k inc_75k_100k inc_100k_125k inc_125k_150k publicassist units own rent unitsocc vacant unitsrent rent_0_300 rent_300_600 rent_600_800 rent_800_1000 rent_1000_1250 rent_1250_1500 rent_1500_2000 rent_2000_more unitsmortgage unitsnomortgage inc_mortgage_30_more inc_nomortgage_30_more popu5 sameres units_newres  college occ_profmanage inc_150k_more  incomerent_30_more poverty"
 global medians "medianhhincome medianvalue medianrent medianpctincomerent"
 global median_weights "households2 own2 unitsrent2 unitsrent3"
 
@@ -352,7 +353,7 @@ summ
  ****************************************************/
 
 //convert data back to percentages
-use "C:\Users\Jackie\Documents\GitHub\ungentry\inputdata\censusacsdata\Census2000_Boston\Census2000_Boston_counts_2010.dta", clear
+use "C:\Users\Jackie\Documents\GitHub\ungentry\inputdata\censusacsdata\Census2000_Boston\census00_alldata_2010.dta", clear
 rename trtid10 tractid10
 drop households2 own2 unitsrent2 unitsrent3
 gen pcthhchild = hhchild / hhfam * 100
@@ -390,12 +391,12 @@ gen pctrent_1500_2000 = rent_1500_2000 / unitsrent * 100
 gen pctrent_2000_more = rent_2000_more / unitsrent * 100
 gen pctincomerent_30_more = incomerent_30_more / rent * 100   
 gen pctinc_mortgage_30_more  = inc_mortgage_30_more / unitsmortgage * 100
-gen pctinc_nomortgage_30_more = inc_nomortgage_30_more / unitsmortgage * 100
+gen pctinc_nomortgage_30_more = inc_nomortgage_30_more / unitsnomortgage * 100
 gen pctsameres = sameres / popu5 * 100
 gen pctunits_newres = units_newres / unitsocc * 100
 
 // drop unnecessary count variables
-drop hhfam hhchild popu25 popuempl ind_finance ind_professional inc_0_10k inc_10k_15k inc_15k_20k inc_20k_25k inc_25k_30k inc_30k_35k inc_35k_40k inc_40k_45k inc_45k_50k inc_50k_60k inc_60k_75k inc_75k_100k inc_100k_125k inc_125k_150k publicassist own rent unitsocc vacant unitsrent rent_0_300 rent_300_600 rent_600_800 rent_800_1000 rent_1000_1250 rent_1250_1500 rent_1500_2000 rent_2000_more unitsmortgage inc_mortgage_30_more inc_nomortgage_30_more popu5 sameres units_newres college occ_profmanage inc_150k_more incomerent_30_more poverty
+drop hhfam hhchild popu25 popuempl ind_finance ind_professional inc_0_10k inc_10k_15k inc_15k_20k inc_20k_25k inc_25k_30k inc_30k_35k inc_35k_40k inc_40k_45k inc_45k_50k inc_50k_60k inc_60k_75k inc_75k_100k inc_100k_125k inc_125k_150k publicassist own rent unitsocc vacant unitsrent rent_0_300 rent_300_600 rent_600_800 rent_800_1000 rent_1000_1250 rent_1250_1500 rent_1500_2000 rent_2000_more unitsmortgage unitsnomortgage inc_mortgage_30_more inc_nomortgage_30_more popu5 sameres units_newres college occ_profmanage inc_150k_more incomerent_30_more poverty
 
 // save as a Stata file
 save "C:\Users\Jackie\Documents\GitHub\ungentry\inputdata\censusacsdata\Census2000_Boston\census00_alldata_pcts_2010.dta", replace

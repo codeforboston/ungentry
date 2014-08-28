@@ -118,9 +118,9 @@ alldat$medianvalue_10 <- alldat$medianvalue_10 * 1.01
 alldat$medianrent_10 <- alldat$medianrent_10 * 1.01
 
 # reorder columns ####
-alldat <- alldat[, c(1, 2:13, 132, 14:21, 133, 22:41, 
+alldat <- alldat[, c(1, 2:13, 131, 14:21, 132, 22:41, 
 								 42:86, 
-								 87:108, 134, 109:131)]
+								 87:112, 133, 113:130)]
 
 setwd("C:/Users/Jackie/Documents/GitHub/ungentry/inputdata/censusacsdata")
 write.csv(alldat, file = "allcensusacsdata_2010boundaries.csv", 
