@@ -22,7 +22,26 @@ accepted                 ,unit,title
 "pctind_finance_90"      ,   %,Finance
 "pctinc_0_10k_90"        ,   %,25K per year
 "pctinc_0_10k_00"        ,   %,25K per year
-"pctinc_0_10K_10"        ,   %,25K per year
+"pctinc_0_10k_10"        ,   %,25K per year
 "medianhhincome_90"      ,   $,M. H. Income
 "medianhhincome_00"      ,   $,M. H. Income
 "medianhhincome_10"      ,   $,M. H. Income
+"pctpublicassist_90"     ,   %,Public Assist.
+"pctpublicassist_00"     ,   %,Public Assist.
+"pctpublicassist_10"     ,   %,Public Assist.
+"units_90"               ,   #,Nb H Units
+"units_00"               ,   #,Nb H Units
+"units_10"               ,   #,Nb H Units
+"pctrent_90"             ,   %,Pct. Rental Unit
+"pctrent_00"             ,   %,Pct. Rental Unit
+"pctrent_10"             ,   %,Pct. Rental Unit
+"pctown_90"			,   %,Pct. Unit Owned
+"pctown_00"			,   %,Pct. Unit Owned
+"pctown_10"			,   %,Pct. Unit Owned
+"pctvacant_90"			,   %,Pct. Unit Vacant
+"pctvacant_00"			,   %,Pct. Unit Vacant
+"pctvacant_10"			,   %,Pct. Unit Vacant
+"medianpctincomerent_90" ,   %,Median Pct Income
+"medianpctincomerent_00" ,   %,Median Pct Income
+"medianpctincomerent_10" ,   %,Median Pct Income
+

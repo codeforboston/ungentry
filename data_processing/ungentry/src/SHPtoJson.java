@@ -148,7 +148,7 @@ public class SHPtoJson {
 		*/
 		
 		int[] grid = { 16, 8, 4, 2, 1 }; 
-		int[] precision = { 5, 5, 10, 300, 10000 };
+		int[] precision = { 5, 5, 10, 25, 100 };
 		
 		mkdir("./data/shp/"+iFolderDate+"/");
 		mkdir("./data/shp/"+iFolderDate+"/dataset/");

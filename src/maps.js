@@ -134,7 +134,7 @@ function Datamap(ident, lat, lon, datapath){
 
 	}
 
-	this.styleFunction = function(feature) {
+	this.styleFunction = function(feature,highlight) {
 
 		 if (this.itemStyle){
 			return this.itemStyle(feature);
@@ -152,8 +152,13 @@ function Datamap(ident, lat, lon, datapath){
 			 }
 
 			 if (val) {
-			 	return {color: this.getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
-			 } else {
+				if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
+					console.log("highlight");
+			 		return {"fillColor": this.getColor(prop.serie,val) , "color" : "#f00" , "weight": 6 , "opacity" : 1.0,  "fillOpacity": 0.6};
+				} else {
+					return {"fillColor": this.getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
+				}			 
+			} else {
 				return {color: "#7F7F7F", "weight": 0 , "fillOpacity": 0.6};
 			 }
 
@@ -185,6 +190,21 @@ function Datamap(ident, lat, lon, datapath){
 			var geojsonLayer = L.geoJson(this.geojsondata[add[i]], {
 			    style: $.proxy( this.styleFunction, this)
 	   		});
+
+			var self = this;
+			$.each(geojsonLayer._layers,function(idx,layer){
+				layer.feature.map_mouse_over = false;
+				layer.on("mouseover", function (e) {
+			        e.target.feature.map_mouse_over = true;
+				   e.target.setStyle(self.styleFunction(e.target.feature, true));
+				});
+				layer.on("mouseout", function (e) {
+				   e.target.feature.map_mouse_over = false;		
+				   e.target.setStyle(self.styleFunction(e.target.feature));
+				});
+			});
+
+			
 
 			if (this.layers_id[add[i]]) {
 				this.layers_id[add[i]].push(geojsonLayer._leaflet_id);

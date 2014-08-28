@@ -71,7 +71,7 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showMedhhincome: function(){
-
+		setPropertyBrewer("medianhhincome", "OrRd");
 	  },
 
 	  showPctpoverty: function(){
@@ -80,23 +80,23 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPctpublicassist: function(){
-
+		setPropertyBrewer("pctpublicassist", "OrRd");
 	  },
 
 	  showUnits: function(){
-
+		setPropertyBrewer("units", "OrRd");
 	  },
 
 	  showPctown: function(){
-
+		setPropertyBrewer("pctown", "OrRd");
 	  },
 
 	  showPctrent: function(){
-
+		setPropertyBrewer("pctrent", "OrRd");
 	  },
 
 	  showPctvacant: function(){
-
+		setPropertyBrewer("pctvacant", "OrRd");
 	  },
 
 	  showMedianvalue: function() {
@@ -106,6 +106,10 @@ var MapRouter = Backbone.Router.extend ({
 	  showMedianrent: function(){
 		//setProperty("medianrent", "yellow", "red");
 		setPropertyBrewer("medianrent", "OrRd"); 
+	  },
+
+	  showMedianpctincomerent : function(){
+		setPropertyBrewer("medianpctincomerent", "GnBu"); 
 	  },
 
 	  showPctincomerent_30_more: function(){

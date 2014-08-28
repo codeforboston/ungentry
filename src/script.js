@@ -152,7 +152,7 @@ function initAlphaMode(){
 
 	$("#map0").removeClass("col-md-4");
 	$("#map0").addClass("col-md-12");
-	$(".tohide").hide();	
+	$(".toHide").hide();	
 
 	/*Setup Map 0 in Alpha mode that will switch between 1990-2000-2010 */
 	datamap0 = new Datamap('map0', 42.354, -71.065, "./geodata/common/dataset/" );
@@ -185,7 +185,7 @@ function init3ViewsMode(){
 
 	if (alphaInterval) clearInterval(alphaInterval);
 
-	$(".tohide").show();
+	$(".toHide").show();
 	$("#map0").removeClass("col-md-12");
 	$("#map0").addClass("col-md-4");
 
