@@ -32,7 +32,7 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPcthchild: function(){
-		setProperty("pcthhchild", "#FFFF33", "#FF00CC"); 
+		setPropertyBrewer("pcthhchild", "PuRd"); 
 	  },
 
 	  showPct_finance: function(){
