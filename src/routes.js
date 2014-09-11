@@ -135,7 +135,7 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPctind_info: function(){
-	  	setPropertyBrewer("pctind_info", "BuPu");
+	  	setPropertyBrewer("pctind_info", "PuRd");
 
 	  },
 
