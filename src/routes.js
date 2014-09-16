@@ -36,27 +36,27 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPct_finance: function(){
-		//setProperty("pctind_finance", "#CCFFCC", "#9900FF"); 
+		 
 		setPropertyBrewer("pctind_finance", "PuRd");	
 	  },
 
 	  showPct_professional: function(){
-		//setProperty("pctind_professional", "#FF0033", "#9933FF"); 
+		 
 		setPropertyBrewer("pctind_professional", "PuRd"); 
 	  },
 
 	  showPctocc_profmanage: function(){
-		//setProperty("pctocc_profmanage", "#99FF66", "#000099"); 
+		 
 		setPropertyBrewer("pctocc_profmanage", "PuRd");
 	  },
 
 	  showPctcollege: function(){
-		//setProperty("pctcollege", "#FFFFFF", "#FF3333"); 
+		
 		setPropertyBrewer("pctocc_profmanage", "PuRd");
 	  },
 
 	  showPctinc_0_25k: function(){
-	  	//setProperty("pctinc_0_10k", "#99FF66", "#000099");
+	  	
 	  	setPropertyBrewer("pctinc_0_25k", "GnBu");
 
 	  },
@@ -81,7 +81,7 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showPctpoverty: function(){
-		//setProperty("pctpoverty", "#07E500", "blue"); 
+		 
 		setPropertyBrewer("pctpoverty", "GnBu");
 	  },
 
@@ -111,7 +111,7 @@ var MapRouter = Backbone.Router.extend ({
 	  },
 
 	  showMedianrent: function(){
-		//setProperty("medianrent", "yellow", "red");
+		
 		setPropertyBrewer("medianrent", "OrRd"); 
 	  },
 
