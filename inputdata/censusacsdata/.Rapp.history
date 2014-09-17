@@ -1,0 +1,4 @@
+source("/Users/MJR/Sites/ungentry/inputdata/censusacsdata/merge_censusacsdata_2010boundaries.R")
+cd
+source("/Users/MJR/Sites/ungentry/inputdata/censusacsdata/merge_censusacsdata_2010boundaries2.R")
+source("/Users/MJR/Sites/ungentry/inputdata/censusacsdata/censusacsdata_dataupdates2.R")
