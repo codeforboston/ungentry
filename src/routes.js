@@ -24,8 +24,7 @@ var MapRouter = Backbone.Router.extend ({
 	  	         "pctincomerent_30_more" : "showPctincomerent_30_more",
 	  	         "medianpctincomerent" : "showMedianpctincomerent",
 	  	         "pctinc_mortgage_30_more" : "showPctinc_mortgage_30_more",
-	  	         "pctsameres" : "showPctsameres",
-	  	         "pctind_info" : "showPctind_info",
+	  	         "pctsameres" : "showPctsameres",	  	         
 	  	         "pctunits_newres_2000" : "showPctunits_newres_2000",
 	  	         "pctunits_newres" : "showPctunits_newres",
 
@@ -131,11 +130,6 @@ var MapRouter = Backbone.Router.extend ({
 	  showPctsameres: function(){
 	  	setPropertyBrewer("pctsameres", "OrRd");
 
-
-	  },
-
-	  showPctind_info: function(){
-	  	setPropertyBrewer("pctind_info", "PuRd");
 
 	  },
 

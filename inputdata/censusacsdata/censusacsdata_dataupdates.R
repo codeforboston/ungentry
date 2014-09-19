@@ -12,7 +12,7 @@ dat <- read.csv(file = "allcensusacsdata_2010boundaries.csv")
 # 0-25K, 25-50K, 50-100K, 100K+
 
 dat$pctinc_0k_25k_90 <- 
-	dat$pctinc_0k_10k_90 + 
+	dat$pctinc_0_10k_90 + 
 	dat$pctinc_10k_15k_90 + 
 	dat$pctinc_15k_20k_90 + 
 	dat$pctinc_20k_25k_90
@@ -81,5 +81,5 @@ dat$pctinc_100k_more_10 <-
 	dat$pctinc_150k_more_10
 
 setwd("C:/Users/Jackie/Documents/GitHub/ungentry/inputdata/censusacsdata")
-write.csv(alldat, file = "allcensusacsdata_2010boundaries.csv", 
+write.csv(dat, file = "allcensusacsdata_2010boundaries.csv", 
 					row.names = FALSE, na = '')
