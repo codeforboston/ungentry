@@ -2,7 +2,7 @@
 var datamap0, datamap1, datamap2;
 var mode = MODE_ALPHA; // MODE_ALPHA defined in maps.js
 				   // This mode is used to animate data display
-				   // It uses an alpha factor to compute a value betweeb two properties
+				   // It uses an alpha factor to compute a value between two properties
 var current_property = "";
 var current_color_c1 = "";
 var current_color_c2 = "";
