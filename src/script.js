@@ -54,6 +54,7 @@ function setProperty(name, color1, color2) {
 
 	 	datamap0.setMode(MODE_ALPHA);
 		// Here the property is not used, it is set later when timer runs
+		buildAlpha();
 
 	 } else {
 
@@ -80,6 +81,7 @@ function setPropertyBrewer(name, iColorBrewerName) {
 
 	 	datamap0.setMode(MODE_ALPHA); 				   // set mode alpha for the map
 		// Here the property is not used, it is set later when timer runs
+		buildAlpha();
 
 	 } else {
 	 
@@ -93,23 +95,40 @@ function setPropertyBrewer(name, iColorBrewerName) {
 
 }
 
+function buildAlpha(){
+
+	if ((alpha_count>=0) && (alpha_count<=10)) {	
+		alpha = 1.0*alpha_count/10;
+
+		datamap0.setScaleSlider(0.5);
+		datamap0.setShiftSlider(0.0);
+		datamap0.setAlpha(alpha); 	
+		datamap0.setDisplayPropertyAlpha( current_property+"_90", current_property+"_00");
+	} else {
+		alpha = 1.0*(alpha_count-10)/10;
+		datamap0.setScaleSlider(0.5);
+		datamap0.setShiftSlider(0.55);
+		datamap0.setAlpha(alpha); 	
+		datamap0.setDisplayPropertyAlpha( current_property+"_00", current_property+"_10");
+	}	
+
+}
+
+function playAlpha(){
+
+	
+	alpha_count++;
+	if (alpha_count>=20) alpha_count=0;
+	$("#date").html((1990+alpha_count));
+	buildAlpha();
+
+}
+
 function setupDataInterval(){
 
     alphaInterval = setInterval(function(){
-
-		alpha_count++;
-		if (alpha_count>=20) alpha_count=0;
-		$("#date").html((1990+alpha_count));
-
-		if ((alpha_count>=0) && (alpha_count<=10)) {	
-			alpha = 1.0*alpha_count/10;
-			datamap0.setAlpha(alpha); 	
-			datamap0.setDisplayPropertyAlpha( current_property+"_90", current_property+"_00");
-		} else {
-			alpha = 1.0*(alpha_count-10)/10;
-			datamap0.setAlpha(alpha); 	
-			datamap0.setDisplayPropertyAlpha( current_property+"_00", current_property+"_10");
-		}				
+			
+		playAlpha();
 
     }, 200);
 
@@ -144,6 +163,20 @@ function setMarker(){
 
 }
 
+function pauseSlider(){
+	clearInterval(alphaInterval);
+}
+
+function playSlider(){
+	setupDataInterval(); // not really clean but easy
+}
+
+function changeSlider(event,ui){
+	alpha_count = ui.value * 20;
+	$("#date").html((1990+alpha_count));
+	buildAlpha();
+}
+
 function initAlphaMode(){
 
 	removeMaps();	
@@ -156,6 +189,11 @@ function initAlphaMode(){
 
 	/*Setup Map 0 in Alpha mode that will switch between 1990-2000-2010 */
 	datamap0 = new Datamap('map0', 42.354, -71.065, "./geodata/common/dataset/" );
+
+	datamap0.setSlider(changeSlider);
+	datamap0.setPauseSlider(pauseSlider);
+	datamap0.setPlaySlider(playSlider);
+
 	datamap0.initMap(true);
 	datamap0.setMode(mode);
 	datamap0.setButton("fa-windows","Switch layout ...",function(){
@@ -165,13 +203,20 @@ function initAlphaMode(){
 		}
 
 	});
-	setTimeout( setupDataInterval , 1000 ); // not really clean but easy
 
 	if (current_color_brewer!="") { // To come back on same settings
 		setColorBrewer(current_color_brewer);
 	} else if (current_color_c1!="") {
 		setColorGradient(current_color_c1, current_color_c2);
 	}
+
+	setTimeout( function() {		
+	     datamap0.setScaleSlider(0.5);
+		datamap0.setShiftSlider(0.0);
+		datamap0.setAlpha(0); 	
+		datamap0.setDisplayPropertyAlpha( current_property+"_90", current_property+"_00");
+	}, 1000);
+
 
 	setMarker();
 
