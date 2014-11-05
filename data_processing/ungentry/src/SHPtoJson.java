@@ -68,7 +68,7 @@ public class SHPtoJson {
 	  
    }
 	
-    public static void generateMapData(String iCensus, String iACS, String iSHP, String iFileProperties, String iFileLinked, String iMerge,  String iFolderDate) throws FileNotFoundException {
+    public static void generateMapData(String iCensus, String iACS, String iSHP, String iFileProperties, String iFileLinked, String iMerge,  String iFolderDate, String iDeliveryFolder ) throws FileNotFoundException {
 		
 		CSVReader aReader1 = new CSVReader(iCensus);
 		aReader1.read();
@@ -150,8 +150,8 @@ public class SHPtoJson {
 		int[] grid = { 16, 8, 4, 2, 1 }; 
 		int[] precision = { 5, 5, 10, 25, 100 };
 		
-		mkdir("./data/shp/"+iFolderDate+"/");
-		mkdir("./data/shp/"+iFolderDate+"/dataset/");
+		mkdir(iDeliveryFolder+iFolderDate+"/");
+		mkdir(iDeliveryFolder+iFolderDate+"/dataset/");
 		
 		
 		ArcMap aArcMap = TopojsonApi.joinCollection(aCollection);
@@ -163,7 +163,7 @@ public class SHPtoJson {
 			
 			Topology[][] aGroupGrid = TopojsonApi.tileFeatureCollectionToTopojson(aCollection, aArcMap, aN, aM, "MA");
 			
-			String aDir = "./data/shp/"+iFolderDate+"/dataset/p"+u+"/";
+			String aDir = iDeliveryFolder+iFolderDate+"/dataset/p"+u+"/";
 			
 			mkdir(aDir);
 			
@@ -220,12 +220,13 @@ public class SHPtoJson {
 		try {
 			generateMapData(
 			"./data/shp/in/2010/CENSUS_DBF.csv",
-			"./data/shp/in/2010/allcensusacsdata_2010boundaries.csv",
+			"../../inputdata/censusacsdata/allcensusacsdata_2010boundaries.csv",
 			"./data/shp/in/2010/CENSUS2010TRACTS_POLY.shp",
 			"./data/properties.csv",
 			"./data/linked.csv",
 			"\"tractid10\"",
-			"common");
+			"common",
+			"../../geodata/");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

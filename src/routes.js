@@ -56,7 +56,7 @@ var MapRouter = Backbone.Router.extend ({
 
 	  showPctinc_0_25k: function(){
 	  	
-	  	setPropertyBrewer("pctinc_0_25k", "GnBu");
+	  	setPropertyBrewer("pctinc_0k_25k", "GnBu");
 
 	  },
 

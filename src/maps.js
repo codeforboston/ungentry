@@ -43,6 +43,7 @@ function Datamap(ident, lat, lon, datapath){
 
 	this.currentProperty="";
 	this.currentPropertyAlpha="";
+	this.lastPropertyAlpha="";
 
 	this.map_layers = {};
 	this.must_load = 0;
@@ -75,14 +76,18 @@ function Datamap(ident, lat, lon, datapath){
 
 	this.setMode = function(iMode) {
 		this.mode = iMode;
-	}
+	};
 
 	this.setButton = function(iLogo,iTooltip,iCallback) {
 		L.easyButton(iLogo,
 				   iCallback,	
              		   iTooltip,
 				   this.map);
-	}
+	};
+
+	this.setSlider = function(iCallback) {
+		this.sliderCallback = iCallback;
+	};
 
 	this.getColor = function(geo,val){
 
@@ -153,7 +158,6 @@ function Datamap(ident, lat, lon, datapath){
 
 			 if (val) {
 				if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
-					console.log("highlight");
 			 		return {"fillColor": this.getColor(prop.serie,val) , "color" : "#f00" , "weight": 6 , "opacity" : 1.0,  "fillOpacity": 0.6};
 				} else {
 					return {"fillColor": this.getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
@@ -368,14 +372,25 @@ function Datamap(ident, lat, lon, datapath){
 
 		}
 
-	}
+	};
 
 	this.getMap = function() {
 		return this.map;
-	}
+	};
+
+	this.refreshSlider = function(e, ui) {
+
+		
+	};
+
+	var self = this;
+	this.onSlide = function(e, ui) {
+		self.sliderCallback(e,ui);
+	};
 
 	this.loadLegend = function() {
 
+		
 		if (this.legend) {
 			this.map.removeControl(this.legend);
 		}
@@ -383,14 +398,14 @@ function Datamap(ident, lat, lon, datapath){
 		var self = this;
 		this.legend = L.control({position: 'bottomright'});
 		this.legend.onAdd = function (map) {
-		
+	
 			var div = L.DomUtil.create('div', 'info legend');
 			if (self.currentProperty!="") {
 
 				var prop = self.properties_data[self.currentProperty];
 				var geo = prop.serie;
-		
-				
+	
+			
 				div.innerHTML += '<h4>'+prop.title+'</h4>';
 				for (var i = 0; i < 5; i++) {
 				    var range_min = geo[i].toFixed(0);
@@ -404,6 +419,21 @@ function Datamap(ident, lat, lon, datapath){
 			return div;
 	    	};   
 		this.legend.addTo(this.map);
+
+		if (this.mode==MODE_ALPHA) {
+
+			if (!this.slider) {
+				//this.map.removeControl(this.slider);
+				this.slider = new L.Control.TimeSlider({}).addTo(this.map);
+				this.slider.onPause(this.pauseSlider);
+				this.slider.onPlay(this.playSlider);
+				this.slider.onSlide(this.onSlide);
+				this.slider.start();
+
+			}
+
+		}
+
 
 	}
 
@@ -498,8 +528,29 @@ function Datamap(ident, lat, lon, datapath){
 		this.refreshStyles();
 	}
 
+	this.setPauseSlider = function(iCallback){
+
+		this.pauseSlider = iCallback;
+
+	}
+
+	this.setPlaySlider = function(iCallback){
+
+		this.playSlider = iCallback;
+
+	}
+
+	this.setScaleSlider = function(iScale){
+		this.scaleSlider = iScale;
+	}
+
+	this.setShiftSlider = function(iShift){
+		this.shiftSlider = iShift;
+	}
+
 	this.setAlpha =  function(iAlpha){
 		this.alpha = iAlpha;
+		this.slider.setValue(this.shiftSlider+this.alpha*this.scaleSlider);
 		this.refreshStyles();
 	}
 

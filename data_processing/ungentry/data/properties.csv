@@ -20,9 +20,18 @@ accepted                 ,unit,title
 "pctind_finance_10"      ,   %,Finance
 "pctind_finance_00"      ,   %,Finance
 "pctind_finance_90"      ,   %,Finance
-"pctinc_0_10k_90"        ,   %,25K per year
-"pctinc_0_10k_00"        ,   %,25K per year
-"pctinc_0_10k_10"        ,   %,25K per year
+"pctinc_0k_25k_90"       ,   %,25K per year
+"pctinc_0k_25k_00"       ,   %,25K per year
+"pctinc_0k_25k_10"       ,   %,25K per year
+"pctinc_25k_50k_90"      ,  %,50K per year
+"pctinc_25k_50k_00"      ,  %,50K per year
+"pctinc_25k_50k_10"      ,  %,50K per year
+"pctinc_50k_100k_90"     ,  %,100K per year
+"pctinc_50k_100k_00"     ,  %,100K per year
+"pctinc_50k_100k_10"     ,  %,100K per year
+"pctinc_100k_more_90"     ,  %,100k more per year
+"pctinc_100k_more_00"     ,  %,100K more per year
+"pctinc_100k_more_10"     ,  %,100K more per year
 "medianhhincome_90"      ,   $,M. H. Income
 "medianhhincome_00"      ,   $,M. H. Income
 "medianhhincome_10"      ,   $,M. H. Income

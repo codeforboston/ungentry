@@ -62,3 +62,13 @@ div.map > h2 {
     z-index: 500;
 }
 
+.slider_time {
+	width: 200px;
+	height: 30px;
+}
+
+#slider {
+	width:300px;
+}
+
+
