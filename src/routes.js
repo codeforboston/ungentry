@@ -51,7 +51,7 @@ var MapRouter = Backbone.Router.extend ({
 
 	  showPctcollege: function(){
 		
-		setPropertyBrewer("pctocc_profmanage", "PuRd");
+		setPropertyBrewer("pctcollege", "PuRd");
 	  },
 
 	  showPctinc_0_25k: function(){
