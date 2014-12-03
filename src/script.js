@@ -328,6 +328,7 @@ $.ajax({
 	dataType: 'jsonp',
 	data: {param1: 'price'},
 })
+
 .done(function(data) {
 	console.log(data)
 	console.log(data.response.venue.price.tier);
@@ -344,7 +345,25 @@ $.ajax({
 });
 
 
-//function dataMap.on('move', function(e){
-//	console.log(getBounds());
-//});
 
+
+function boundLog () {
+	console.log(datamap0.toBBoxString())
+	console.log("complete")
+};
+
+
+/*
+function boundLog () {
+	datamap0.on('load', function(e){
+	getBounds()};
+	console.log("complete");
+)};
+*/
+
+/*
+function boundLog () { 
+        var cool = datamap0.toBBoxString();
+		console.log(cool);
+};
+*/
