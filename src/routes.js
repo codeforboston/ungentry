@@ -21,13 +21,9 @@ var MapRouter = Backbone.Router.extend ({
 	  	         "pctvacant" : "showPctvacant",
 	  	         "medianvalue" : "showMedianvalue",
 	  	         "medianrent" : "showMedianrent",
-	  	         "pctincomerent_30_more" : "showPctincomerent_30_more",
 	  	         "medianpctincomerent" : "showMedianpctincomerent",
 	  	         "pctinc_mortgage_30_more" : "showPctinc_mortgage_30_more",
-	  	         "pctsameres" : "showPctsameres",	  	         
-	  	         "pctunits_newres_2000" : "showPctunits_newres_2000",
-	  	         "pctunits_newres" : "showPctunits_newres",
-
+	  	         "pctsameres" : "showPctsameres"
 	  },
 
 	  showPcthchild: function(){
@@ -51,7 +47,7 @@ var MapRouter = Backbone.Router.extend ({
 
 	  showPctcollege: function(){
 		
-		setPropertyBrewer("pctocc_profmanage", "PuRd");
+		setPropertyBrewer("pctcollege", "PuRd");
 	  },
 
 	  showPctinc_0_25k: function(){
@@ -118,31 +114,9 @@ var MapRouter = Backbone.Router.extend ({
 		setPropertyBrewer("medianpctincomerent", "GnBu"); 
 	  },
 
-	  showPctincomerent_30_more: function(){
-	  	setPropertyBrewer("pctincomerent_30_more", "OrRd");
-	  },
-
-	  showPctinc_mortgage_30_more: function(){
-	  	setPropertyBrewer("pctinc_mortgage_30_more", "OrRd");
-
-	  },
-
 	  showPctsameres: function(){
 	  	setPropertyBrewer("pctsameres", "OrRd");
-
-
-	  },
-
-	  showPctunits_newres: function(){
-	  	setPropertyBrewer("pctunits_newres", "OrRd");
-
-	  },
-
-	  showPctunits_newres_2000: function(){
-	  	setPropertyBrewer("pctunits_newres_2000", "OrRd");
-
 	  }
-
 	  
 });
 
