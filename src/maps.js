@@ -353,7 +353,6 @@ function Datamap(ident, lat, lon, datapath){
 
 				var url = this.base_folder + "properties.json";
 				$.getJSON( url, function( data_properties ) { // first loading properties
-
 					self.loadingProp = false;
 					self.properties_data = data_properties;
 					self.loadMapBounds();
