@@ -72,7 +72,7 @@ div.map > h2 {
 }
 
 #drop_down_z_index{
-    z-index:1;
+    z-index:9999;
 }
 
 
