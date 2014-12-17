@@ -31,51 +31,44 @@
 
 
 <nav class="navbar navbar-default" role="navigation">
-
-  <div class="container-fluid">
-
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+   <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" 
+         data-target="#example-navbar-collapse">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index.html">Ungentry</a>
-    </div>
-   
-   
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar-collapse">
+   </div>
+   <div class="collapse navbar-collapse" id="example-navbar-collapse">
       <ul class="nav navbar-nav">
-        
+         <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+               <li><a href="#pcthchild">% Of Households with Children</a></li>
+               <li><a href="#pctcollege">% College Educated</a></li>
+               <li><a href="#pctind_professional">% Professional Industry</a></li>
+               <li><a href="#pctocc_profmanage">% Professional Mgmt as Occupation</a></li>
+               <li><a href="#pct_finance">% of Individuals in Finance</a></li>
+            </ul>
+         </li>
+
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#pcthchild">% Of Households with Children</a></li>
-            <li><a href="#pctcollege">% College Educated</a></li>
-            <li><a href="#pctind_professional">% Professional Industry</a></li>            
-            <li><a href="#pctocc_profmanage">% Professional Mgmt as Occupation</a></li>
-            <li><a href="#pct_finance">% of Individuals in Finance</a></li>
-            
-            
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-usd"></span><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#medhhincome">Median Household income</a></li>
-            <li><a href="#pctpoverty">% Of Residents in Poverty</a></li>
-            <li><a href="#pctpublicassist">% Of Residents on public Assistance</a></li>
-            <li class="divider"></li>
-            <li><a href="#pctinc_0_25k">% Of Household inc. 0-25K</a></li>
-            <li><a href="#pctinc_25k_50k">% Of Household inc. 25-50K</a></li>
-            <li><a href="#pctinc_50k_100k">% Of Household inc. 50-100K</a></li>
-            <li><a href="#pctinc_100k_more">% Of Household inc. 100K and up</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-usd"></span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+               <li><a href="#medhhincome">Median Household income</a></li>
+               <li><a href="#pctpoverty">% Of Residents in Poverty</a></li>
+               <li><a href="#pctpublicassist">% Of Residents on public Assistance</a></li>
+               <li class="divider"></li>
+               <li><a href="#pctinc_0_25k">% Of Household inc. 0-25K</a></li>
+               <li><a href="#pctinc_25k_50k">% Of Household inc. 25-50K</a></li>
+               <li><a href="#pctinc_50k_100k">% Of Household inc. 50-100K</a></li>
+               <li><a href="#pctinc_100k_more">% Of Household inc. 100K and up</a></li>
+            </ul>
+         </li>
+
+         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-home"></span><b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#units">Number of Housing Units</a></li>
@@ -86,34 +79,37 @@
             <li><a href="#medianpctincomerent">Median % of Income as Rent</a></li>
           </ul>
         </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
+
+         <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" id="address" class="form-control" placeholder="Search">
         </div>
         <button type="button" id="sendaddress" class="btn btn-default">Submit</button>
       </form>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li><a a data-toggle="modal" href="#myModal">About</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeforboston.github.io/ungentry/" data-text="See what data says about your neighborhood" data-lang="en"></a></li>
-            <li><div class="fb-share-button" data-href="http://codeforboston.github.io/ungentry/" data-type="button_count"></div></li>
-            <li><a></a></li>  
-            <li class="divider"></li>
-            <li><iframe src="http://ghbtns.com/github-btn.html?user=codeforboston&repo=ungentry&type=fork&count=true"
-                  allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  
-  </div><!-- /.container-fluid -->
-
-</nav>
  
+       <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               About <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" id="drop_down_z_index">
+               <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeforboston.github.io/ungentry/" data-text="See what data says about your neighborhood" data-lang="en"></a></li>
+               <li><div class="fb-share-button" data-href="http://codeforboston.github.io/ungentry/" data-type="button_count"></div></li>
+               <li><a></a></li>
+               <li class="divider"></li>
+               <li><iframe src="http://ghbtns.com/github-btn.html?user=codeforboston&repo=ungentry&type=fork&count=true"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></li>
+            </ul>
+         </li>
+
+      </ul>
+   </div>
+</nav>
+
+<ul class="nav nav-tabs" id="small_display">
+  <li role="presentation" id='link_1990'><a href="">1990</a></li>
+  <li role="presentation" id='link_2000'><a href="">2000</a></li>
+  <li role="presentation" id='link_2010'><a href="">2010</a></li>
+</ul> 
 
  <div class="row maps"> 
   <div id="map0" class="map col-xs-12 col-md-4">
@@ -186,7 +182,35 @@
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=262994210406910&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+
+$( document ).ready(function() {
+    console.log( "ready!" );
+
+$('#link_1900').click(function(event) {
+  event.preventDefault();
+  console.log('clicked 1900');
+ $('#map1').hide();
+  $('#map2').hide();
+});
+$('#link_2000').click(function(event) {
+  event.preventDefault();
+  console.log('clicked 2000');
+  $('#map0').hide();
+  $('#map1').show();
+  $('#map2').hide();
+});
+$('#link_2010').click(function(event) {
+  event.preventDefault();
+  console.log('clicked 2010');
+  $('#map0').hide();
+  $('#map1').hide();
+  $('#map2').show();
+});
+
+});
+
+</script>
 
 </body>
 </html>
