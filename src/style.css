@@ -119,7 +119,7 @@ div.map > h2 {
         display:inline-block;
     }
 }*/
-@media(min-width:1200px){
+@media(min-width:993px){
     #map0{
         display:inline-block;
     }
