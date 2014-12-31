@@ -82,7 +82,7 @@ div.map > h2 {
 }
 
 
-@media(max-width:767px){
+@media(max-width:992px){
 
     #small_display{
         display:block;
@@ -94,7 +94,10 @@ div.map > h2 {
         display:none;
     }
 }
-@media(min-width:768px){
+/*@media(min-width:768px){
+    #small_display{
+        display:block;
+    }
     #map0{
         display:inline-block;
     }
@@ -115,8 +118,8 @@ div.map > h2 {
     #map2{
         display:inline-block;
     }
-}
-@media(min-width:1200px){
+}*/
+@media(min-width:993px){
     #map0{
         display:inline-block;
     }
