@@ -71,4 +71,65 @@ div.map > h2 {
 	width:300px;
 }
 
+#drop_down_z_index{
+    z-index:9999;
+}
+
+
+
+ #small_display{
+    display:none;
+}
+
+
+@media(max-width:992px){
+
+    #small_display{
+        display:block;
+    }
+    #map1{
+        display:none;
+    }
+    #map2{
+        display:none;
+    }
+}
+/*@media(min-width:768px){
+    #small_display{
+        display:block;
+    }
+    #map0{
+        display:inline-block;
+    }
+    #map1{
+        display:inline-block;
+    }
+    #map2{
+        display:inline-block;
+    }
+}
+@media(min-width:992px){
+    #map0{
+        display:inline-block;
+    }
+    #map1{
+        display:inline-block;
+    }
+    #map2{
+        display:inline-block;
+    }
+}*/
+@media(min-width:993px){
+    #map0{
+        display:inline-block;
+    }
+    #map1{
+        display:inline-block;
+    }
+    #map2{
+        display:inline-block;
+    }
+
+
+}
 

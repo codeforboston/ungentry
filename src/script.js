@@ -291,7 +291,7 @@ function bindAddress(){
 
     	$.ajax({
     		type: "GET",
-    		url: "http://nominatim.openstreetmap.org/search",
+    		url: "https://nominatim.openstreetmap.org/search",
     		data: { q: address, format: "json", polygon : "1" , addressdetails :"1" }
 		})
 		.done(function( data ) {
