@@ -1,178 +1,189 @@
-L.Control.TimeSlider = L.Control.extend({
+define([
+  'leaflet'
+], function(L){
 
-  options: {
-    position: 'bottomleft'
-  },
-  initialize: function (options) {
-    this._timeslider = { 
-    };
-    if (options.position) {
-        this.options.position = options.position;
-    } else {
-        this.options.position = 'bottomleft'
-    }
-	
-    if (options.min) {
-	   this.options.min = options.min;
-    } else {
-	   this.options.min = 0;
-    }
+  function run () {
+    L.Control.TimeSlider = L.Control.extend({
 
-    if (options.max) {
-	   this.options.max = options.max;
-    } else {
-	   this.options.max = 1.0;
-    }
-	
-    this.setTimeSlider(options);
-  },
+      options: {
+        position: 'bottomleft'
+      },
+      initialize: function (options) {
+        this._timeslider = {
+        };
+        if (options.position) {
+            this.options.position = options.position;
+        } else {
+            this.options.position = 'bottomleft'
+        }
 
-  setValue : function(iVal){
+        if (options.min) {
+    	   this.options.min = options.min;
+        } else {
+    	   this.options.min = 0;
+        }
 
-	$( "#slider" ).slider( "option", "value", iVal );
+        if (options.max) {
+    	   this.options.max = options.max;
+        } else {
+    	   this.options.max = 1.0;
+        }
 
-  },
+        this.setTimeSlider(options);
+      },
 
-  onAdd: function (map) {
-    this._map = map;
-    var container = L.DomUtil.create('div', 'leaflet-control-timeslider');
+      setValue : function(iVal){
 
-    L.DomEvent.on(container, 'mousedown', L.DomEvent.stopPropagation)
-        .on(container, 'doubleclick', L.DomEvent.stopPropagation)
-        .on(container, 'click', L.DomEvent.stopPropagation);
-				
-    this._container = container;
+    	$( "#slider" ).slider( "option", "value", iVal );
 
-    this._update();
-    return this._container;
-  },
+      },
 
-  onRemove: function (map) {
-  },
+      onAdd: function (map) {
+        this._map = map;
+        var container = L.DomUtil.create('div', 'leaflet-control-timeslider');
 
-  start : function(){
-	$( "#slider" ).slider({
-		
-		min : this.options.min,
-		max : this.options.max,
-		step : 0.05	
+        L.DomEvent.on(container, 'mousedown', L.DomEvent.stopPropagation)
+            .on(container, 'doubleclick', L.DomEvent.stopPropagation)
+            .on(container, 'click', L.DomEvent.stopPropagation);
 
-	});
+        this._container = container;
 
-	if (this.options.onSlide) {
-		$( "#slider" ).on( "slide", this.options.onSlide );
-	}
+        this._update();
+        return this._container;
+      },
 
-	var self = this;
+      onRemove: function (map) {
+      },
 
-	$( "#slider_button" ).click(function(){
+      start : function(){
+      	$( "#slider" ).slider({
 
-		var spanElem = $( "#slider_button" ).find("span");
+      		min : this.options.min,
+      		max : this.options.max,
+      		step : 0.05
 
-		if (spanElem.hasClass("glyphicon-play")) {
+      	});
 
-			spanElem.removeClass("glyphicon-play");
-			spanElem.addClass("glyphicon-pause");
+      	if (this.options.onSlide) {
+      		$( "#slider" ).on( "slide", this.options.onSlide );
+      	}
 
-			self.options.onPlay();	
+      	var self = this;
 
-		} else {
+      	$( "#slider_button" ).click(function(){
 
-			spanElem.removeClass("glyphicon-pause");
-			spanElem.addClass("glyphicon-play");
+      		var spanElem = $( "#slider_button" ).find("span");
 
-			self.options.onPause();	
+      		if (spanElem.hasClass("glyphicon-play")) {
 
-		}
+      			spanElem.removeClass("glyphicon-play");
+      			spanElem.addClass("glyphicon-pause");
 
-	});	
-		
-  },	
+      			self.options.onPlay();
 
-  setTimeSlider: function (options) {
-    var timeslider = {
-      'text': options.text || '',                 //string
-      'onClick': options.onClick || function(){},           //callback function
-      'hideText': !!options.hideText,         //forced bool
-      'maxWidth': options.maxWidth || 70,     //number
-      'doToggle': options.toggle,			//bool
-      'toggleStatus': false,				//bool
-      'html': options.html
-    };
+      		} else {
 
-    this._timeslider = timeslider;
-    this._update();
-  },
+      			spanElem.removeClass("glyphicon-pause");
+      			spanElem.addClass("glyphicon-play");
 
-  onPause: function (iCallback) {
-	
-	this.options.onPause = iCallback;
+      			self.options.onPause();
 
-  },
+      		}
 
-  onPlay: function (iCallback) {
+      	});
 
-	this.options.onPlay = iCallback;
+      },
 
-  },
+      setTimeSlider: function (options) {
+        var timeslider = {
+          'text': options.text || '',                 //string
+          'onClick': options.onClick || function(){},           //callback function
+          'hideText': !!options.hideText,         //forced bool
+          'maxWidth': options.maxWidth || 70,     //number
+          'doToggle': options.toggle,			//bool
+          'toggleStatus': false,				//bool
+          'html': options.html
+        };
 
-  onSlide: function (iCallback) {
+        this._timeslider = timeslider;
+        this._update();
+      },
 
-	this.options.onSlide = iCallback;
+      onPause: function (iCallback) {
 
-  },
-  
-  getText: function () {
-  	return this._timeslider.text;
-  },
-  
-  destroy: function () {
-  	this._timeslider = {};
-  	this._update();
-  },
-  
-  toggle: function (e) {
+    	 this.options.onPause = iCallback;
 
-  	this._update();
+      },
 
-  },
-  
-  _update: function () {
+      onPlay: function (iCallback) {
 
-    if (!this._map) {
-      return;
-    }
+    	this.options.onPlay = iCallback;
 
-    this._container.innerHTML = '';
-    this._makeTimeSlider(this._timeslider);
- 
-  },
+      },
 
-  _makeTimeSlider: function (timeslider) {
+      onSlide: function (iCallback) {
 
-    var newTimeSlider = L.DomUtil.create('div', 'leaflet-control-timeslider', this._container);
-    
-    newTimeSlider.innerHTML += "<div id='control'>\
-						   <div class='input-group'>\
-						   <span class='input-group-btn'>\
-						   <button class='btn btn-default' type='button' id='slider_button'><span class='glyphicon glyphicon-play'></span></button>\
-						   </span>\
-						   <div class='form-control'><div id='slider'></div></div>\
-						   </div></div>";
-	
-    L.DomEvent
-      .addListener(newTimeSlider, 'click', L.DomEvent.stop)
-      .addListener(newTimeSlider, 'click', timeslider.onClick,this)
-      .addListener(newTimeSlider, 'click', this._clicked,this);	
-    L.DomEvent.disableClickPropagation(newTimeSlider);
+    	this.options.onSlide = iCallback;
 
-    return newTimeSlider;
+      },
 
-  },
-  
-  _clicked: function () {  //'this' refers to timeslider
+      getText: function () {
+      	return this._timeslider.text;
+      },
 
-  	return;
+      destroy: function () {
+      	this._timeslider = {};
+      	this._update();
+      },
+
+      toggle: function (e) {
+
+      	this._update();
+
+      },
+
+      _update: function () {
+
+        if (!this._map) {
+          return;
+        }
+
+        this._container.innerHTML = '';
+        this._makeTimeSlider(this._timeslider);
+
+      },
+
+      _makeTimeSlider: function (timeslider) {
+
+        var newTimeSlider = L.DomUtil.create('div', 'leaflet-control-timeslider', this._container);
+
+        newTimeSlider.innerHTML += "<div id='control'>\
+    						   <div class='input-group'>\
+    						   <span class='input-group-btn'>\
+    						   <button class='btn btn-default' type='button' id='slider_button'><span class='glyphicon glyphicon-play'></span></button>\
+    						   </span>\
+    						   <div class='form-control'><div id='slider'></div></div>\
+    						   </div></div>";
+
+        L.DomEvent
+          .addListener(newTimeSlider, 'click', L.DomEvent.stop)
+          .addListener(newTimeSlider, 'click', timeslider.onClick,this)
+          .addListener(newTimeSlider, 'click', this._clicked,this);
+        L.DomEvent.disableClickPropagation(newTimeSlider);
+
+        return newTimeSlider;
+
+      },
+
+      _clicked: function () {  //'this' refers to timeslider
+
+      	return;
+      }
+
+    });
   }
 
+  return {
+    run: run
+  };
 });
