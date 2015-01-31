@@ -13,6 +13,7 @@ var alpha_count = 0;
 
 var current_marker = null;
 
+// Set the property to map 
 function setDisplayProperty(iName){
 	
 	datamap0.setDisplayProperty(iName+"_90");
@@ -21,6 +22,9 @@ function setDisplayProperty(iName){
 
 }
 
+// They are 2 modes to display colors
+
+// Brewer from the library colorbrewer.js
 function setColorBrewer(iColor){
 	
 	datamap0.setColorBrewer(iColor);
@@ -31,6 +35,7 @@ function setColorBrewer(iColor){
 
 }
 
+// From a library that computes colors among gradiants
 function setColorGradient(iC1,iC2){
 	
 	datamap0.setGradient(iC1, iC2);
@@ -85,7 +90,7 @@ function setPropertyBrewer(name, iColorBrewerName) {
 
 	 } else {
 	 
-	     datamap0.setMode(MODE_DIRECT); 				   // set mode alpha for the map	
+	     datamap0.setMode(MODE_DIRECT); 				   // set mode direct for the map	
 	 	datamap1.setMode(MODE_DIRECT); 
 		datamap2.setMode(MODE_DIRECT); 
 
@@ -95,6 +100,26 @@ function setPropertyBrewer(name, iColorBrewerName) {
 
 }
 
+function removeMaps(){
+
+	if (datamap0) datamap0.remove();
+	if (datamap1) datamap1.remove();
+	if (datamap2) datamap2.remove();
+
+	delete datamap0;
+	delete datamap1;
+	delete datamap2;
+
+	datamap0 = null;
+	datamap1 = null;
+	datamap2 = null;
+
+}
+
+// ############## SLIDER/ANIMATION MANAGEMENT ############################## //
+// This part can be included in maps.js as animation management
+
+// Switch the color to the map among selected property
 function buildAlpha(){
 
 	if ((alpha_count>=0) && (alpha_count<=10)) {	
@@ -116,7 +141,6 @@ function buildAlpha(){
 
 function playAlpha(){
 
-	
 	alpha_count++;
 	if (alpha_count>=20) alpha_count=0;
 	$("#date").html((1990+alpha_count));
@@ -127,39 +151,8 @@ function playAlpha(){
 function setupDataInterval(){
 
     alphaInterval = setInterval(function(){
-			
 		playAlpha();
-
     }, 200);
-
-}
-
-function removeMaps(){
-
-	if (datamap0) datamap0.remove();
-	if (datamap1) datamap1.remove();
-	if (datamap2) datamap2.remove();
-
-	delete datamap0;
-	delete datamap1;
-	delete datamap2;
-
-	datamap0 = null;
-	datamap1 = null;
-	datamap2 = null;
-
-}
-
-function setMarker(){
-
-	if (current_marker!=null) {
-		datamap0.getMap().setView(current_marker);		
-		datamap0.addMarker(current_marker);
-		if (mode==MODE_DIRECT) {
-			datamap1.addMarker(current_marker);
-			datamap2.addMarker(current_marker);
-		}
-	}
 
 }
 
@@ -177,12 +170,17 @@ function changeSlider(event,ui){
 	buildAlpha();
 }
 
-function initAlphaMode(){
+// ############################ MAPS SETUP ANIMATED/STATIC ############################# //
 
+// Setup the animated maps
+function initAnimatedMode(){
+
+	// Remove all maps
 	removeMaps();	
 
 	mode = MODE_ALPHA;	
 
+	// Switch map0 to full width
 	$("#map0").removeClass("col-md-4");
 	$("#map0").addClass("col-md-12");
 	$(".toHide").hide();	
@@ -190,12 +188,14 @@ function initAlphaMode(){
 	/*Setup Map 0 in Alpha mode that will switch between 1990-2000-2010 */
 	datamap0 = new Datamap('map0', 42.354, -71.065, "./geodata/common/dataset/" );
 
+	// Methods binds to manage slider
 	datamap0.setSlider(changeSlider);
 	datamap0.setPauseSlider(pauseSlider);
 	datamap0.setPlaySlider(playSlider);
 
 	datamap0.initMap(true);
 	datamap0.setMode(mode);
+	// Setup the control to switch views
 	datamap0.setButton("fa-windows","Switch layout ...",function(){
 		
 		if (!datamap0.fullscreen) {
@@ -210,6 +210,7 @@ function initAlphaMode(){
 		setColorGradient(current_color_c1, current_color_c2);
 	}
 
+	// Set the position of slider and current property we want to display
 	setTimeout( function() {		
 	     datamap0.setScaleSlider(0.5);
 		datamap0.setShiftSlider(0.0);
@@ -217,20 +218,26 @@ function initAlphaMode(){
 		datamap0.setDisplayPropertyAlpha( current_property+"_90", current_property+"_00");
 	}, 1000);
 
-
 	setMarker();
 
 }
 
+
+// Initialization method that setup the UI to display 3 maps
 function init3ViewsMode(){
 
+	// clears maps objects
 	removeMaps();	
 
+	// Setup mode 3 maps (DIRECT)
 	mode = MODE_DIRECT;
 
+	// clear the interval setuped if a animate view has been called previsouly 
 	if (alphaInterval) clearInterval(alphaInterval);
 
+	// hides maps 1-2
 	$(".toHide").show();
+	// setup class for map0 that switch it 1/3s screen instead plain view
 	$("#map0").removeClass("col-md-12");
 	$("#map0").addClass("col-md-4");
 
@@ -247,7 +254,7 @@ function init3ViewsMode(){
 	  
 	datamap0.initMap(false);
 	datamap0.setButton("fa-windows","Switch layout ...",function(){
-		initAlphaMode();
+		initAnimatedMode();
 	});
 
 	datamap1.initMap(false);	
@@ -277,39 +284,86 @@ function init3ViewsMode(){
 
 }
 
+// ################# MAP Init ###########################
+// Initialization method to build maps context 
+// Switch in 3 maps context i.e. displaying 3 different
+// periods 1990 2000 2010
+//
+// Setup also links for responsive mode
+//
 function initDataMap(){
 
-     //initAlphaMode();
-	init3ViewsMode();
+	init3ViewsMode(); // init the view with 3 maps
+
+	$('#link_1900').click(function(event) {
+	  event.preventDefault();
+	  console.log('clicked 1900');
+	  $('#map1').hide();
+	  $('#map2').hide();
+	});
+	$('#link_2000').click(function(event) {
+	  event.preventDefault();
+	  console.log('clicked 2000');
+	  $('#map0').hide();
+	  $('#map1').show();
+	  $('#map2').hide();
+	});
+	$('#link_2010').click(function(event) {
+	  event.preventDefault();
+	  console.log('clicked 2010');
+	  $('#map0').hide();
+	  $('#map1').hide();
+	  $('#map2').show();
+	});
 
 }
 
+// ############### GEOLOCATE ##############################
+// Geolocate methods
+// Used to implement search address, that setup a marker
+// Here we call nominatim server to geolocate the address
 
+// Set a marker on all maps depending on the current mode
+function setMarker(){
+
+	if (current_marker!=null) {
+		datamap0.getMap().setView(current_marker);		
+		datamap0.addMarker(current_marker);
+		if (mode==MODE_DIRECT) {
+			datamap1.addMarker(current_marker);
+			datamap2.addMarker(current_marker);
+		}
+	}
+
+}
+
+// Perform search in nominatim address method 
 function bindAddress(){
 
+	// retrieve the address value
 	var address=$("#address").val();
 
+	// perform ajax call to nominatim
     	$.ajax({
     		type: "GET",
     		url: "https://nominatim.openstreetmap.org/search",
     		data: { q: address, format: "json", polygon : "1" , addressdetails :"1" }
 		})
-		.done(function( data ) {
+		.done(function( data ) { // if address found
         	
+		// takes the first geolocated data
+		// and record current_marker variable
 		current_marker = data[0];
-        	setMarker();
+		// draws a marker from geolocated point        	
+		setMarker();
         	
     	});
 
-
 }
 
-$(function() {
+// Binds search button + return key to the address
+function initGeolocate(){
 
-    initDataMap();
-
-    setTimeout( initMapRouter , 1000 ); // not really clean but easy
-    
     $("#sendaddress").click(bindAddress);
 
     $("#address").keypress(function(e){
@@ -318,52 +372,32 @@ $(function() {
     	  	e.preventDefault();
     	  }
     });
-      
+
+}
+
+// #################### MAIN  ###############################
+// Main initialization method
+// When all page libraries are loaded this function is called
+// 
+$(function() {
+
+    // Initializing maps
+    initDataMap();
+
+    // Initialization geolocation search buttons & field
+    initGeolocate();
+
+    // Initialize Backbone router in Router.js file
+    // This is done with a timer so that the app have the time
+    // to build first needed objects in maps : if the router is 
+    // called as soon as initialized, it may call not present 
+    // parameters. 
+    setTimeout( initMapRouter , 2000 ); // not really clean but easy
+       
 });
 
 
-$.ajax({
-	url: 'https://api.foursquare.com/v2/venues/4cd1a0b17f56a1434795d5a6?oauth_token=2D2CXQUH5IWPUSKYIDLWO0CLWPDVLJ0FPCNBS41HYCDKXGCX&v=20140916',
-	type: 'GET',
-	dataType: 'jsonp',
-	data: {param1: 'price'},
-})
-
-.done(function(data) {
-	console.log(data)
-	console.log(data.response.venue.price.tier);
-	console.log(data.response.venue.price.message);
-	console.log(data.response.venue.location.lat);
-	console.log(data.response.venue.location.lng);
-	//for(var venue in data.)
-})
-.fail(function(error) {
-	console.log(error);
-})
-.always(function() {
-	console.log("complete");
-});
 
 
 
 
-function boundLog () {
-	console.log(datamap0.toBBoxString())
-	console.log("complete")
-};
-
-
-/*
-function boundLog () {
-	datamap0.on('load', function(e){
-	getBounds()};
-	console.log("complete");
-)};
-*/
-
-/*
-function boundLog () { 
-        var cool = datamap0.toBBoxString();
-		console.log(cool);
-};
-*/

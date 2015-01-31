@@ -95,11 +95,12 @@
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeforboston.github.io/ungentry/" data-text="See what data says about your neighborhood" data-lang="en"></a></li>
-                <li><div class="fb-share-button" data-href="http://codeforboston.github.io/ungentry/" data-type="button_count"></div></li>
-                <li><a></a></li>  
+                <li style="padding-left:5px;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeforboston.github.io/ungentry/" data-text="See what data says about your neighborhood" data-lang="en"></a></li>
+                <li style="padding-left:5px;">
+				<div class="fb-like" data-href="http://codeforboston.github.io/ungentry/" data-layout="button_count" data-action="like" data-show-faces="false" 						datashare="true"></div>
+			 </li>
                 <li class="divider"></li>
-                <li><iframe src="https://rawgit.com/mdo/github-buttons/master/github-btn.html?user=codeforboston&repo=ungentry&type=fork&count=true"
+                <li style="padding-left:5px;" ><iframe src="https://rawgit.com/mdo/github-buttons/master/github-btn.html?user=codeforboston&repo=ungentry&type=fork&count=true"
                   allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></li>
               </ul>
    
@@ -188,33 +189,6 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=262994210406910&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-$( document ).ready(function() {
-    console.log( "ready!" );
-
-$('#link_1900').click(function(event) {
-  event.preventDefault();
-  console.log('clicked 1900');
- $('#map1').hide();
-  $('#map2').hide();
-});
-$('#link_2000').click(function(event) {
-  event.preventDefault();
-  console.log('clicked 2000');
-  $('#map0').hide();
-  $('#map1').show();
-  $('#map2').hide();
-});
-$('#link_2010').click(function(event) {
-  event.preventDefault();
-  console.log('clicked 2010');
-  $('#map0').hide();
-  $('#map1').hide();
-  $('#map2').show();
-});
-
-});
-
 </script>
 
 </body>
