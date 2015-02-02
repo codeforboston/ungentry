@@ -4,8 +4,6 @@ var mode = MODE_ALPHA; // MODE_ALPHA defined in maps.js
 				   // This mode is used to animate data display
 				   // It uses an alpha factor to compute a value between two properties
 var current_property = "";
-var current_color_c1 = "";
-var current_color_c2 = "";
 var current_color_brewer = "";
 var alphaInterval; // Used to control interval for alpha value
 var alpha = 0.0;
@@ -32,44 +30,6 @@ function setColorBrewer(iColor){
 	 datamap1.setColorBrewer(iColor);
 	 datamap2.setColorBrewer(iColor);
 	}
-
-}
-
-// From a library that computes colors among gradiants
-function setColorGradient(iC1,iC2){
-	
-	datamap0.setGradient(iC1, iC2);
-	if (mode==MODE_DIRECT) {
-	 datamap1.setGradient(iC1, iC2);
-	 datamap2.setGradient(iC1, iC2);
-	}
-
-}
-
-function setProperty(name, color1, color2) {
-
-	 current_property = name;
-	 current_color_c1 = color1;
-	 current_color_c2 = color2;
-	 current_color_brewer = "";
-
-	 setColorGradient(color1, color2);
-
-	 if (mode==MODE_ALPHA) {	
-
-	 	datamap0.setMode(MODE_ALPHA);
-		// Here the property is not used, it is set later when timer runs
-		buildAlpha();
-
-	 } else {
-
-	 	datamap0.setMode(MODE_DIRECT);
-		datamap1.setMode(MODE_DIRECT);
-		datamap2.setMode(MODE_DIRECT);
-	 	
-		setDisplayProperty(name);
-
-	 }
 
 }
 
@@ -205,9 +165,7 @@ function initAnimatedMode(){
 	});
 
 	if (current_color_brewer!="") { // To come back on same settings
-		setColorBrewer(current_color_brewer);
-	} else if (current_color_c1!="") {
-		setColorGradient(current_color_c1, current_color_c2);
+	   setColorBrewer(current_color_brewer);
 	}
 
 	// Set the position of slider and current property we want to display
@@ -273,9 +231,7 @@ function init3ViewsMode(){
 		
 		if (current_color_brewer!="") {
 			setColorBrewer(current_color_brewer);
-		} else if (current_color_c1!="") {
-			setColorGradient(current_color_c1, current_color_c2);
-		}
+		} 
 		if (current_property!="") setDisplayProperty(current_property);
 
 	}, 1000);

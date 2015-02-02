@@ -1,6 +1,5 @@
 
 var MODE_DIRECT=0, MODE_ALPHA=1;
-var COLOR_MODE_RAINBOW=0, COLOR_MODE_BREWER=1;
 
 function Datamap(ident, lat, lon, datapath){
 
@@ -17,14 +16,8 @@ function Datamap(ident, lat, lon, datapath){
 	this.fullscreen = false;
 	this.marker = null;
 
-	this.colorMode = COLOR_MODE_RAINBOW;
-	this.colors = new Rainbow(); 
-	this.colors.setNumberRange(0, 100);	
-
 	this.map;
-	this.leafletMapId = 'jbv.id3fl8g2' ;
-	this.leafletAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
-
+	
 	this.zoom_max = 18;
 	this.zoom_area = [0,  11 , 13 , 15 , 17,  this.zoom_max];
 	this.zoom_level = 0;
@@ -64,13 +57,7 @@ function Datamap(ident, lat, lon, datapath){
 		this.itemStyle = iItemStyleFunction;
 	};
 
-	this.setGradient = function(iC1,iC2){
-		this.colorMode = COLOR_MODE_RAINBOW;
-		this.colors.setSpectrum(iC1 , iC2); 
-	};
-
 	this.setColorBrewer = function(iName){
-		this.colorMode = COLOR_MODE_BREWER;
 		this.colorBrewerName = iName;
 	};
 
@@ -90,30 +77,12 @@ function Datamap(ident, lat, lon, datapath){
 	};
 
 	this.getColor = function(geo,val){
-
-		if (this.colorMode==COLOR_MODE_RAINBOW) {
-			for (var i in geo) {
-				if ((val-geo[i]>=0) && (val-geo[parseInt(i)+1]<0)) {
-
-					var pct = (val-geo[i])/(geo[parseInt(i)+1]-geo[i]);			
-					color = "#"+this.colors.colourAt(100*((parseFloat(i)+pct)/(geo.length-1)));
-
-					return color;
-				}
+		for (var i in geo) {
+			if ((val-geo[i]>=0) && (val-geo[parseInt(i)+1]<0)) {
+				return colorbrewer[this.colorBrewerName][5][i];
 			}
-			return "#7F7F7F";
-
-		} else {
-
-			for (var i in geo) {
-				if ((val-geo[i]>=0) && (val-geo[parseInt(i)+1]<0)) {
-					return colorbrewer[this.colorBrewerName][5][i];
-				}
-			}
-			return "#7F7F7F";
-
 		}
-		
+		return "#7F7F7F";
 	}
 
 	this.computZoomLevel = function(){
@@ -284,17 +253,12 @@ function Datamap(ident, lat, lon, datapath){
 			}
 		
 		} else {
-
 			this.buildsGroupLayer();
-
 		}
-
 
 	}
 
 	this.computBounds = function(){
-
-		//console.log("Comput bounds ...");
 
 		var bounds = this.map.getBounds();
 		this.bounds_to_be_loaded = [];
@@ -317,9 +281,7 @@ function Datamap(ident, lat, lon, datapath){
 
 		this.todisplay_parts = [];
 		this.geojsondata = {};
-		// Prints bounds to be loaded;
-		//console.log(this.bounds_to_be_loaded);			
-
+		
 		this.loadBoundProcess();
 
 	}
@@ -422,13 +384,11 @@ function Datamap(ident, lat, lon, datapath){
 		if (this.mode==MODE_ALPHA) {
 
 			if (!this.slider) {
-				//this.map.removeControl(this.slider);
 				this.slider = new L.Control.TimeSlider({}).addTo(this.map);
 				this.slider.onPause(this.pauseSlider);
 				this.slider.onPlay(this.playSlider);
 				this.slider.onSlide(this.onSlide);
 				this.slider.start();
-
 			}
 
 		}
@@ -438,7 +398,6 @@ function Datamap(ident, lat, lon, datapath){
 
 	this.initMap = function (iFullscreenButton){
 
-		
 		this.map = L.map(this.ident, iFullscreenButton ? { 
 			fullscreenControl: true, // This adds fullscreen mode functionality
   			fullscreenControlOptions: {
