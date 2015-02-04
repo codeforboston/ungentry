@@ -5,10 +5,11 @@ define([
 	'easybutton',
 	'topojson',
 	'mapSync',
-	'colorbrewer'
-], function(L, rainbow, stamen, easybutton, topojson, mapSync, colorbrewer){
+	'colorbrewer',
+	'timeslider'
+], function(L, rainbow, stamen, easybutton, topojson, mapSync, colorbrewer, timeslider){
 
-
+	timeslider.run();
 
 	var MODE_DIRECT=0, MODE_ALPHA=1;
 	var COLOR_MODE_RAINBOW=0, COLOR_MODE_BREWER=1;

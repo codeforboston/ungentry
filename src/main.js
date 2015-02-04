@@ -4,6 +4,7 @@ require.config({
 	},
 	paths: {
 		'jquery': '../lib/jquery-1.11.2.min',
+		'jquery-ui': '../lib/jquery-ui-1.11.2/jquery-ui.min',
 		'backbone': '../lib/backbone-min',
 		'underscore': '../lib/underscore-min',
 		'bootstrap': '../lib/bootstrap/bootstrap.min',
@@ -16,6 +17,7 @@ require.config({
 		'topojson': '../lib/topojson.v1.min',
 		'leaflet': '../lib/leaflet-0.7.3/leaflet',
 		'stamen': '../lib/tile.stamen',
+		'timeslider': 'timeslider',
 		'map': 'maps',
 		'router': 'routes',
 		'script': 'script'

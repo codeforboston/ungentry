@@ -1,6 +1,8 @@
 define([
-  'leaflet'
-], function(L){
+  'leaflet',
+  'jquery',
+  'jquery-ui',
+], function(L, $){
 
   function run () {
     L.Control.TimeSlider = L.Control.extend({

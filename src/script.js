@@ -331,11 +331,11 @@ define([
 		})
 
 		.done(function(data) {
-			console.log(data)
-			console.log(data.response.venue.price.tier);
-			console.log(data.response.venue.price.message);
-			console.log(data.response.venue.location.lat);
-			console.log(data.response.venue.location.lng);
+			// console.log(data)
+			// console.log(data.response.venue.price.tier);
+			// console.log(data.response.venue.price.message);
+			// console.log(data.response.venue.location.lat);
+			// console.log(data.response.venue.location.lng);
 			//for(var venue in data.)
 		})
 		.fail(function(error) {
