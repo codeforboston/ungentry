@@ -1,6 +1,6 @@
 var CensusLayer = L.Class.extend({
 
-    initialize: function (iDataPath) {
+    initialize: function (iMap,iDataPath) {
         // save position of the layer or any options from the constructor
 
 	   this._datapath = iDataPath;
@@ -8,18 +8,22 @@ var CensusLayer = L.Class.extend({
     },
 
     onAdd: function (map) {
-        this._map = map;
+
+        this._map = map;	
+
+	   this._layers_id = [];
+	   this._properties_data = {};
+
+        this._zoom_level = 0;
+        this._zoom_change = true;		 
 
 	   this._init();
-        
-        // add a viewreset event listener for updating layer's position, do the latter
-        map.on('viewreset', this._reset, this);
-        this._reset();
+       
     },
 
     onRemove: function (map) {
         // remove layer's DOM elements and listeners
-        map.off('viewreset', this._reset, this);
+        // map.off('viewreset', this._reset, this);
     },
 
     setProperty : function(iProperty, iColorBrewer) {
@@ -27,10 +31,6 @@ var CensusLayer = L.Class.extend({
 	   this._colorBrewerName = iColorBrewer;
 	   this._refreshStyles();
     },	
-
-    _reset: function () {
-        
-    },
 
     _init : function() {
 
@@ -51,20 +51,28 @@ var CensusLayer = L.Class.extend({
 		   self._loadJson();
 
 		});	
-	
+
 		this._map.on('moveend', function(e) {	
 
+		   console.log("moveend");
 		   self._loadJson();
 
 		});
+	
+		/*
+		this._map.on('dragend', function(e) {	
+
+		   console.log("dragend");
+		   self._loadJson();
+
+		});
+		*/
 
     },
 
     // Zoom management
     _zoom_max : 18,
     _zoom_area : [0,  11 , 13 , 15 , 17,  18],
-    _zoom_level : 0,
-    _zoom_change : true,	
 
     _computZoomLevel : function(){
 
@@ -90,8 +98,6 @@ var CensusLayer = L.Class.extend({
 	// Json load part
 
 	_map_cache : {},
-	_layers_id : [],
-	_properties_data : {},
 
 	_loadJson : function (){
 
@@ -119,6 +125,7 @@ var CensusLayer = L.Class.extend({
 
 		} else {
 
+			console.log('ComputBounds');
 			this._computBounds();
 
 		}
@@ -145,6 +152,7 @@ var CensusLayer = L.Class.extend({
 	_computBounds : function(){
 
 		var bounds = this._map.getBounds();
+
 		this._bounds_to_be_loaded = [];
 	
 		for (var i=0; i<this._mapbounds_data.length; i++){

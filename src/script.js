@@ -1,240 +1,47 @@
 
-var datamap0, datamap1, datamap2;
-var mode = MODE_ALPHA; // MODE_ALPHA defined in maps.js
-				   // This mode is used to animate data display
-				   // It uses an alpha factor to compute a value between two properties
-var current_property = "";
-var current_color_brewer = "";
-var alphaInterval; // Used to control interval for alpha value
-var alpha = 0.0;
-var alpha_count = 0;
+var map0, map1, map2;
+var census0, census1, census2;
 
-var current_marker = null;
+function setPropertyBrewer(iName, iColorBrewerName) {
 
-// Set the property to map 
-function setDisplayProperty(iName){
-	
-	datamap0.setDisplayProperty(iName+"_90");
-	datamap1.setDisplayProperty(iName+"_00");
-	datamap2.setDisplayProperty(iName+"_10");
+	census0.setProperty(iName+"_90",iColorBrewerName);
+	census1.setProperty(iName+"_00",iColorBrewerName);
+	census2.setProperty(iName+"_10",iColorBrewerName);
 
 }
 
-// They are 2 modes to display colors
-
-// Brewer from the library colorbrewer.js
-function setColorBrewer(iColor){
-	
-	datamap0.setColorBrewer(iColor);
-	if (mode==MODE_DIRECT) {
-	 datamap1.setColorBrewer(iColor);
-	 datamap2.setColorBrewer(iColor);
-	}
-
-}
-
-function setPropertyBrewer(name, iColorBrewerName) {
-
-	 current_property = name;
-	 current_color_c1 = "";
-	 current_color_c2 = "";
-	 current_color_brewer = iColorBrewerName;
-
-	 setColorBrewer(iColorBrewerName);
-
-	 if (mode==MODE_ALPHA) {	
-
-	 	datamap0.setMode(MODE_ALPHA); 				   // set mode alpha for the map
-		// Here the property is not used, it is set later when timer runs
-		buildAlpha();
-
-	 } else {
-	 
-	     datamap0.setMode(MODE_DIRECT); 				   // set mode direct for the map	
-	 	datamap1.setMode(MODE_DIRECT); 
-		datamap2.setMode(MODE_DIRECT); 
-
-		setDisplayProperty(name);
-
-	 }
-
-}
-
-function removeMaps(){
-
-	if (datamap0) datamap0.remove();
-	if (datamap1) datamap1.remove();
-	if (datamap2) datamap2.remove();
-
-	delete datamap0;
-	delete datamap1;
-	delete datamap2;
-
-	datamap0 = null;
-	datamap1 = null;
-	datamap2 = null;
-
-}
-
-// ############## SLIDER/ANIMATION MANAGEMENT ############################## //
-// This part can be included in maps.js as animation management
-
-// Switch the color to the map among selected property
-function buildAlpha(){
-
-	if ((alpha_count>=0) && (alpha_count<=10)) {	
-		alpha = 1.0*alpha_count/10;
-
-		datamap0.setScaleSlider(0.5);
-		datamap0.setShiftSlider(0.0);
-		datamap0.setAlpha(alpha); 	
-		datamap0.setDisplayPropertyAlpha( current_property+"_90", current_property+"_00");
-	} else {
-		alpha = 1.0*(alpha_count-10)/10;
-		datamap0.setScaleSlider(0.5);
-		datamap0.setShiftSlider(0.55);
-		datamap0.setAlpha(alpha); 	
-		datamap0.setDisplayPropertyAlpha( current_property+"_00", current_property+"_10");
-	}	
-
-}
-
-function playAlpha(){
-
-	alpha_count++;
-	if (alpha_count>=20) alpha_count=0;
-	$("#date").html((1990+alpha_count));
-	buildAlpha();
-
-}
-
-function setupDataInterval(){
-
-    alphaInterval = setInterval(function(){
-		playAlpha();
-    }, 200);
-
-}
-
-function pauseSlider(){
-	clearInterval(alphaInterval);
-}
-
-function playSlider(){
-	setupDataInterval(); // not really clean but easy
-}
-
-function changeSlider(event,ui){
-	alpha_count = ui.value * 20;
-	$("#date").html((1990+alpha_count));
-	buildAlpha();
-}
-
-// ############################ MAPS SETUP ANIMATED/STATIC ############################# //
-
-// Setup the animated maps
-function initAnimatedMode(){
-
-	// Remove all maps
-	removeMaps();	
-
-	mode = MODE_ALPHA;	
-
-	// Switch map0 to full width
-	$("#map0").removeClass("col-md-4");
-	$("#map0").addClass("col-md-12");
-	$(".toHide").hide();	
-
-	/*Setup Map 0 in Alpha mode that will switch between 1990-2000-2010 */
-	datamap0 = new Datamap('map0', 42.354, -71.065, "./geodata/common/dataset/" );
-
-	// Methods binds to manage slider
-	datamap0.setSlider(changeSlider);
-	datamap0.setPauseSlider(pauseSlider);
-	datamap0.setPlaySlider(playSlider);
-
-	datamap0.initMap(true);
-	datamap0.setMode(mode);
-	// Setup the control to switch views
-	datamap0.setButton("fa-windows","Switch layout ...",function(){
-		
-		if (!datamap0.fullscreen) {
-			init3ViewsMode();
-		}
-
-	});
-
-	if (current_color_brewer!="") { // To come back on same settings
-	   setColorBrewer(current_color_brewer);
-	}
-
-	// Set the position of slider and current property we want to display
-	setTimeout( function() {		
-	     datamap0.setScaleSlider(0.5);
-		datamap0.setShiftSlider(0.0);
-		datamap0.setAlpha(0); 	
-		datamap0.setDisplayPropertyAlpha( current_property+"_90", current_property+"_00");
-	}, 1000);
-
-	setMarker();
-
-}
-
+// ############################ MAPS SETUP STATIC ############################# //
 
 // Initialization method that setup the UI to display 3 maps
 function init3ViewsMode(){
 
-	// clears maps objects
-	removeMaps();	
-
-	// Setup mode 3 maps (DIRECT)
-	mode = MODE_DIRECT;
-
-	// clear the interval setuped if a animate view has been called previsouly 
-	if (alphaInterval) clearInterval(alphaInterval);
-
-	// hides maps 1-2
-	$(".toHide").show();
-	// setup class for map0 that switch it 1/3s screen instead plain view
-	$("#map0").removeClass("col-md-12");
-	$("#map0").addClass("col-md-4");
-
 	$("#date").html("1990");
 
-	/*Setup Map 0: 1990 tracts */
-	datamap0 = new Datamap('map0', 42.354, -71.065, "./geodata/common/dataset/" );
-	  	
-	/* Setup Map 1: 2000 tracts */
-	datamap1 = new Datamap('map1', 42.354, -71.065, "./geodata/common/dataset/" );	
-	  
-	/* Setup map 2: 2010 tracts */
-	datamap2 = new Datamap('map2', 42.354, -71.065, "./geodata/common/dataset/" );	
-	  
-	datamap0.initMap(false);
-	datamap0.setButton("fa-windows","Switch layout ...",function(){
-		initAnimatedMode();
-	});
+	map0 = L.map('map0').setView([42.354, -71.065], 13);
+	new L.StamenTileLayer("toner").addTo(map0);
+	census0 = new CensusLayer(map0, "./geodata/common/dataset/");
+	map0.addLayer(census0);
 
-	datamap1.initMap(false);	
-     datamap2.initMap(false);
+	map1 = L.map('map1').setView([42.354, -71.065], 13);
+	new L.StamenTileLayer("toner").addTo(map1);
+	census1 = new CensusLayer(map1, "./geodata/common/dataset/");
+	map1.addLayer(census1);
+
+	map2 = L.map('map2').setView([42.354, -71.065], 13);
+	new L.StamenTileLayer("toner").addTo(map2);
+	census2 = new CensusLayer(map2, "./geodata/common/dataset/");
+	map2.addLayer(census2);
 
 	// synchronize three maps
        
-	datamap0.getMap().sync(datamap1.getMap());
-     datamap0.getMap().sync(datamap2.getMap());
-	datamap1.getMap().sync(datamap0.getMap());
-     datamap1.getMap().sync(datamap2.getMap());
-     datamap2.getMap().sync(datamap0.getMap());
-     datamap2.getMap().sync(datamap1.getMap());
+	map0.sync(map1);
+	map0.sync(map2);
 
-	setTimeout( function(){
-		
-		if (current_color_brewer!="") {
-			setColorBrewer(current_color_brewer);
-		} 
-		if (current_property!="") setDisplayProperty(current_property);
+	map1.sync(map0);
+	map1.sync(map2);
 
-	}, 1000);
+	map2.sync(map0);
+	map2.sync(map1);
 
 	setMarker();
 
@@ -279,16 +86,37 @@ function initDataMap(){
 // Used to implement search address, that setup a marker
 // Here we call nominatim server to geolocate the address
 
+var last_marker = [];
+var current_marker = null;
+
+// Adding a marker
+function addMarker(iPos, ioMap, iCurrentMarker) {
+	
+	if (last_marker[iPos]!=null) {
+		ioMap.removeLayer(last_marker[iPos]);
+	}
+	last_marker[iPos] = L.marker(iCurrentMarker).addTo(ioMap);
+
+}
+
 // Set a marker on all maps depending on the current mode
 function setMarker(){
 
 	if (current_marker!=null) {
-		datamap0.getMap().setView(current_marker);		
-		datamap0.addMarker(current_marker);
-		if (mode==MODE_DIRECT) {
-			datamap1.addMarker(current_marker);
-			datamap2.addMarker(current_marker);
-		}
+
+		map0.setView(current_marker, 16,  {
+			reset : true,
+			animate :true
+		});
+
+		addMarker(0, map0, current_marker);
+
+		//map1.setView(current_marker);
+		addMarker(1, map1, current_marker);
+
+		//map2.setView(current_marker);
+		addMarker(2, map2, current_marker);
+
 	}
 
 }
@@ -351,9 +179,4 @@ $(function() {
     setTimeout( initMapRouter , 2000 ); // not really clean but easy
        
 });
-
-
-
-
-
 
