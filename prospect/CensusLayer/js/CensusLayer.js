@@ -1,8 +1,9 @@
 define([
+	'jquery',
 	'leaflet',
 	'topojson',
 	'colorbrewer'
-	], function(L, topojson, colorbrewer){
+	], function($, L, topojson, colorbrewer){
 
 
 	var CensusLayer = L.Class.extend({

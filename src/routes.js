@@ -1,10 +1,8 @@
 
 define([
-	'jquery',
 	'backbone',
-	'underscore',
 	'script'
-	], function( $, Backbone, _, S ){
+	], function( Backbone, S ){
 
 	//define router class
 

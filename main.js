@@ -37,12 +37,15 @@ require.config({
 		},
 		'backbone': {
 			deps: ['jquery', 'underscore']
+		},
+		'bootstrap': {
+			deps: ['jquery']
 		}
 	}
 
 });
 
-require(['script', 'routes'], function(S, routes){
+require(['script', 'routes', 'bootstrap'], function(S, routes){
 
 	S.bootstrap();
 	routes.init();
