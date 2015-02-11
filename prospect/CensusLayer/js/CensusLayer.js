@@ -3,6 +3,8 @@ define([
 	'topojson',
 	'colorbrewer'
 	], function(L, topojson, colorbrewer){
+
+
 	var CensusLayer = L.Class.extend({
 
 	    initialize: function (iMap,iDataPath) {

@@ -6,9 +6,10 @@ define(['leaflet'], function(L){
     options: {
       position: 'bottomleft'
     },
+
     initialize: function (options) {
-      this._timeslider = {
-      };
+      this._timeslider = {};
+
       if (options.position) {
           this.options.position = options.position;
       } else {
@@ -31,9 +32,7 @@ define(['leaflet'], function(L){
     },
 
     setValue : function(iVal){
-
-  	$( "#slider" ).slider( "option", "value", iVal );
-
+    	$( "#slider" ).slider( "option", "value", iVal );
     },
 
     onAdd: function (map) {
@@ -54,41 +53,41 @@ define(['leaflet'], function(L){
     },
 
     start : function(){
-  	$( "#slider" ).slider({
+    	$( "#slider" ).slider({
 
-  		min : this.options.min,
-  		max : this.options.max,
-  		step : 0.05
+    		min : this.options.min,
+    		max : this.options.max,
+    		step : 0.05
 
-  	});
+    	});
 
-  	if (this.options.onSlide) {
-  		$( "#slider" ).on( "slide", this.options.onSlide );
-  	}
+    	if (this.options.onSlide) {
+    		$( "#slider" ).on( "slide", this.options.onSlide );
+    	}
 
-  	var self = this;
+    	var self = this;
 
-  	$( "#slider_button" ).click(function(){
+      $( "#slider_button" ).click(function(){
 
-  		var spanElem = $( "#slider_button" ).find("span");
+    		var spanElem = $( "#slider_button" ).find("span");
 
-  		if (spanElem.hasClass("glyphicon-play")) {
+    		if (spanElem.hasClass("glyphicon-play")) {
 
-  			spanElem.removeClass("glyphicon-play");
-  			spanElem.addClass("glyphicon-pause");
+    			spanElem.removeClass("glyphicon-play");
+    			spanElem.addClass("glyphicon-pause");
 
-  			self.options.onPlay();
+    			self.options.onPlay();
 
-  		} else {
+    		} else {
 
-  			spanElem.removeClass("glyphicon-pause");
-  			spanElem.addClass("glyphicon-play");
+    			spanElem.removeClass("glyphicon-pause");
+    			spanElem.addClass("glyphicon-play");
 
-  			self.options.onPause();
+    			self.options.onPause();
 
-  		}
+    		}
 
-  	});
+    	});
 
     },
 
@@ -109,19 +108,19 @@ define(['leaflet'], function(L){
 
     onPause: function (iCallback) {
 
-  	this.options.onPause = iCallback;
+    	this.options.onPause = iCallback;
 
     },
 
     onPlay: function (iCallback) {
 
-  	this.options.onPlay = iCallback;
+    	this.options.onPlay = iCallback;
 
     },
 
     onSlide: function (iCallback) {
 
-  	this.options.onSlide = iCallback;
+  	 this.options.onSlide = iCallback;
 
     },
 
@@ -181,9 +180,8 @@ define(['leaflet'], function(L){
   });
 
 
-  return {
-    // ???
-  };
+  // As this simply attaches to L, we may not need a return at all.
+  return L;
 
 
 });
