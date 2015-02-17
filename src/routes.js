@@ -1,128 +1,154 @@
-//define router class
 
-var MapRouter = Backbone.Router.extend ({
-	  routes: {
-			    ""          : "showMedianrent", // Default display
-	  	         "pcthchild" : "showPcthchild",
-	  	         "pct_finance" : "showPct_finance",
-	  	         "pctind_professional" : "showPct_professional",
-	  	         "pctocc_profmanage" : "showPctocc_profmanage",
-	  	         "pctcollege" : "showPctcollege",
-	  	         "pctinc_0_25k" : "showPctinc_0_25k",
-	  	         "pctinc_25k_50k" : "showPctinc_25k_50k",
-	  	         "pctinc_50k_100k" : "showPctinc_50k_100k",
-	  	         "pctinc_100k_more" : "showPctinc_100k_more",
-	  	         "medhhincome" : "showMedhhincome",
-	  	         "pctpoverty" : "showPctpoverty",
-	  	         "pctpublicassist" : "showPctpublicassist",
-	  	         "units" : "showUnits",
-	  	         "pctown" : "showPctown",
-	  	         "pctrent" : "showPctrent",
-	  	         "pctvacant" : "showPctvacant",
-	  	         "medianvalue" : "showMedianvalue",
-	  	         "medianrent" : "showMedianrent",
-	  	         "medianpctincomerent" : "showMedianpctincomerent",
-	  	         "pctinc_mortgage_30_more" : "showPctinc_mortgage_30_more",
-	  	         "pctsameres" : "showPctsameres"
-	  },
+define([
+	'backbone',
+	'script'
+	], function( Backbone, S ){
 
-	  showPcthchild: function(){
-		setPropertyBrewer("pcthhchild", "PuRd"); 
-	  },
+	//define router class
 
-	  showPct_finance: function(){
-		 
-		setPropertyBrewer("pctind_finance", "PuRd");	
-	  },
+	var MapRouter = Backbone.Router.extend ({
+		  routes: {
+				    ""          : "showMedianrent", // Default display
+	         "pcthchild" : "showPcthchild",
+	         "pct_finance" : "showPct_finance",
+	         "pctind_professional" : "showPct_professional",
+	         "pctocc_profmanage" : "showPctocc_profmanage",
+	         "pctcollege" : "showPctcollege",
+	         "pctinc_0_25k" : "showPctinc_0_25k",
+	         "pctinc_25k_50k" : "showPctinc_25k_50k",
+	         "pctinc_50k_100k" : "showPctinc_50k_100k",
+	         "pctinc_100k_more" : "showPctinc_100k_more",
+	         "medhhincome" : "showMedhhincome",
+	         "pctpoverty" : "showPctpoverty",
+	         "pctpublicassist" : "showPctpublicassist",
+	         "units" : "showUnits",
+	         "pctown" : "showPctown",
+	         "pctrent" : "showPctrent",
+	         "pctvacant" : "showPctvacant",
+	         "medianvalue" : "showMedianvalue",
+	         "medianrent" : "showMedianrent",
+	         "medianpctincomerent" : "showMedianpctincomerent",
+	         "pctinc_mortgage_30_more" : "showPctinc_mortgage_30_more",
+	         "pctsameres" : "showPctsameres"
+		  },
 
-	  showPct_professional: function(){
-		 
-		setPropertyBrewer("pctind_professional", "PuRd"); 
-	  },
+		  showPcthchild: function(){
+			S.setPropertyBrewer("pcthhchild", "PuRd");
+		  },
 
-	  showPctocc_profmanage: function(){
-		 
-		setPropertyBrewer("pctocc_profmanage", "PuRd");
-	  },
+		  showPct_finance: function(){
 
-	  showPctcollege: function(){
-		
-		setPropertyBrewer("pctcollege", "PuRd");
-	  },
+			S.setPropertyBrewer("pctind_finance", "PuRd");
+		  },
 
-	  showPctinc_0_25k: function(){
-	  	
-	  	setPropertyBrewer("pctinc_0k_25k", "GnBu");
+		  showPct_professional: function(){
 
-	  },
+			S.setPropertyBrewer("pctind_professional", "PuRd");
+		  },
 
-	  showPctinc_25k_50k: function(){
-	  	setPropertyBrewer("pctinc_25k_50k", "GnBu");
+		  showPctocc_profmanage: function(){
 
-	  },
+			S.setPropertyBrewer("pctocc_profmanage", "PuRd");
+		  },
 
-	  showPctinc_50k_100k: function(){
-	  	setPropertyBrewer("pctinc_50k_100k", "GnBu");
+		  showPctcollege: function(){
 
-	  },
+			S.setPropertyBrewer("pctcollege", "PuRd");
+		  },
 
-	  showPctinc_100k_more: function(){
-	  	setPropertyBrewer("pctinc_100k_more", "GnBu");
+		  showPctinc_0_25k: function(){
 
-	  },
+		  	S.setPropertyBrewer("pctinc_0k_25k", "GnBu");
 
-	  showMedhhincome: function(){
-		setPropertyBrewer("medianhhincome", "GnBu");
-	  },
+		  },
 
-	  showPctpoverty: function(){
-		 
-		setPropertyBrewer("pctpoverty", "GnBu");
-	  },
+		  showPctinc_25k_50k: function(){
+		  	S.setPropertyBrewer("pctinc_25k_50k", "GnBu");
 
-	  showPctpublicassist: function(){
-		setPropertyBrewer("pctpublicassist", "GnBu");
-	  },
+		  },
 
-	  showUnits: function(){
-		setPropertyBrewer("units", "OrRd");
-	  },
+		  showPctinc_50k_100k: function(){
+		  	S.setPropertyBrewer("pctinc_50k_100k", "GnBu");
 
-	  showPctown: function(){
-		setPropertyBrewer("pctown", "OrRd");
-	  },
+		  },
 
-	  showPctrent: function(){
-		setPropertyBrewer("pctrent", "OrRd");
-	  },
+		  showPctinc_100k_more: function(){
+		  	S.setPropertyBrewer("pctinc_100k_more", "GnBu");
 
-	  showPctvacant: function(){
-		setPropertyBrewer("pctvacant", "OrRd");
-	  },
+		  },
 
-	  showMedianvalue: function() {
-	  	setPropertyBrewer("medianvalue", "OrRd");
+		  showMedhhincome: function(){
+			S.setPropertyBrewer("medianhhincome", "GnBu");
+		  },
 
-	  },
+		  showPctpoverty: function(){
 
-	  showMedianrent: function(){
-		
-		setPropertyBrewer("medianrent", "OrRd"); 
-	  },
+			S.setPropertyBrewer("pctpoverty", "GnBu");
+		  },
 
-	  showMedianpctincomerent : function(){
-		setPropertyBrewer("medianpctincomerent", "GnBu"); 
-	  },
+		  showPctpublicassist: function(){
+			S.setPropertyBrewer("pctpublicassist", "GnBu");
+		  },
 
-	  showPctsameres: function(){
-	  	setPropertyBrewer("pctsameres", "OrRd");
-	  }
-	  
+		  showUnits: function(){
+			S.setPropertyBrewer("units", "OrRd");
+		  },
+
+		  showPctown: function(){
+			S.setPropertyBrewer("pctown", "OrRd");
+		  },
+
+		  showPctrent: function(){
+			S.setPropertyBrewer("pctrent", "OrRd");
+		  },
+
+		  showPctvacant: function(){
+			S.setPropertyBrewer("pctvacant", "OrRd");
+		  },
+
+		  showMedianvalue: function() {
+		  	S.setPropertyBrewer("medianvalue", "OrRd");
+
+		  },
+
+		  showMedianrent: function(){
+
+			S.setPropertyBrewer("medianrent", "OrRd");
+		  },
+
+		  showMedianpctincomerent : function(){
+			S.setPropertyBrewer("medianpctincomerent", "GnBu");
+		  },
+
+		  showPctsameres: function(){
+		  	S.setPropertyBrewer("pctsameres", "OrRd");
+		  }
+
+	});
+
+
+	function initMapRouter(){
+
+		// TODO we probably do not need this timeout...
+
+    // Initialize Backbone router in Router.js file
+    // This is done with a timer so that the app have the time
+    // to build first needed objects in maps : if the router is
+    // called as soon as initialized, it may call not present
+    // parameters.
+    setTimeout( function(){
+
+    	var router = new MapRouter();
+			Backbone.history.start();
+
+    } , 2000 ); // not really clean but easy
+
+	}
+
+
+
+	return {
+		init: initMapRouter
+	};
+
 });
-
-
-function initMapRouter(){
-	var router = new MapRouter();
-	Backbone.history.start();
-}
-

@@ -8,6 +8,6 @@ $(function() {
 	var aCensusLayer = new CensusLayer("../../geodata/common/dataset/");
 	map.addLayer(aCensusLayer);
 
-	aCensusLayer.setProperty("medianrent_10", "OrRd");
+	aCensusLayer.setProperty("medianrent", "OrRd");
 
 });
