@@ -45,7 +45,7 @@ require.config({
 
 });
 
-require(['script', 'routes', 'bootstrap'], function(S, routes){
+require(['script', 'routes', 'bootstrap', 'jquery-ui'], function(S, routes){
 
 	S.bootstrap();
 	routes.init();
