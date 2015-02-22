@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css">
 <link rel="stylesheet" href="./lib/bootstrap/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="./lib/css/font-awesome.min.css" />
-
 <link rel="stylesheet" href="./lib/leaflet-0.7.3/leaflet.css" />
 <link rel="stylesheet" href="./src/style.css">
 <link rel="stylesheet" href="./lib/css/Control.FullScreen.css" />
@@ -45,10 +44,64 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Ungentry</a>
+            <a class="navbar-brand" href="#"><h2>Ungentry</h2></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+            
+
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a a data-toggle="modal" href="#myModal">About</a></li>
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li style="padding-left:5px;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeforboston.github.io/ungentry/" data-text="See what data says about your neighborhood" data-lang="en"></a></li>
+                <li style="padding-left:5px;">
+				<div class="fb-like" data-href="http://codeforboston.github.io/ungentry/" data-layout="button_count" data-action="like" data-show-faces="false" 						datashare="true"></div>
+	          </li>
+                <li class="divider"></li>
+                <li style="padding-left:5px;" ><iframe src="https://rawgit.com/mdo/github-buttons/master/github-btn.html?user=codeforboston&repo=ungentry&type=fork&count=true"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></li>
+              </ul>
+            </ul>
+              <form class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" id="address" class="form-control" placeholder="Search for addresses">
+              </div>
+              <button type="button" id="sendaddress" class="btn btn-default">Submit</button>
+              </form>
+
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+
+<ul class="nav nav-tabs" id="small_display">
+  <li role="presentation" id='link_1990'><a href="">1990</a></li>
+  <li role="presentation" id='link_2000'><a href="">2000</a></li>
+  <li role="presentation" id='link_2010'><a href="">2010</a></li>
+</ul>
+
+ <div class="row maps">
+    <div  class="col-xs-12 col-md-3 map-wrapper">
+   	<div id="map0" class="map">
+   	  <h2 id="date">1990</h2>
+   	</div>  
+    </div>
+    <div class="col-xs-12 col-md-3 map-wrapper">
+   	<div id="map1" class="map" >
+   	  <h2>2000</h2>
+   	</div>  
+    </div>
+    <div  class="col-xs-12 col-md-3 map-wrapper">
+   	<div id="map2" class="map">
+   	  <h2>2010</h2>
+   	</div>
+    </div>
+    <div class="col-xs-12 col-md-3 map-wrapper">
+    	<div class="sidebar">
+    		<div style="height:43px">
+              <ul class="nav nav-tabs nav-justified">
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -85,51 +138,21 @@
                   <li><a href="#medianpctincomerent">Median % of Income as Rent</a></li>
                 </ul>
               </li>
-
-              <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" id="address" class="form-control" placeholder="Search for addresses">
-              </div>
-              <button type="button" id="sendaddress" class="btn btn-default">Submit</button>
-              </form>
             </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-              <li><a a data-toggle="modal" href="#myModal">About</a></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li style="padding-left:5px;"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://codeforboston.github.io/ungentry/" data-text="See what data says about your neighborhood" data-lang="en"></a></li>
-                <li style="padding-left:5px;">
-				<div class="fb-like" data-href="http://codeforboston.github.io/ungentry/" data-layout="button_count" data-action="like" data-show-faces="false" 						datashare="true"></div>
-			 </li>
-                <li class="divider"></li>
-                <li style="padding-left:5px;" ><iframe src="https://rawgit.com/mdo/github-buttons/master/github-btn.html?user=codeforboston&repo=ungentry&type=fork&count=true"
-                  allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></li>
-              </ul>
-
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-
-
-<ul class="nav nav-tabs" id="small_display">
-  <li role="presentation" id='link_1990'><a href="">1990</a></li>
-  <li role="presentation" id='link_2000'><a href="">2000</a></li>
-  <li role="presentation" id='link_2010'><a href="">2010</a></li>
-</ul>
-
- <div class="row maps">
-  <div id="map0" class="map col-xs-12 col-md-4">
-   	<h2 id="date">1990</h2>
-  </div>
-  <div id="map1" class="map col-xs-12 col-md-4 toHide">
-   	<h2>2000</h2>
-  </div>
-  <div id="map2" class="map col-xs-12 col-md-4 toHide">
-   	<h2>2010</h2>
-  </div>
+    		</div>
+    		<div class="iwindow">
+    			
+    		</div>
+    		<div class="lwrapper">
+    			
+    		</div>
+    	</div>
+    </div>
+ </div>
+ <div class="row footer">
+ 	<div class="col-md-12	">
+ 		
+ 	</div>
  </div>
 
 
