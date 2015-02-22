@@ -16,10 +16,12 @@ require.config({
 		'geostats': 'lib/geostats',
 		'rainbow': 'lib/rainbowvis',
 		'topojson': 'lib/topojson.v1.min',
-		'censusLayer': 'prospect/CensusLayer/js/CensusLayer',
+		'censusLayers': 'prospect/CensusLayer/js/CensusLayer',
+		'censusLayer': 'src/censusLayer',
 		'timeslider': 'src/timeslider',
 		'script': 'src/script',
-		'routes': 'src/routes'
+		'routes': 'src/routes',
+		'legend': 'src/legend'
 	},
 
 	shim: {

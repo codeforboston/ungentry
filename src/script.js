@@ -1,7 +1,7 @@
 define([
   'jquery',
   'leaflet',
-  'censusLayer',
+  'censusLayers',
   'stamen',
   'mapSync'
   ], function($, L, CensusLayer){

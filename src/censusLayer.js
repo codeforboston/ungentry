@@ -122,7 +122,7 @@ define([
 							self._loadingProp = false;
 							self._properties_data = data_properties;
 							self._loadMapBounds();
-							self._loadLegend();
+							//self._loadLegend();
 
 						}).fail(function(d) {
 		          console.log("Error occured on loading data...");
@@ -343,7 +343,7 @@ define([
 					this._parts = [];
 					this._groupLayer.clearLayers();
 					this._loadJson();
-					this._loadLegend();
+					//this._loadLegend();
 				}
 
 			},
@@ -361,9 +361,9 @@ define([
 
 					}
 				}
-				this._loadLegend();
+				//this._loadLegend();
 			},
-
+/*
 			_loadLegend : function() {
 
 				if (this._legend) {
@@ -400,6 +400,7 @@ define([
 				this._legend.addTo(this._map);
 
 			}
+			*/
 
 
 	});
