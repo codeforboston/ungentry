@@ -50,10 +50,6 @@ require(['script', 'routes', 'bootstrap', 'jquery-ui'], function(S, routes){
 
 	S.bootstrap();
 	routes.init();
-	// $(document).ready(function(){
-	// 	alert('test');
-
-	// });
 
 	$( window ).resize(function() {
 	  	
