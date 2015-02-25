@@ -50,5 +50,20 @@ require(['script', 'routes', 'bootstrap', 'jquery-ui'], function(S, routes){
 
 	S.bootstrap();
 	routes.init();
+	// $(document).ready(function(){
+	// 	alert('test');
+
+	// });
+
+	$( window ).resize(function() {
+	  	
+	  	if ($('body').width() > 1000){
+	  		
+	  		$("#map0").css('display', "inline-block");
+	  		$("#map1").css('display', "inline-block");
+	  		$("#map2").css('display', "inline-block");
+
+	  	}
+	});
 
 });
