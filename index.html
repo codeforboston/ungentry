@@ -51,7 +51,6 @@
 
 
             <ul class="nav navbar-nav navbar-right">
-              <li><a a data-toggle="modal" href="#myModal">About</a></li>
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span><b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -150,13 +149,18 @@
     </div>
  </div>
  <div class="row footer">
- 	<div class="col-md-12	">
- 		
+   <div class="col-md-1">
+     
+   </div>
+ 	<div class="col-md-11	">
+       <a data-toggle="modal" href="#aboutModal">About the Project</a>
+       <span> | </span>
+       <a data-toggle="modal" href="#dataModal">About the Data</a>
  	</div>
  </div>
 
 
-<div class="modal fade" id="myModal">
+<div class="modal fade" id="aboutModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -187,6 +191,30 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<div class="modal fade" id="dataModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">How did we Crunch our Data?</h4>
+      </div>
+      <div class="modal-body container-fixed">
+        <p>The data used comes from the 1990 and 2000 US Census and 2008-2012 American Community Survey 5-year estimates for census tracts in Suffolk, Middlesex, and Norfolk counties in Massachusetts. </p>
+        
+        <p>We accessed the data using <a href="http://www.socialexplorer.com">Social Explorer</a>. We normalized the 1990 and 2000 Census data to 2010 census tract boundaries using aerial weights interpolation methods provided by the <a href="http://www.s4.brown.edu/us2010/Researcher/Bridging.htm">Longitudinal Tract Database</a>. The 2008-2012 data uses the 2010 census tract boundaries.</p> 
+
+        <p>All dollar values are adjusted to 2013 constant dollars.</p>
+
+        <div class="row">
+          <a href="http://www.codeforboston.org/" class="col-xs-4 col-xs-offset-2"><img src="lib/images/code-for-boston-logo.png" alt="Code for Boston" class="img-responsive"></a>
+          <a href="http://www.codeforamerica.org/" class="col-xs-3"><img src="lib/images/code-for-america-logo.png" alt="Code for America" class="img-responsive"></a>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div><!--/.modal footer-->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 
