@@ -35,6 +35,19 @@ footer {
     margin-top: -10px;
 }
 
+.navbar-form {
+    padding-right: 0px;
+}
+/*
+.navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.navbar-nav>li>.dropdown-toggle {
+    padding-top: 19.5px;
+    padding-bottom: 19.5px;
+}
+*/
 .info {
     padding: 6px 8px;
     font: 14px/16px Arial, Helvetica, sans-serif;
@@ -64,14 +77,13 @@ footer {
     height:100%;
     margin:0;
     padding-top:60px;
-    margin-top: -60px;
-    margin-bottom: -40px; 
-    padding-bottom: 40px;
+    margin-top: -60px; 
+    padding-bottom: 25px;
 }
 
 .map-wrapper{
     height: 100%;
-    padding: 20px 10px;
+    padding: 3px 1.5px;
 }
 
 .map {
