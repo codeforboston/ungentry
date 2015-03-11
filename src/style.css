@@ -190,4 +190,10 @@ div.map > h2 {
 
 }
 
+/*** isse #62 this was to fix overscreen dropdown ***/
+.dropdown.open:last-child ul{
+
+    right:0px;
+}
+
 
