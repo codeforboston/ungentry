@@ -122,7 +122,7 @@ define([
 							self._loadingProp = false;
 							self._properties_data = data_properties;
 							self._loadMapBounds();
-							//self._loadLegend();
+							self._computeLegend();
 
 						}).fail(function(d) {
 		          console.log("Error occured on loading data...");
@@ -343,7 +343,7 @@ define([
 					this._parts = [];
 					this._groupLayer.clearLayers();
 					this._loadJson();
-					//this._loadLegend();
+					this._computeLegend();
 				}
 
 			},
@@ -361,46 +361,48 @@ define([
 
 					}
 				}
-				//this._loadLegend();
+				this._computeLegend();
 			},
-/*
-			_loadLegend : function() {
 
-				if (this._legend) {
-					this._map.removeControl(this._legend);
-				}
+			_computeLegend : function() {
+				var currentProp = this._currentProperty,
+						properties,
+						index,
+						geo,
+						min,
+						max,
+						legendData = [];
 
-				var self = this;
-				this._legend = L.control({position: 'bottomright'});
-				this._legend.onAdd = function (map) {
-					
-					var div = L.DomUtil.create('div', 'info legend');
-					if (self._currentProperty!="") {
+				if(currentProp){
+					properties = this._properties_data[currentProp];
 
-						var prop = self._properties_data[self._currentProperty];
+					if( properties ){
 
-						if (prop) {
-							var geo = prop.serie;
+						geo = properties.serie;
 
-
-							div.innerHTML += '<h4>'+prop.title+'</h4>';
-							for (var i = 0; i < 5; i++) {
-							    var range_min = geo[i].toFixed(0);
-							    var range_max =  geo[i+1].toFixed(0);
-							    var color =  self._getColor(geo, (parseFloat(range_max)+parseFloat(range_min))/2 );
-							    div.innerHTML += '<i style="background: ' + color + ';"></i> ' + range_min + prop.unit + " - " + range_max + prop.unit + '<br>';
-							}
+						for(index = 0; index < geo.length - 1; index ++){
+							min = geo[index];
+							max = geo[index + 1];
+							legendData.push({
+								min: min.toFixed(0),
+								max: max.toFixed(0),
+								unit: properties.unit,
+								color: this._getColor(geo, (max + min)/2.0 )
+							});
 						}
 
 
+					$(document).trigger('legend:render', {
+						title: properties.title,
+						data: legendData
+					});
+
+
 					}
-					//lwrapper.html(div);
-					return div;
-			    	};
-				this._legend.addTo(this._map);
+				}
+
 
 			}
-			*/
 
 
 	});
