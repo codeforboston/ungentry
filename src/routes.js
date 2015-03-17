@@ -5,7 +5,6 @@ define([
 	], function( Backbone, S ){
 
 	//define router class
-
 	var MapRouter = Backbone.Router.extend ({
 		  routes: {
 				    ""          : "showMedianrent", // Default display

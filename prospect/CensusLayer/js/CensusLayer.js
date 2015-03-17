@@ -388,7 +388,7 @@ define([
 							    var range_min = geo[i].toFixed(0);
 							    var range_max =  geo[i+1].toFixed(0);
 							    var color =  self._getColor(geo, (parseFloat(range_max)+parseFloat(range_min))/2 );
-							    div.innerHTML += '<i style="background: ' + color + ';"></i> ' + range_min + prop.unit + " - " + range_max + prop.unit + '<br>';
+							    div.innerHTML += '<i style="background: ' + color + ';"></i> '+ prop.unit + ' ' + range_min + " - " + prop.unit + ' ' + range_max  + '<br>';
 							}
 						}
 

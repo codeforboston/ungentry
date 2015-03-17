@@ -1,36 +1,49 @@
-define(['jquery', 'leaflet', 'colorbrewer'], function($, L, colorbrewer){
+define(['jquery', 'underscore'], function($, _){
 
-	  		
+	var SELECTOR = '.lwrapper';
 
-	var self = this;
-	var legend = L.control({position: 'bottomright'});
-	self.legend.onAdd = function (lwrapper) {
-					
-	var div = L.DomUtil.create('div', 'info legend');
-		if (self._currentProperty!=='') {
+	// This template will dump out something like:
+	// 	<h4> Avg. Rent <h4>
+	//  <i style="background: #fff;"></i> $265 - $756
+	//  <i style="background: #eee;"></i> $756 - $1000
+	// ...
+	var TEMPLATE = '<h4> <%= title %> </h4>'+
+									'<% _.each( data, function(entry){ %>'+
+									'<i style="background: <%= entry.color %>;"></i>'+
+									'<%= entry.unit %> <%= entry.min %> - '+
+									'<%= entry.unit %>  <%= entry.max %> '+
+									'<br>'+
+									'<% }) %>';
 
-		  var prop = self._properties_data[self._currentProperty];
+	// Legend Data is an object with a title attribute, and a data attribute which is an array of legend entries as follows:
 
-		if (prop) {
-			var geo = prop.serie;
+	// [
+	// 		{
+	//		min: <integer>,
+	//		max: <integer>,
+	//		unit: <string>,
+	//		color: <colorHEX>
+	// 		},
+	//    ...
+	// ]
+	function render(event, legendData){
+		var $el = $(SELECTOR);
+		$el.html( _.template(TEMPLATE, legendData));
+
+	}
 
 
-			div.innerHTML += '<h4>'+prop.title+'</h4>';
-				for (var i = 0; i < 5; i++) {
-			       var range_min = geo[i].toFixed(0);
-      			    var range_max =  geo[i+1].toFixed(0);
-			    var color =  self._getColor(geo, (parseFloat(range_max)+parseFloat(range_min))/2 );
-			    div.innerHTML += '<i style="background: ' + color + ';"></i> ' + range_min + prop.unit + " - " + range_max + prop.unit + '<br>';
-							}
-						}
+	function init () {
+		// do anything if we need to
 
+		// listen for when there is data, then render
+		$(document).on('legend:render', render);
 
-					}
-					//lwrapper.html(div);
-					return div;
-			    	};
-				self.legend.addTo($('.lwrapper'));
-				
+	}
+
+	return {
+		init: init
+	}
 
 
 });

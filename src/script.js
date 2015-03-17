@@ -1,7 +1,7 @@
 define([
   'jquery',
   'leaflet',
-  'censusLayers',
+  'censusLayer',
   'stamen',
   'mapSync'
   ], function($, L, CensusLayer){
@@ -25,7 +25,7 @@ define([
     	$("#date").html("1990");
 
     	map0 = L.map('map0').setView([42.354, -71.065], 13);
-    	new L.StamenTileLayer("toner").addTo(map0);
+    	new L.StamenTileLayer("toner", { attribution: "see modal"}).addTo(map0);
     	census0 = new CensusLayer(map0, "./geodata/common/dataset/");
     	map0.addLayer(census0);
 

@@ -16,7 +16,6 @@ require.config({
 		'geostats': 'lib/geostats',
 		'rainbow': 'lib/rainbowvis',
 		'topojson': 'lib/topojson.v1.min',
-		'censusLayers': 'prospect/CensusLayer/js/CensusLayer',
 		'censusLayer': 'src/censusLayer',
 		'timeslider': 'src/timeslider',
 		'script': 'src/script',
@@ -47,8 +46,8 @@ require.config({
 
 });
 
-require(['script', 'routes', 'bootstrap', 'jquery-ui'], function(S, routes){
-
+require(['script', 'routes', 'legend', 'bootstrap', 'jquery-ui'], function(S, routes, legend){
+	legend.init();
 	S.bootstrap();
 	routes.init();
 
