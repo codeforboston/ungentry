@@ -61,17 +61,7 @@ footer {
     color: #777;
 }
 
-.legend {
-    line-height: 18px;
-    color: #555;
-}
-.legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.7;
-}
+
 
 .maps {
     height:100%;
@@ -112,8 +102,22 @@ div.map > h2 {
 }
 
 .lwrapper{
-    height: 200px;
-
+    position: absolute;
+    bottom: 3%;
+    left: 5%;
+    padding: 10px;
+    background-color: lightgray;
+    border-radius: 2px;
+}
+.legend {
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
 }
 
 .slider_time {
