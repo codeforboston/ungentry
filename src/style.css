@@ -135,12 +135,12 @@ div.map > h2 {
 
 
 
- #small_display{
+/* #small_display{
     display:none;
-}
+}*/
 
 
-@media(max-width:992px){
+/*@media(max-width:992px){
 
     #small_display{
         display:inline-block;
@@ -154,7 +154,7 @@ div.map > h2 {
     #sidebar{
         display: inline-block;
     }
-}
+}*/
 /*@media(min-width:768px){
     #small_display{
         display:block;
@@ -180,7 +180,7 @@ div.map > h2 {
         display:inline-block;
     }
 }*/
-@media(min-width:993px){
+/*@media(min-width:993px){
     #map0{
         display:inline-block;
     }
@@ -193,5 +193,15 @@ div.map > h2 {
 
 
 }
+*/
+/*** isse #62 this was to fix overscreen dropdown ***/
+.dropdown.open ul{
 
+    right:0px;
+}
+
+.dropdown.open:first-child ul{
+
+    right:inherit;
+}
 
