@@ -65,25 +65,49 @@ define([
 
     	init3ViewsMode(); // init the view with 3 maps
 
-    	$('#link_1900').click(function(event) {
+
+    	$('#link_1990').click(function(event) {
     	  event.preventDefault();
-    	  console.log('clicked 1900');
-    	  $('#map1').hide();
-    	  $('#map2').hide();
+    	  console.log('clicked 1990');
+          if($('#map0_col').hasClass('hidden-xs')===true){
+            $('#map0_col').removeClass('hidden-xs hidden-sm');  
+            $('#map0_col').addClass('col-xs-9 col-sm-9');  
+            $('#map1_col').removeClass('col-xs-9 col-sm-9');  
+            $('#map1_col').addClass('hidden-xs hidden-sm');  
+            $('#map2_col').removeClass('col-xs-9 col-sm-9');  
+            $('#map2_col').addClass('hidden-xs hidden-sm');  
+            
+          }
+          console.log('does 1990 have hidden-xs' + $('#map0').hasClass('hidden-xs'));
+          
     	});
     	$('#link_2000').click(function(event) {
     	  event.preventDefault();
     	  console.log('clicked 2000');
-    	  $('#map0').hide();
-    	  $('#map1').show();
-    	  $('#map2').hide();
+    	  if($('#map1_col').hasClass('hidden-xs')===true){
+            // $('#map0_col').removeClass('col-xs-9 col-sm-9  map-wrapper');  
+            $('#map0_col').removeClass('col-xs-9 col-sm-9');  
+            $('#map0_col').addClass('hidden-xs hidden-sm');  
+            $('#map1_col').removeClass('hidden-xs hidden-sm');  
+            $('#map1_col').addClass('col-xs-9 col-sm-9');  
+            $('#map2_col').removeClass('col-xs-9 col-sm-9');  
+            $('#map2_col').addClass('hidden-xs hidden-sm');  
+          }
+
+          console.log('does 2000 have hidden-xs' + $('#map1').hasClass('hidden-xs'));
     	});
     	$('#link_2010').click(function(event) {
     	  event.preventDefault();
     	  console.log('clicked 2010');
-    	  $('#map0').hide();
-    	  $('#map1').hide();
-    	  $('#map2').show();
+    	  if($('#map2_col').hasClass('hidden-xs')===true){
+            $('#map0_col').removeClass('col-xs-9 col-sm-9');  
+            $('#map0_col').addClass('hidden-xs hidden-sm');  
+            $('#map1_col').removeClass('col-xs-9 col-sm-9');  
+            $('#map1_col').addClass('hidden-xs hidden-sm');  
+            $('#map2_col').removeClass('hidden-xs hidden-sm');  
+            $('#map2_col').addClass('col-xs-9 col-sm-9');  
+          }
+          console.log('does 2010 have hidden-xs' + $('#map2').hasClass('hidden-xs'));
     	});
 
     }

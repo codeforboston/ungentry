@@ -205,3 +205,6 @@ div.map > h2 {
     right:inherit;
 }
 
+.highlight{
+    background-color:yellow;
+}
