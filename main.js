@@ -62,4 +62,8 @@ require(['script', 'routes', 'bootstrap', 'jquery-ui'], function(S, routes){
 	  	}
 	});
 
+	$(window).load(function(){
+        $('#welcomeModal').modal('show');
+       });
+
 });
