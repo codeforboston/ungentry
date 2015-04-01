@@ -262,3 +262,52 @@ div.map > h2 {
 .highlight{
     background-color:yellow;
 }
+
+
+.map-group {
+    position: relative;
+    height: 100%
+}
+
+.map-segment {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 33%;
+}
+
+
+
+.map-segment.first {
+    left: 0;
+}
+.map-segment.second {
+    left: 33%;
+}
+.map-segment.third {
+    left: 66%;
+}
+
+
+
+@media(max-width:768px){
+
+
+    .map-segment.first,
+    .map-segment.second,
+    .map-segment.third {
+        position: absolute;
+        top:0;
+        left: -100%;
+        height: 100%;
+        width: 100%;
+    }
+    .map-segment.first.active,
+    .map-segment.second.active,
+    .map-segment.third.active {
+        left: 0;
+    }
+
+}
+
