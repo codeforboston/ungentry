@@ -313,7 +313,7 @@ define([
 
 					 var val = parseFloat(feature.properties[this._currentProperty]);
 
-					 if (val) {
+					 if (!NaN(val)) {
 						if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
 					 		return {"fillColor": this._getColor(prop.serie,val) , "color" : "#f00" , "weight": 6 , "opacity" : 1.0,  "fillOpacity": 0.6};
 						} else {
