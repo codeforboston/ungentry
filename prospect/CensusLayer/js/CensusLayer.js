@@ -61,8 +61,6 @@ define([
 				});
 
 				this._map.on('moveend', function(e) {
-
-			   console.log("moveend");
 			   self._loadJson();
 
 				});
@@ -307,13 +305,14 @@ define([
 					return this._itemStyle(feature);
 				 }
 
-				 if (this._currentProperty!="") {
+				 if (this._currentProperty!="" && this._currentProperty != undefined) {
 
 					 var prop = this._properties_data[this._currentProperty];
 
 					 var val = parseFloat(feature.properties[this._currentProperty]);
 
-					 if (val) {
+					 if (typeof(val) !== "undefined") {
+
 						if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
 					 		return {"fillColor": this._getColor(prop.serie,val) , "color" : "#f00" , "weight": 6 , "opacity" : 1.0,  "fillOpacity": 0.6};
 						} else {
