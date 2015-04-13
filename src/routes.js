@@ -8,7 +8,7 @@ define([
 
 	var MapRouter = Backbone.Router.extend ({
 		  routes: {
-				    ""          : "showMedianrent", // Default display
+				    ""          : "medianpctincomerent", // Default display
 	         "pcthchild" : "showPcthchild",
 	         "pct_finance" : "showPct_finance",
 	         "pctind_professional" : "showPct_professional",
