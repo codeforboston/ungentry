@@ -1,10 +1,10 @@
 define(['jquery', 'underscore'], function($, _){
-	var selector = '.iwrapper';
+	var SELECTOR = '.iwrapper';
 
-	var template = 
+	var TEMPLATE = '<p> <%= varInfo %> </P>'
 
 	function render(event, legendData){
-	   var $el = $(selector);
+	   var $el = $(SELECTOR);
 	   $el.html( _.template(TEMPLATE, legendData));
 
 	}
@@ -14,7 +14,7 @@ define(['jquery', 'underscore'], function($, _){
 		// do anything if we need to
 
 		// listen for when there is data, then render
-		$(document).on('legend:render', render);
+		$(document).on('iwindow:render', render);
 
 	}
 

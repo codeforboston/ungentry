@@ -1,5 +1,5 @@
 define(['jquery', 'underscore'], function($, _){
-
+      
 	var SELECTOR = '.lwrapper';
 
 	// This template will dump out something like:

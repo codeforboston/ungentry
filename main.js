@@ -20,7 +20,8 @@ require.config({
 		'timeslider': 'src/timeslider',
 		'script': 'src/script',
 		'routes': 'src/routes',
-		'legend': 'src/legend'
+		'legend': 'src/legend',
+		'iwindow': 'src/iwindow'
 	},
 
 	shim: {
