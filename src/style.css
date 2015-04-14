@@ -98,7 +98,12 @@ div.map > h2 {
 }
 
 .iwindow {
-    height: 50px;
+    height: 150px;
+    text-align: center;
+    padding: 20px 10px;
+}
+.iwindow>p{
+    font-size: 1.33em;
 }
 
 .lwrapper{
