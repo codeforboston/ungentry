@@ -1,7 +1,7 @@
 accepted                 ,unit,title
-"medianrent_00"		,   $,Avg. Rent
-"medianrent_10"		,   $,Avg. Rent
-"medianrent_90"		,   $,Avg. Rent
+"medianrent_00"		,   $,Median Rent
+"medianrent_10"		,   $,Median Rent
+"medianrent_90"		,   $,Median Rent
 "pctpoverty_00"		,   %,% Poverty
 "pctpoverty_10"		,   %,% Poverty
 "pctpoverty_90"		,   %,% Poverty
