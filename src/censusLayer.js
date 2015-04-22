@@ -2,8 +2,9 @@ define([
 	'jquery',
 	'leaflet',
 	'topojson',
-	'colorbrewer'
-	], function($, L, topojson, colorbrewer){
+    'colorbrewer',
+    "hoverTract"
+], function($, L, topojson, colorbrewer, selTract){
 
 
 	var CensusLayer = L.Class.extend({
@@ -276,15 +277,23 @@ define([
 
 					var self = this;
 					$.each(geojsonLayer._layers,function(idx,layer){
-						layer.feature.map_mouse_over = false;
-						layer.on("mouseover", function (e) {
+					    layer.feature.map_mouse_over = false;
+                                            selTract.add(layer.feature.id,
+                                                         function() {
+                                                             layer.setStyle(self._styleFunction(layer.feature, true));
+                                                         },
+                                                         function() {
+                                                             layer.setStyle(self._styleFunction(layer.feature));
+                                                         });
+					    layer.on("mouseover", function (e) {
+                                                selTract.select(e.target.feature.id);
 					        e.target.feature.map_mouse_over = true;
-						   e.target.setStyle(self._styleFunction(e.target.feature, true));
-						});
-						layer.on("mouseout", function (e) {
-						   e.target.feature.map_mouse_over = false;
-						   e.target.setStyle(self._styleFunction(e.target.feature));
-						});
+					    });
+					    layer.on("mouseout", function (e) {
+						e.target.feature.map_mouse_over = false;
+                                                // TODO: Move this somewhere else
+						selTract.select(null);
+					    });
 					});
 
 					if (this._layers_id[add[i]]) {
@@ -301,6 +310,7 @@ define([
 
 			},
 
+            // Compute the styles for a
 			_styleFunction : function(feature,highlight) {
 
 				 if (this._itemStyle){
