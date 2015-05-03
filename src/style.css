@@ -1,11 +1,11 @@
-html { 
+html {
     height: 100%;
 }
 
-body { 
-    height: 100%; 
-    margin: 0; 
-    padding: 0; 
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 footer {
@@ -16,10 +16,10 @@ footer {
 .row {
     margin:0;
     padding-top:60px;
-    margin-top: -60px; 
+    margin-top: -60px;
 }
 */
-#map0, #map1, #map2 { 
+#map0, #map1, #map2 {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -67,7 +67,7 @@ footer {
     height:100%;
     margin:0;
     padding-top:60px;
-    margin-top: -60px; 
+    margin-top: -60px;
     padding-bottom: 25px;
 }
 
@@ -78,7 +78,7 @@ footer {
 
 .map {
     height:100%;
-    
+
 }
 
 div.map > h2 {
@@ -110,6 +110,7 @@ div.map > h2 {
     position: absolute;
     bottom: 3%;
     left: 5%;
+    right: 5%;
     padding: 10px;
     background-color: lightgray;
     border-radius: 2px;

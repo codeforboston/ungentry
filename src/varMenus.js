@@ -4,11 +4,6 @@ define(["jquery", "underscore", "variables", "categories"],
                 init: function() {
                     _.each(cats, function(cat) {
                         var dropdown = $(cat.dropdown);
-                        /*
-                        console.log("Building menu",
-                                    cat, dropdown);
-                         */
-
                         _.each(cat.varnames, function(catgroup, i) {
                             if (i > 0) {
                                 dropdown.append("<li class='divider'/>");

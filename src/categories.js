@@ -3,6 +3,9 @@ define([], function() {
         {
             name: "Individual",
             dropdown: "ul.cat-household",
+            // varnames should be an array of arrays.  When the menu is
+            // constructed, the resulting menu items will be separated
+            // by dividers.
             varnames: [["pcthhchild", "pctcollege", "pctind_professional",
                         "pctocc_profmanage", "pctind_finance"]]
         },
