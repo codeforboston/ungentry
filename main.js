@@ -20,10 +20,14 @@ require.config({
 		'timeslider': 'src/timeslider',
 		'script': 'src/script',
 		'routes': 'src/routes',
-		'legend': 'src/legend',
+	    'legend': 'src/legend',
+            //"about": "src/about.js",
 	    'iwindow': 'src/iwindow',
             "hoverTract": "src/hoverTract",
-            "subselect": "src/subselect"
+            "subselect": "src/subselect",
+            "variables": "src/variables",
+            "categories": "src/categories",
+            "varMenus": "src/varMenus"
 	},
 
 	shim: {
@@ -49,9 +53,17 @@ require.config({
 
 });
 
-require(['script', 'routes', 'legend', 'bootstrap', 'jquery-ui'], function(S, routes, legend){
-	legend.init();
-	S.bootstrap();
-	routes.init();
-
-});
+require(['script',
+         'routes',
+         'legend',
+         "iwindow",
+         "varMenus",
+         "bootstrap"
+        ],
+        function(S, routes, legend, iwindow, menus){
+	     legend.init();
+	     S.bootstrap();
+	     routes.init();
+            iwindow.init();
+            menus.init();
+        });

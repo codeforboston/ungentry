@@ -1,24 +1,32 @@
-define(['jquery', 'underscore'], function($, _){
-	var SELECTOR = '.iwrapper';
+define(['jquery',
+        'underscore',
+       "variables"],
 
-	var TEMPLATE = '<p> <%= varInfo %> </P>'
+       function($, _,  vars) {
+           var SELECTOR = '.iwrapper';
 
-	function render(event, legendData){
-	   var $el = $(SELECTOR);
-	   $el.html( _.template(TEMPLATE, legendData));
+           var TEMPLATE = '<p> <%= varInfo %> </p>';
 
-	}
+           function render(event, legendData){
+	       var $el = $(SELECTOR);
+	       $el.html( _.template(TEMPLATE, legendData));
+           }
 
+           function init () {
+               console.log("Initializing iwindow");
+	       // do anything if we need to
 
-	function init () {
-		// do anything if we need to
+	       // listen for when there is data, then render
+	       $(document)
+                   .on('iwindow:render', render)
+                   .on("dataShown", function(e, varname) {
+                       var desc = vars[varname].desc;
 
-		// listen for when there is data, then render
-		$(document).on('iwindow:render', render);
+                       $("div.iwindow").html("<p>" + _.escape(desc) + "</p>");
+                   });
+           }
 
-	}
-
-	return {
-		init: init
-	}
-});
+           return {
+	       init: init
+           };
+       });
