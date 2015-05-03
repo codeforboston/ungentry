@@ -13,7 +13,6 @@ define(['jquery',
            }
 
            function init () {
-               console.log("Initializing iwindow");
 	       // do anything if we need to
 
 	       // listen for when there is data, then render

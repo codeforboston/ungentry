@@ -20,7 +20,6 @@ define(["jquery", "underscore", "variables", "categories"],
                                         "<a href='#data/" + varname +
                                         "'>" + _.escape(varinfo.name) +
                                         "</a></li>";
-                                console.log(varinfo);
                                 dropdown.append(html);
                             });
                         });
