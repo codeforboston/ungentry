@@ -91,6 +91,10 @@ div.map > h2 {
     z-index: 500;
 }
 
+.leaflet-bottom {
+  display: none;
+}
+
 .sidebar {
     background-color: #F5F5F5;
     width: 100%;
