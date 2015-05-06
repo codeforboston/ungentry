@@ -151,7 +151,9 @@ div.map > h2 {
 }*/
 
 
+
 /*@media(max-width:992px){
+
 
     #small_display{
         display:inline-block;
@@ -162,10 +164,12 @@ div.map > h2 {
     #map2{
         display:none;
     }
+
     #sidebar{
         display: inline-block;
     }
 }*/
+
 /*@media(min-width:768px){
     #small_display{
         display:block;
@@ -191,7 +195,9 @@ div.map > h2 {
         display:inline-block;
     }
 }*/
+
 /*@media(min-width:993px){
+
     #map0{
         display:inline-block;
     }
