@@ -20,9 +20,16 @@ require.config({
 		'timeslider': 'src/timeslider',
 		'script': 'src/script',
 		'routes': 'src/routes',
-		'legend': 'src/legend',
-		'iwindow': 'src/iwindow',
-		'roll': 'src/roll'
+	    'legend': 'src/legend',
+            //"about": "src/about.js",
+	    'iwindow': 'src/iwindow',
+            "hoverTract": "src/hoverTract",
+            "subselect": "src/subselect",
+            "variables": "src/variables",
+            "categories": "src/categories",
+            "varMenus": "src/varMenus",
+	    'legend': 'src/legend',
+	    'roll': 'src/roll'
 	},
 
 	shim: {
@@ -48,25 +55,35 @@ require.config({
 
 });
 
-require(['script', 'routes', 'legend', 'roll', 'bootstrap', 'jquery-ui'], function(S, routes, legend, roll){
-	legend.init();
-	roll.init();
-	S.bootstrap();
-	routes.init();
+require(['script',
+         'routes',
+         'legend',
+         "roll",
+         "iwindow",
+         "varMenus",
+         "bootstrap",
+         "jquery-ui"
+        ],
+        function(S, routes, legend, roll, iwindow, menus){
+	    legend.init();
+	    S.bootstrap();
+	    routes.init();
+            iwindow.init();
+            menus.init();
 
-	$( window ).resize(function() {
-	  	
+            $( window ).resize(function() {
+
 	  	if ($('body').width() > 1000){
-	  		
-	  		$("#map0").css('display', "inline-block");
-	  		$("#map1").css('display', "inline-block");
-	  		$("#map2").css('display', "inline-block");
+
+	  	    $("#map0").css('display', "inline-block");
+	  	    $("#map1").css('display', "inline-block");
+	  	    $("#map2").css('display', "inline-block");
 
 	  	}
-	});
+	    });
 
-	$(window).load(function(){
-        $('#welcomeModal').modal('show');
-       });
-
-});
+	    $(window).load(function(){
+                $('#welcomeModal').modal('show');
+            });
+        }
+       );
