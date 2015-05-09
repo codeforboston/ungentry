@@ -1,13 +1,13 @@
 define(['jquery', 'underscore'], function($, _){
-
-	var SELECTOR = '.lwrapper';
+      
+	var SELECTOR = '.rollwindow';
 
 	// This template will dump out something like:
 	// 	<h4> Avg. Rent <h4>
 	//  <i style="background: #fff;"></i> $265 - $756
 	//  <i style="background: #eee;"></i> $756 - $1000
 	// ...
-	var TEMPLATE = '<h4> <%= title %> </h4>'+
+	var TEMPLATE = '<h4> Tract ID </h4>'+
 									'<% _.each( data, function(entry){ %>'+
 									'<i style="background: <%= entry.color %>;"></i>'+
 									'<%= entry.unit %> <%= entry.min %> - '+
@@ -37,12 +37,13 @@ define(['jquery', 'underscore'], function($, _){
 		// do anything if we need to
 
 		// listen for when there is data, then render
-		$(document).on('legend:render', render);
+		$(document).on('roll:render', render);
 
 	}
 
 	return {
 		init: init
-	};
+	}
+
 
 });

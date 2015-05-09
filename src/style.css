@@ -91,10 +91,17 @@ div.map > h2 {
     z-index: 500;
 }
 
+.leaflet-bottom {
+  display: none;
+}
+
 .sidebar {
     background-color: #F5F5F5;
     width: 100%;
     height: 100%;
+}
+.iwindow-title{
+    text-align: center;
 }
 
 .iwindow {
@@ -104,6 +111,9 @@ div.map > h2 {
 }
 .iwindow>p{
     font-size: 1.33em;
+}
+.rollwindow{
+    height: 50px;
 }
 
 .lwrapper{
@@ -146,7 +156,9 @@ div.map > h2 {
 }*/
 
 
+
 /*@media(max-width:992px){
+
 
     #small_display{
         display:inline-block;
@@ -157,10 +169,12 @@ div.map > h2 {
     #map2{
         display:none;
     }
+
     #sidebar{
         display: inline-block;
     }
 }*/
+
 /*@media(min-width:768px){
     #small_display{
         display:block;
@@ -186,7 +200,9 @@ div.map > h2 {
         display:inline-block;
     }
 }*/
+
 /*@media(min-width:993px){
+
     #map0{
         display:inline-block;
     }

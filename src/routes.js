@@ -4,27 +4,11 @@ define([
     'underscore',
     "variables"
 ], function( Backbone, S, _, vars){
-
-    var self = this;
-    var TEMPLATE = '<p> <%= this.blurb %> </p>';
-
     function showData(varName) {
         var brewerName = vars[varName].props;
         S.setPropertyBrewer(varName, brewerName);
-
         $(document).trigger("dataShown", varName);
     }
-
-
-    /*
-    // Generate the data routes from the variables.
-    var routes = _.reduce(vars.props, function(memo, val, key) {
-        memo[key] = _.partial(showData, key);
-        return memo;
-    }, {});
-
-    routes[""] = _.partial(showData, "medianpctincomerent");
-    */
 
 	//define router class
     var MapRouter = Backbone.Router.extend ({
@@ -36,7 +20,6 @@ define([
             showData(v || "medianpctincomerent");
         }
     });
-
 
     function initMapRouter(){
 

@@ -27,7 +27,9 @@ require.config({
             "subselect": "src/subselect",
             "variables": "src/variables",
             "categories": "src/categories",
-            "varMenus": "src/varMenus"
+            "varMenus": "src/varMenus",
+	    'legend': 'src/legend',
+	    'roll': 'src/roll'
 	},
 
 	shim: {
@@ -56,14 +58,32 @@ require.config({
 require(['script',
          'routes',
          'legend',
+         "roll",
          "iwindow",
          "varMenus",
-         "bootstrap"
+         "bootstrap",
+         "jquery-ui"
         ],
-        function(S, routes, legend, iwindow, menus){
-	     legend.init();
-	     S.bootstrap();
-	     routes.init();
+        function(S, routes, legend, roll, iwindow, menus){
+	    legend.init();
+	    S.bootstrap();
+	    routes.init();
             iwindow.init();
             menus.init();
-        });
+
+            $( window ).resize(function() {
+
+	  	if ($('body').width() > 1000){
+
+	  	    $("#map0").css('display', "inline-block");
+	  	    $("#map1").css('display', "inline-block");
+	  	    $("#map2").css('display', "inline-block");
+
+	  	}
+	    });
+
+	    $(window).load(function(){
+                $('#welcomeModal').modal('show');
+            });
+        }
+       );
