@@ -21,8 +21,8 @@ require.config({
 		'script': 'src/script',
 		'routes': 'src/routes',
 		'legend': 'src/legend',
-		'iwindow': 'src/iwindow',
-		'roll': 'src/roll'
+		'iwindow': 'src/iwindow'//,
+		//'roll': 'src/roll'
 	},
 
 	shim: {
@@ -48,9 +48,9 @@ require.config({
 
 });
 
-require(['script', 'routes', 'legend', 'roll', 'bootstrap', 'jquery-ui'], function(S, routes, legend, roll){
+require(['script', 'routes', 'legend',  'bootstrap', 'jquery-ui'], function(S, routes, legend, roll){
 	legend.init();
-	roll.init();
+	//roll.init();
 	S.bootstrap();
 	routes.init();
 
