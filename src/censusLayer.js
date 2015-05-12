@@ -2,14 +2,15 @@ define([
 	'jquery',
 	'leaflet',
 	'topojson',
-	'colorbrewer'
-	], function($, L, topojson, colorbrewer){
+	'colorbrewer',
+	'hoverTract'
+	], function($, L, topojson, colorbrewer, hoverTract){
 
 
 	var CensusLayer = L.Class.extend({
 
-	    initialize: function (iMap,iDataPath) {
-        // save position of the layer or any options from the constructor
+	  initialize: function (iMap,iDataPath) {
+           // save position of the layer or any options from the constructor
 
 		   	this._datapath = iDataPath;
 
@@ -276,8 +277,34 @@ define([
 
 					var self = this;
 					$.each(geojsonLayer._layers,function(idx,layer){
+                                      layer.feature.map_mouse_over = false;
+                                            hoverTract.watchForValue(layer.feature.id,
+                                                         function() {
+                                                             layer.setStyle(self._styleFunction(layer.feature, true));
+                                                         },
+                                                         function() {
+                                                             layer.setStyle(self._styleFunction(layer.feature));
+                                                         });
+					    layer.on("mouseover", function (e) {
+                                                hoverTract.select(e.target.feature.id);
+ 					              e.target.feature.map_mouse_over = true;
+ 					         });
+					    layer.on("mouseout", function (e) {
+						       e.target.feature.map_mouse_over = false;
+                                                // TODO: Move this somewhere else
+						       hoverTract.select(null);
+					    });
+
+
+
+
+
+					/*
 						layer.feature.map_mouse_over = false;
 						layer.on("mouseover", function (e) {
+
+
+
 					        e.target.feature.map_mouse_over = true;
 						   e.target.setStyle(self._styleFunction(e.target.feature, true));
 						});
@@ -285,6 +312,7 @@ define([
 						   e.target.feature.map_mouse_over = false;
 						   e.target.setStyle(self._styleFunction(e.target.feature));
 						});
+					  */
 					});
 
 					if (this._layers_id[add[i]]) {
