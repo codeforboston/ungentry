@@ -61,6 +61,8 @@ define([
 				});
 
 				this._map.on('moveend', function(e) {
+
+			   console.log("moveend");
 			   self._loadJson();
 
 				});
@@ -305,14 +307,13 @@ define([
 					return this._itemStyle(feature);
 				 }
 
-				 if (this._currentProperty!="" && this._currentProperty != undefined) {
+				 if (this._currentProperty!="") {
 
 					 var prop = this._properties_data[this._currentProperty];
 
 					 var val = parseFloat(feature.properties[this._currentProperty]);
 
-					 if (typeof(val) !== "undefined") {
-
+					 if (val) {
 						if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
 					 		return {"fillColor": this._getColor(prop.serie,val) , "color" : "#f00" , "weight": 6 , "opacity" : 1.0,  "fillOpacity": 0.6};
 						} else {
@@ -380,18 +381,14 @@ define([
 
 						if (prop) {
 							var geo = prop.serie;
-							var _fmt = function(n,fmt){
-								return fmt.replace("{0}",n);
-							};
+
 
 							div.innerHTML += '<h4>'+prop.title+'</h4>';
 							for (var i = 0; i < 5; i++) {
 							    var range_min = geo[i].toFixed(0);
 							    var range_max =  geo[i+1].toFixed(0);
 							    var color =  self._getColor(geo, (parseFloat(range_max)+parseFloat(range_min))/2 );
-
-							    div.innerHTML += '<i style="background: ' + color + ';"></i> ' + _fmt(range_min, prop.unit) + " - " + _fmt(range_max, prop.unit) + '<br>';
->>>
+							    div.innerHTML += '<i style="background: ' + color + ';"></i> '+ prop.unit + ' ' + range_min + " - " + prop.unit + ' ' + range_max  + '<br>';
 							}
 						}
 

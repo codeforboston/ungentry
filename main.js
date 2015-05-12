@@ -54,19 +54,4 @@ require(['script', 'routes', 'legend', 'roll', 'bootstrap', 'jquery-ui'], functi
 	S.bootstrap();
 	routes.init();
 
-	$( window ).resize(function() {
-	  	
-	  	if ($('body').width() > 1000){
-	  		
-	  		$("#map0").css('display', "inline-block");
-	  		$("#map1").css('display', "inline-block");
-	  		$("#map2").css('display', "inline-block");
-
-	  	}
-	});
-
-	$(window).load(function(){
-        $('#welcomeModal').modal('show');
-       });
-
 });
