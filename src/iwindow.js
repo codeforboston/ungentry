@@ -10,15 +10,17 @@ define(['jquery', 'underscore', "hoverTract", "variables"], function($, _, hover
             return;
 
         $(".iwindow-desc").html(_.escape(vars[currentVar].desc));
+        var $vals = $(".iwindow-vals").html("");
 
         if (currentFeature) {
             var featureProps = currentFeature.properties;
-            var $vals = $(".iwindow-vals").html("");
 
             _.each(YEARS, function(year) {
-                $("<li>").html("<strong class='year'>" + year + "</strong>" + '  ' +
-                               parseFloat(featureProps[currentVar + "_" + year.slice(2)]).toFixed(2))
-                                   .appendTo($vals);
+                var val = featureProps[currentVar + "_" + year.slice(2)];
+                if (val)
+                    $("<li>").html("<strong class='year'>" + year + "</strong>" + '  ' +
+                                   parseFloat(val).toFixed(2))
+                    .appendTo($vals);
             });
         }
     }
@@ -33,6 +35,7 @@ define(['jquery', 'underscore', "hoverTract", "variables"], function($, _, hover
                     render();
                 });
             hoverTract.watch(function(_, _, feature) {
+                console.log(feature);
                 currentFeature = feature;
                 render();
             });
