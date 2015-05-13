@@ -16,9 +16,9 @@ define(['jquery', 'underscore', "hoverTract", "variables"], function($, _, hover
             var $vals = $(".iwindow-vals").html("");
 
             _.each(YEARS, function(year) {
-                $("<li>").html("<strong class='year'>" + year + "</strong> " +
-                               featureProps[currentVar + "_" + year.slice(2)])
-                    .appendTo($vals);
+                $("<li>").html("<strong class='year'>" + year + "</strong>" + '  ' +
+                               parseFloat(featureProps[currentVar + "_" + year.slice(2)]).toFixed(2))
+                                   .appendTo($vals);
             });
         }
     }

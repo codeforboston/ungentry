@@ -290,6 +290,7 @@ define([
                                                 hoverTract.select(feature.id,
                                                                   feature);
  					              feature.map_mouse_over = true;
+ 					              console.log(feature)
  					         });
 					    layer.on("mouseout", function (e) {
 						       feature.map_mouse_over = false;
@@ -298,23 +299,6 @@ define([
 					    });
 
 
-
-
-
-					/*
-						layer.feature.map_mouse_over = false;
-						layer.on("mouseover", function (e) {
-
-
-
-					        e.target.feature.map_mouse_over = true;
-						   e.target.setStyle(self._styleFunction(e.target.feature, true));
-						});
-						layer.on("mouseout", function (e) {
-						   e.target.feature.map_mouse_over = false;
-						   e.target.setStyle(self._styleFunction(e.target.feature));
-						});
-					  */
 					});
 
 					if (this._layers_id[add[i]]) {

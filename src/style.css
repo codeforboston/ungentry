@@ -112,9 +112,11 @@ div.map > h2 {
 .iwindow>p{
     font-size: 1.33em;
 }
-.rollwindow{
-    height: 50px;
+
+.iwindow-vals{
+    text-align: left;
 }
+
 
 .lwrapper{
     position: absolute;
