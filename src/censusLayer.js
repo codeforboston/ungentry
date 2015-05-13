@@ -279,14 +279,15 @@ define([
 					$.each(geojsonLayer._layers,function(idx,layer){
                                       layer.feature.map_mouse_over = false;
                                             hoverTract.watchForValue(layer.feature.id,
-                                                         function() {
+                                                         function(feature) {
+                                                         	console.log(feature);
                                                              layer.setStyle(self._styleFunction(layer.feature, true));
                                                          },
-                                                         function() {
+                                                         function(feature) {
                                                              layer.setStyle(self._styleFunction(layer.feature));
                                                          });
 					    layer.on("mouseover", function (e) {
-                                                hoverTract.select(e.target.feature.id);
+                                                hoverTract.select(e.target.feature.id, e.target.feature);
  					              e.target.feature.map_mouse_over = true;
  					         });
 					    layer.on("mouseout", function (e) {
@@ -343,7 +344,7 @@ define([
 
 					 if (val) {
 						if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
-					 		return {"fillColor": this._getColor(prop.serie,val) , "color" : "#000000" , "weight": 4 , "opacity" : 1.0,  "fillOpacity": 0.6};
+					 		return {"fillColor": this._getColor(prop.serie,val) , "color" : "#404040" , "weight": 4 , "opacity" : 1.0,  "fillOpacity": 0.6};
 						} else {
 							return {"fillColor": this._getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
 						}

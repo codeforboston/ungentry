@@ -3,10 +3,7 @@ define([
 	'backbone',
 	'script',
 	'underscore'
-	], function( Backbone, S, _){
-       
-       var self = this;
-	var TEMPLATE = '<p> <%= this.blurb %> </p>'; 	
+	], function(Backbone, S, _){	
 
 	//define router class
 	var MapRouter = Backbone.Router.extend ({
@@ -57,7 +54,7 @@ define([
 		  showPctocc_profmanage: function(){
 
 			S.setPropertyBrewer('pctocc_profmanage', 'PuRd');
-			$('div.iwindow').html('<p></P>');
+			$('div.iwindow').html('<p>...</P>');
 		  },
 
 		  showPctcollege: function(){
@@ -81,7 +78,7 @@ define([
 
 		  showPctinc_50k_100k: function(){
 		  	S.setPropertyBrewer('pctinc_50k_100k', 'GnBu');
-		  	$('div.iwindow').html('<p></P>');
+		  	$('div.iwindow').html('<p>...</P>');
 
 		  },
 
@@ -146,7 +143,7 @@ define([
 
 		  showPctsameres: function(){
 		  	S.setPropertyBrewer('pctsameres', 'OrRd');
-		  	$('div.iwindow').html('<p></P>');
+		  	$('div.iwindow').html('<p>...</P>');
 		  }
 
 	});

@@ -43,21 +43,22 @@ define(["underscore"], function(_) {
                     //var listeners = pub.subscribers[v];
                     //var deselectListeners = pub.subscribers[pub.selected];
                     var old = pub.selected;
+                        args = _.rest(arguments);
 
                     if (old) {
                         _.each(_.pluck(pub.subscribers[old], 1), function(f) {
-                            if (f) f();
+                            if (f) f.apply(this, args);
                         });
                     }
 
                     if (v) {
                         _.each(_.pluck(pub.subscribers[v], 0), function(f) {
-                            if (f) f();
+                            if (f) f.apply(this, args);
                         });
                     }
 
                     _.each(pub.callbacks, function(f) {
-                        if (f) f(v, old);
+                        if (f) f.apply(this, v, old, args);
                     });
 
                     pub.selected = v;

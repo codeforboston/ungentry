@@ -22,8 +22,9 @@ require.config({
 		'routes': 'src/routes',
 		'legend': 'src/legend',
 		'iwindow': 'src/iwindow',
-             'hoverTract': 'src/hoverTract',
-             'subselect': 'src/subSelect'
+              'hoverTract': 'src/hoverTract',
+              'subselect': 'src/subSelect',
+              'roll': 'src/roll'
 	},
 
 	shim: {
