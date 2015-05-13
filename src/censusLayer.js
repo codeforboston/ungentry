@@ -276,22 +276,23 @@ define([
 			   		});
 
 					var self = this;
-					$.each(geojsonLayer._layers,function(idx,layer){
-                                      layer.feature.map_mouse_over = false;
-                                            hoverTract.watchForValue(layer.feature.id,
-                                                         function(feature) {
-                                                         	console.log(feature);
-                                                             layer.setStyle(self._styleFunction(layer.feature, true));
+				    $.each(geojsonLayer._layers,function(idx,layer){
+                                        var feature = layer.feature;
+                                            layer.feature.map_mouse_over = false;
+                                            hoverTract.watchForValue(feature.id,
+                                                         function() {
+                                                             layer.setStyle(self._styleFunction(feature, true));
                                                          },
-                                                         function(feature) {
-                                                             layer.setStyle(self._styleFunction(layer.feature));
+                                                         function() {
+                                                             layer.setStyle(self._styleFunction(feature));
                                                          });
 					    layer.on("mouseover", function (e) {
-                                                hoverTract.select(e.target.feature.id, e.target.feature);
- 					              e.target.feature.map_mouse_over = true;
+                                                hoverTract.select(feature.id,
+                                                                  feature);
+ 					              feature.map_mouse_over = true;
  					         });
 					    layer.on("mouseout", function (e) {
-						       e.target.feature.map_mouse_over = false;
+						       feature.map_mouse_over = false;
                                                 // TODO: Move this somewhere else
 						       hoverTract.select(null);
 					    });
@@ -344,7 +345,7 @@ define([
 
 					 if (val) {
 						if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
-					 		return {"fillColor": this._getColor(prop.serie,val) , "color" : "#404040" , "weight": 4 , "opacity" : 1.0,  "fillOpacity": 0.6};
+					 		return {"fillColor": this._getColor(prop.serie,val) , "color" : "#000000" , "weight": 4 , "opacity" : 1.0,  "fillOpacity": 0.6};
 						} else {
 							return {"fillColor": this._getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
 						}

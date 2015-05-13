@@ -22,8 +22,11 @@ require.config({
 		'routes': 'src/routes',
 		'legend': 'src/legend',
 		'iwindow': 'src/iwindow',
-              'hoverTract': 'src/hoverTract',
-              'subselect': 'src/subSelect',
+             'hoverTract': 'src/hoverTract',
+            'subselect': 'src/subSelect',
+            "variables": "src/variables",
+            "categories": "src/categories",
+            "varMenus": "src/varMenus",
               'roll': 'src/roll'
 	},
 
@@ -50,10 +53,13 @@ require.config({
 
 });
 
-require(['script', 'routes', 'legend',  'bootstrap', 'jquery-ui'], function(S, routes, legend, roll){
-	legend.init();
-	//roll.init();
-	S.bootstrap();
-	routes.init();
-
+require(['script', 'routes', 'legend',
+         "iwindow", "varMenus", 'bootstrap', 'jquery-ui'],
+        function(S, routes, legend, iwindow, varMenus){
+	    legend.init();
+	    //roll.init();
+	    S.bootstrap();
+	    routes.init();
+            iwindow.init();
+            varMenus.init();
 });

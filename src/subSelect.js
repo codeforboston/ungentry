@@ -9,7 +9,7 @@ define(["underscore"], function(_) {
                 // Callbacks that run whenever the selection changes.
                 callbacks: [],
                 selected: null
-            }
+            };
 
             return {
                 // Arrange that selected will be called when the current
@@ -34,15 +34,13 @@ define(["underscore"], function(_) {
                  *   arguments: toValue and fromValue
                  */
                 watch: function(handler) {
-                    pub.callbacks.push(handler)
+                    pub.callbacks.push(handler);
                 },
 
                 // Sets the currently selected value to v and informs
                 // all subscribers.
                 select: function(v) {
-                    //var listeners = pub.subscribers[v];
-                    //var deselectListeners = pub.subscribers[pub.selected];
-                    var old = pub.selected;
+                    var old = pub.selected,
                         args = _.rest(arguments);
 
                     if (old) {
@@ -58,13 +56,13 @@ define(["underscore"], function(_) {
                     }
 
                     _.each(pub.callbacks, function(f) {
-                        if (f) f.apply(this, v, old, args);
+                        if (f) f.apply(this, [v, old].concat(args));
                     });
 
                     pub.selected = v;
                     return old;
                 }
-            }
+            };
         }
-    }
-})
+    };
+});
