@@ -66,9 +66,8 @@ footer {
 .maps {
     height:100%;
     margin:0;
-    padding-top:60px;
     margin-top: -60px;
-    padding-bottom: 25px;
+    padding-top: 60px;
 }
 
 .map-wrapper{
@@ -291,7 +290,7 @@ div.map > h2 {
 
 
 
-@media(max-width:768px){
+@media(max-width:955px){
 
 
     .map-segment.first,
