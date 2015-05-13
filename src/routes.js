@@ -11,9 +11,6 @@ define([
         $(document).trigger("dataShown", varName);
     }
 
-       var self = this;
-	var TEMPLATE = '<p> <%= this.blurb %> </p>';
-
 	//define router class
 	var MapRouter = Backbone.Router.extend ({
 	    routes: {
@@ -43,7 +40,6 @@ define([
 
        } , 2000 ); // not really clean but easy
 
-       //$('div.iwindow').html(_.template(TEMPLATE));
 
 
 	}
