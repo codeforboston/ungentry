@@ -1,7 +1,7 @@
 define(["subselect"], function(subselect) {
       // A singleton for census tract selection.
     // Use feature ids as the selection value.
-    var hoverTract = subselect.make()
+    var hoverTract = subselect.make();
 
     //////////////////////////////////////////////////////////////////////
     // Example:                                                         //
@@ -11,5 +11,5 @@ define(["subselect"], function(subselect) {
     // hoverTract.watchForValue(123, selectedCallback, deselectedCallback) //
     //////////////////////////////////////////////////////////////////////
 
-    return subselect.make()
-})
+    return subselect.make();
+});
