@@ -26,7 +26,8 @@ require.config({
             'subselect': 'src/subSelect',
             "variables": "src/variables",
             "categories": "src/categories",
-            "varMenus": "src/varMenus"
+            "varMenus": "src/varMenus",
+              'roll': 'src/roll'
 	},
 
 	shim: {

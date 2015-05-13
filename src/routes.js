@@ -11,7 +11,6 @@ define([
         $(document).trigger("dataShown", varName);
     }
 
-
        var self = this;
 	var TEMPLATE = '<p> <%= this.blurb %> </p>';
 
