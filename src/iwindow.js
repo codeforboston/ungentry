@@ -6,20 +6,21 @@ define(['jquery', 'underscore', "hoverTract", "variables"], function($, _, hover
     var currentVar, currentFeature;
 
     function render(){
-        if (!(currentVar && currentFeature))
+        if (!currentVar)
             return;
-
-        var featureProps = currentFeature.properties;
 
         $(".iwindow-desc").html(_.escape(vars[currentVar].desc));
 
-        var $vals = $(".iwindow-vals").html("");
+        if (currentFeature) {
+            var featureProps = currentFeature.properties;
+            var $vals = $(".iwindow-vals").html("");
 
-        _.each(YEARS, function(year) {
-            $("<li>").html("<strong class='year'>" + year + "</strong> " +
-                           featureProps[currentVar + "_" + year.slice(2)])
-                .appendTo($vals);
-        });
+            _.each(YEARS, function(year) {
+                $("<li>").html("<strong class='year'>" + year + "</strong> " +
+                               featureProps[currentVar + "_" + year.slice(2)])
+                    .appendTo($vals);
+            });
+        }
     }
 
 	function init () {
