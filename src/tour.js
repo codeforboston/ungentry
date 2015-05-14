@@ -4,7 +4,7 @@ define(['tourLib'], function(tourLib){
     steps: [
       {
       element: "#my-element",
-      title: "Title of my step",
+      title: "Welcome!",
       content: "Content of my step"
       },
       {

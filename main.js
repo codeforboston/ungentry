@@ -25,11 +25,11 @@ require.config({
 		'iwindow': 'src/iwindow',
               'hoverTract': 'src/hoverTract',
               'subselect': 'src/subSelect',
-              'variables": "src/variables',
-              'categories": "src/categories',
-              'varMenus": "src/varMenus',
+              'variables': 'src/variables',
+              'categories': 'src/categories',
+              'varMenus': 'src/varMenus',
               'roll': 'src/roll',
-              'tour', 'src/tour'	},
+              'tour': 'src/tour'	},
 
 	shim: {
 		'leaflet': {
@@ -55,8 +55,8 @@ require.config({
 });
 
 require(['script', 'routes', 'legend',
-         "iwindow", "varMenus", 'bootstrap', 'jquery-ui', 'tour'],
-        function(S, routes, legend, iwindow, varMenus, tour){
+         "iwindow", "varMenus", 'bootstrap', 'jquery-ui'],
+        function(S, routes, legend, iwindow, varMenus ){
 	    legend.init();
 	    //roll.init();
 	    S.bootstrap();
