@@ -29,7 +29,7 @@ require.config({
               'categories': 'src/categories',
               'varMenus': 'src/varMenus',
               'roll': 'src/roll',
-              'tour': 'src/tour'	},
+              'intro': 'src/intro'	},
 
 	shim: {
 		'leaflet': {
@@ -55,12 +55,13 @@ require.config({
 });
 
 require(['script', 'routes', 'legend',
-         "iwindow", "varMenus", 'bootstrap', 'jquery-ui'],
-        function(S, routes, legend, iwindow, varMenus ){
+         "iwindow", "varMenus", 'bootstrap', 'jquery-ui', 'intro'],
+        function(S, routes, legend, iwindow, varMenus, intro){
 	    legend.init();
 	    //roll.init();
 	    S.bootstrap();
 	    routes.init();
             iwindow.init();
             varMenus.init();
+            intro.init();
 });

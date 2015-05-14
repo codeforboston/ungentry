@@ -3,20 +3,29 @@ define(['tourLib'], function(tourLib){
   var tour = new Tour({
     steps: [
       {
-      element: "#my-element",
+      element: "#about",
       title: "Welcome!",
       content: "Content of my step"
       },
       {
-      element: "#my-other-element",
+      element: "#data-info",
+      title: "Title of my step",
+      content: "Content of my step"
+      }
+      element: "#tab-menus",
+      title: "Title of my step",
+      content: "Content of my step"
+      }
+      element: "#iwindow",
       title: "Title of my step",
       content: "Content of my step"
       }
     ]});
-
+   return{
    // Initialize the tour
    tour.init();
 
    // Start the tour
    tour.start();
+   }
 });
