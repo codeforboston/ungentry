@@ -6,6 +6,7 @@ require.config({
 		'backbone': 'lib/backbone-min',
 		'underscore': 'lib/underscore-min',
 		'bootstrap': 'lib/bootstrap/bootstrap.min',
+		'tourLib' : 'lib/bootstrap-tour/bootstrap-tour',
 		'leaflet': 'lib/leaflet-0.7.3/leaflet',
 		'leaflet.ajax': 'lib/leaflet.ajax',
 		'mapSync': 'lib/L.Map.Sync',
@@ -22,13 +23,13 @@ require.config({
 		'routes': 'src/routes',
 		'legend': 'src/legend',
 		'iwindow': 'src/iwindow',
-             'hoverTract': 'src/hoverTract',
-            'subselect': 'src/subSelect',
-            "variables": "src/variables",
-            "categories": "src/categories",
-            "varMenus": "src/varMenus",
-              'roll': 'src/roll'
-	},
+              'hoverTract': 'src/hoverTract',
+              'subselect': 'src/subSelect',
+              'variables": "src/variables',
+              'categories": "src/categories',
+              'varMenus": "src/varMenus',
+              'roll': 'src/roll',
+              'tour', 'src/tour'	},
 
 	shim: {
 		'leaflet': {
@@ -54,8 +55,8 @@ require.config({
 });
 
 require(['script', 'routes', 'legend',
-         "iwindow", "varMenus", 'bootstrap', 'jquery-ui'],
-        function(S, routes, legend, iwindow, varMenus){
+         "iwindow", "varMenus", 'bootstrap', 'jquery-ui', 'tour'],
+        function(S, routes, legend, iwindow, varMenus, tour){
 	    legend.init();
 	    //roll.init();
 	    S.bootstrap();
