@@ -103,7 +103,7 @@ define([], function() {
             "category": "Housing"
         },
         "medianrent": {
-            name: "% of Units Rented",
+            name: "Median rent",
             "desc": "Median rent paid by residents of a given census tract.",
             "props": "OrRd",
             "category": "Housing"
