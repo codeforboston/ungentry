@@ -1,3 +1,4 @@
+'use strict';
 require.config({
 
 	paths: {
@@ -6,7 +7,7 @@ require.config({
 		'backbone': 'lib/backbone-min',
 		'underscore': 'lib/underscore-min',
 		'bootstrap': 'lib/bootstrap/bootstrap.min',
-		'tourLib' : 'lib/bootstrap-tour/bootstrap-tour',
+		'tourLib' : 'lib/bootstrap-tour/bootstrap-tour.min',
 		'leaflet': 'lib/leaflet-0.7.3/leaflet',
 		'leaflet.ajax': 'lib/leaflet.ajax',
 		'mapSync': 'lib/L.Map.Sync',
@@ -49,19 +50,23 @@ require.config({
 		},
 		'bootstrap': {
 			deps: ['jquery']
+		},
+		'bootstrap-tour': {
+			deps: ['jquery'],
+			exports: 'Tour'
 		}
 	}
 
 });
 
 require(['script', 'routes', 'legend',
-         "iwindow", "varMenus", 'bootstrap', 'jquery-ui', 'intro'],
+         'iwindow', 'varMenus', 'intro', 'bootstrap'//, 'jquery-ui'
+         ],
         function(S, routes, legend, iwindow, varMenus, intro){
 	    legend.init();
-	    //roll.init();
 	    S.bootstrap();
 	    routes.init();
             iwindow.init();
             varMenus.init();
-            intro.init();
+            //intro.init();
 });
