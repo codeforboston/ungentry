@@ -50,18 +50,19 @@ require.config({
 		},
 		'bootstrap': {
 			deps: ['jquery']
-		},
-		'bootstrap-tour': {
-			deps: ['jquery'],
+		}/*,
+		 
+		'tourLib': {
+			deps: ['jquery', 'bootstrap'],
 			exports: 'Tour'
 		}
+		*/
 	}
 
 });
 
-require(['script', 'routes', 'legend',
-         'iwindow', 'varMenus', 'intro', 'bootstrap'//, 'jquery-ui'
-         ],
+require(['script', 'routes', 'legend', "iwindow", "varMenus", 'intro','bootstrap', 'jquery-ui'],
+
         function(S, routes, legend, iwindow, varMenus, intro){
 	    legend.init();
 	    S.bootstrap();

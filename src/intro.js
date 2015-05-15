@@ -10,6 +10,7 @@ define(['tourLib'], function(tourLib){
       content: 'You can click here for an intro and information about how and why we made this.'
       },
       {
+
       element: '#data-info',
       title: 'Data Info',
       content: 'Check out how we crunched our data!'
@@ -27,11 +28,16 @@ define(['tourLib'], function(tourLib){
     ]
    });
 
-   // Initialize the tour
-   tour.init();
 
-   // Start the tour
-   tour.start();
-   
 
+    // Initialize the tour
+    return {
+        init: function() {
+            tour.init();
+
+            // Start the tour
+            tour.start();
+        }
+    };
 });
+
