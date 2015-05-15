@@ -11,21 +11,24 @@ define(['tourLib'], function(tourLib){
       element: "#data-info",
       title: "Title of my step",
       content: "Content of my step"
-      }
-      element: "#tab-menus",
+      },
+        {element: "#tab-menus",
       title: "Title of my step",
       content: "Content of my step"
-      }
+        },{
       element: "#iwindow",
       title: "Title of my step",
       content: "Content of my step"
       }
     ]});
-   return{
-   // Initialize the tour
-   tour.init();
 
-   // Start the tour
-   tour.start();
-   }
+    // Initialize the tour
+    return {
+        init: function() {
+            tour.init();
+
+            // Start the tour
+            tour.start();
+        }
+    };
 });

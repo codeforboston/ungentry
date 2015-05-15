@@ -6,7 +6,7 @@ require.config({
 		'backbone': 'lib/backbone-min',
 		'underscore': 'lib/underscore-min',
 		'bootstrap': 'lib/bootstrap/bootstrap.min',
-		'tourLib' : 'lib/bootstrap-tour/bootstrap-tour',
+		'tourLib' : 'lib/bootstrap-tour/bootstrap-tour.min',
 		'leaflet': 'lib/leaflet-0.7.3/leaflet',
 		'leaflet.ajax': 'lib/leaflet.ajax',
 		'mapSync': 'lib/L.Map.Sync',
@@ -55,7 +55,8 @@ require.config({
 });
 
 require(['script', 'routes', 'legend',
-         "iwindow", "varMenus", 'bootstrap', 'jquery-ui', 'intro'],
+         "iwindow", "varMenus", 'intro',
+         'bootstrap', 'jquery-ui'],
         function(S, routes, legend, iwindow, varMenus, intro){
 	    legend.init();
 	    //roll.init();
