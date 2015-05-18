@@ -19,7 +19,7 @@ require.config({
 		'rainbow': 'lib/rainbowvis',
 		'topojson': 'lib/topojson.v1.min',
 		'censusLayer': 'src/censusLayer',
-		'timeslider': 'src/timeslider',
+		//'timeslider': 'src/timeslider',
 		'script': 'src/script',
 		'routes': 'src/routes',
 		'legend': 'src/legend',
@@ -28,10 +28,10 @@ require.config({
               'subselect': 'src/subSelect',
               'variables': 'src/variables',
               'categories': 'src/categories',
-            'varMenus': 'src/varMenus',
-            'colors': 'src/colors',
-              'roll': 'src/roll',
-              'intro': 'src/intro'	},
+              'varMenus': 'src/varMenus',
+              'colors': 'src/colors',
+              'intro': 'src/intro'	
+       },
 
 	shim: {
 		'leaflet': {
@@ -51,13 +51,12 @@ require.config({
 		},
 		'bootstrap': {
 			deps: ['jquery']
-		}/*,
+		},
 
 		'tourLib': {
-			deps: ['jquery', 'bootstrap'],
-			exports: 'Tour'
+			deps: ['jquery', 'bootstrap']
 		}
-		*/
+		
 	}
 
 });
@@ -68,7 +67,7 @@ require(['script', 'routes', 'legend', "iwindow", "varMenus", 'intro','bootstrap
 	    legend.init();
 	    S.bootstrap();
 	    routes.init();
-            iwindow.init();
-            varMenus.init();
-            //intro.init();
+           iwindow.init();
+           varMenus.init();
+           intro.init();
 });

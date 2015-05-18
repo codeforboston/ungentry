@@ -18,12 +18,15 @@ define(['tourLib'], function(tourLib){
       {
       element: '#tab-menus',
       title: 'Data Selectors',
-      content: 'Click these drop-down menus to select the data you want to see.  There are three categroies: Demographic, Financial and Housing data.'
+      content: 'Click these drop-down menus to select the data you want to see.  There are three categroies: Demographic, Financial and Housing data.',
+      placement: 'left'
       },
       {
-      element: '#iwindow',
+      element: '#iWindow',
       title: 'Info Window',
-      content: 'When you move your mouse pointer over a census tract, the ID number and the values for each period will display here.'
+      content: 'When you move your mouse pointer over a census tract, the ID number and the values for each period will display here.',
+      placement: 'left'
+
       }
     ]
    });
