@@ -26,19 +26,19 @@ define([], function() {
         },
         "pctcollege": {
             "name": "% College Educated",
-            "desc": "Percentage of people per census tract that posses a college degree.",
+            "desc": "Percentage of people per census tract that possess a college degree.",
             "props": "PuRd",
             "category": "People"
         },
         "pctinc_0k_25k": {
             "name": "% Of Household inc. 0-25K",
-            "desc": '',
+            "desc": "Percentage of households that earn less than $25,000",
             "props": "GnBu",
             "category": "Economic"
         },
         "pctinc_25k_50k": {
             "name": "% Of Household inc. 25-50K",
-            "desc": '',
+            "desc": "Percentage of households that earn between $25,000 and $50,000",
             "props": "GnBu",
             "category": "Economic"
         },

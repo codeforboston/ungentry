@@ -5,6 +5,20 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
 
     var currentVar, currentFeature, currentProp, currentColors;
 
+    var formatters = {
+        "%": function(n) {
+            return parseFloat(n).toFixed(2) + "%";
+        },
+
+        "#": function(n) {
+            return parseFloat(n).toFixed(2);
+        },
+
+        "$": function(n) {
+            return "$" + parseFloat(n).toFixed(2);
+        }
+    };
+
     function render(){
         if (!currentVar)
             return;
@@ -21,10 +35,18 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
 
             _.each(YEARS, function(year) {
                 var val = featureProps[currentVar + "_" + year.slice(2)];
-                if (val) {
-                    var color = colors.getColor(currentColors, currentProp.serie, val);
-                    $("<li>").html("<strong class='year'>" + year + "</strong>" + '  ' +
-                            '<span style="background-color:' + color + '">' + parseFloat(val).toFixed(2) + '</span>')
+                if (val && currentProp) {
+                    console.log(currentProp.unit);
+                    var color = colors.getColor(currentColors,
+                                                currentProp.serie, val),
+                        formatter = formatters[currentProp.unit] ||
+                            formatters["#"];
+
+                    $("<li>")
+                        .append("<div class='swatch' style='background-color:" +
+                                color + ";'/>")
+                        .append("<strong class='year'>" + year + ":</strong>" + '  ' +
+                                formatter(val))
                         .appendTo($vals);
 
                 }
