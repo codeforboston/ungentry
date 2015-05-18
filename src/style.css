@@ -116,6 +116,10 @@ div.map > h2 {
 .iwindow-vals{
     text-align: left;
 }
+.iwindow-tract{
+    text-align: left;
+    padding-top: 25px;
+}
 
 
 .lwrapper{

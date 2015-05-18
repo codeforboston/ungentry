@@ -11,17 +11,22 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
 
         $(".iwindow-desc").html(_.escape(vars[currentVar].desc));
         var $vals = $(".iwindow-vals").html("");
+        var $tract = $('.iwindow-tract').html('');
 
         if (currentFeature) {
             var featureProps = currentFeature.properties;
+            var featureId = currentFeature.id;
+
+            $('<p>').html('<strong class="tract">Census Tract ID number:</strong>' + '  ' + featureId).appendTo($tract);
 
             _.each(YEARS, function(year) {
                 var val = featureProps[currentVar + "_" + year.slice(2)];
                 if (val) {
                     var color = colors.getColor(currentColors, currentProp.serie, val);
                     $("<li>").html("<strong class='year'>" + year + "</strong>" + '  ' +
-                                   parseFloat(val).toFixed(2))
+                            '<span style="background-color:' + color + '">' + parseFloat(val).toFixed(2) + '</span>')
                         .appendTo($vals);
+
                 }
             });
         }
