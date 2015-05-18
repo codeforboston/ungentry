@@ -3,8 +3,9 @@ define([
 	'leaflet',
 	'topojson',
 	'colorbrewer',
-	'hoverTract'
-	], function($, L, topojson, colorbrewer, hoverTract){
+    'hoverTract',
+    'colors'
+], function($, L, topojson, colorbrewer, hoverTract, colors){
 
 
 	var CensusLayer = L.Class.extend({
@@ -288,7 +289,9 @@ define([
                                                          });
 					    layer.on("mouseover", function (e) {
                                                 hoverTract.select(feature.id,
-                                                                  feature);
+                                                                  feature,
+                                                                  self.getPropertyData(),
+                                                                  colorbrewer[self._colorBrewerName]);
  					              feature.map_mouse_over = true;
  					              console.log(feature)
  					         });
@@ -342,14 +345,9 @@ define([
 
 		  },
 
-			_getColor : function(geo,val){
-				for (var i in geo) {
-					if ((val-geo[i]>=0) && (val-geo[parseInt(i)+1]<0)) {
-						return colorbrewer[this._colorBrewerName][5][i];
-					}
-				}
-				return "#7F7F7F";
-			},
+	    _getColor : function(geo,val){
+                return colors.getColor(colorbrewer[this._colorBrewerName], geo, val);
+	    },
 
 			_refresh : function(){
 
@@ -377,6 +375,11 @@ define([
 				}
 				this._computeLegend();
 			},
+
+
+            getPropertyData: function() {
+                return this._properties_data[this._currentProperty];
+            },
 
 			_computeLegend : function() {
 				var currentProp = this._currentProperty,

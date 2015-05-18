@@ -28,7 +28,8 @@ require.config({
               'subselect': 'src/subSelect',
               'variables': 'src/variables',
               'categories': 'src/categories',
-              'varMenus': 'src/varMenus',
+            'varMenus': 'src/varMenus',
+            'colors': 'src/colors',
               'roll': 'src/roll',
               'intro': 'src/intro'	},
 
@@ -51,7 +52,7 @@ require.config({
 		'bootstrap': {
 			deps: ['jquery']
 		}/*,
-		 
+
 		'tourLib': {
 			deps: ['jquery', 'bootstrap'],
 			exports: 'Tour'

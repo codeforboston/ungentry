@@ -1,9 +1,9 @@
-define(['jquery', 'underscore', "hoverTract", "variables"], function($, _, hoverTract, vars){
+define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($, _, hoverTract, vars, colors){
     var SELECTOR = '.iwrapper';
     var TEMPLATE = '<p> <%= varInfo %> </P>';
     var YEARS = ["1990", "2000", "2010"];
 
-    var currentVar, currentFeature;
+    var currentVar, currentFeature, currentProp, currentColors;
 
     function render(){
         if (!currentVar)
@@ -17,10 +17,12 @@ define(['jquery', 'underscore', "hoverTract", "variables"], function($, _, hover
 
             _.each(YEARS, function(year) {
                 var val = featureProps[currentVar + "_" + year.slice(2)];
-                if (val)
+                if (val) {
+                    var color = colors.getColor(currentColors, currentProp.serie, val);
                     $("<li>").html("<strong class='year'>" + year + "</strong>" + '  ' +
                                    parseFloat(val).toFixed(2))
-                    .appendTo($vals);
+                        .appendTo($vals);
+                }
             });
         }
     }
@@ -34,9 +36,11 @@ define(['jquery', 'underscore', "hoverTract", "variables"], function($, _, hover
                     currentVar = varname;
                     render();
                 });
-            hoverTract.watch(function(_, _, feature) {
-                console.log(feature);
+            hoverTract.watch(function(_, _, feature, prop, colors) {
+                //console.log(feature);
                 currentFeature = feature;
+                currentProp = prop;
+                currentColors = colors;
                 render();
             });
 	}
