@@ -1,11 +1,11 @@
-html { 
+html {
     height: 100%;
 }
 
-body { 
-    height: 100%; 
-    margin: 0; 
-    padding: 0; 
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 footer {
@@ -16,10 +16,10 @@ footer {
 .row {
     margin:0;
     padding-top:60px;
-    margin-top: -60px; 
+    margin-top: -60px;
 }
 */
-#map0, #map1, #map2 { 
+#map0, #map1, #map2 {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -67,7 +67,7 @@ footer {
     height:100%;
     margin:0;
     padding-top:60px;
-    margin-top: -60px; 
+    margin-top: -60px;
     padding-bottom: 25px;
 }
 
@@ -78,7 +78,7 @@ footer {
 
 .map {
     height:100%;
-    
+
 }
 
 div.map > h2 {
@@ -121,6 +121,18 @@ div.map > h2 {
     padding-top: 25px;
 }
 
+.iwindow ul {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.swatch {
+    border: 1px solid black;
+    display: inline-block;
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+}
 
 .lwrapper{
     position: absolute;
