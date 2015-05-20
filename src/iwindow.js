@@ -5,17 +5,41 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
 
     var currentVar, currentFeature, currentProp, currentColors;
 
+    function commaSeparate(s) {
+        var split = s.split("."),
+            after = split[1];
+
+        s = split[0];
+
+        var l = s.length;
+        if (l <= 3)
+            return s;
+
+        var istart = 0,
+            iend = (l % 3) || 3,
+            pieces = [],
+            p;
+
+        while ((p = s.slice(istart, iend))) {
+            pieces.push(p);
+            istart = iend;
+            iend += 3;
+        }
+
+        return pieces.join(",") + (after ? ("." + after) : "");
+    }
+
     var formatters = {
         "%": function(n) {
-            return parseFloat(n).toFixed(2) + "%";
+            return n.toFixed(2) + "%";
         },
 
         "#": function(n) {
-            return parseFloat(n).toFixed(2);
+            return commaSeparate(n.toFixed(2));
         },
 
         "$": function(n) {
-            return "$" + parseFloat(n).toFixed(2);
+            return "$" + commaSeparate(n.toFixed(2));
         }
     };
 
@@ -33,23 +57,36 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
 
             $('<p>').html('<strong class="tract">Census Tract ID number:</strong>' + '  ' + featureId).appendTo($tract);
 
+            var previousVal = null;
+
             _.each(YEARS, function(year) {
                 var val = featureProps[currentVar + "_" + year.slice(2)];
                 if (val && currentProp) {
-                    console.log(currentProp.unit);
+                    val = parseFloat(val);
                     var color = colors.getColor(currentColors,
                                                 currentProp.serie, val),
                         formatter = formatters[currentProp.unit] ||
                             formatters["#"];
 
-                    $("<li>")
-                        .append("<div class='swatch' style='background-color:" +
+                    var li = $("<li>");
+
+                    li.append("<div class='swatch' style='background-color:" +
                                 color + ";'/>")
                         .append("<strong class='year'>" + year + ":</strong>" + '  ' +
                                 formatter(val))
                         .appendTo($vals);
 
+                    if (previousVal) {
+                        var changeSpan = $("<span class='change'/>");
+
+                        changeSpan.addClass((val > previousVal) ?
+                                            "increase" : "decrease")
+                            .html((val - previousVal).toFixed(2))
+                            .appendTo(li);
+                    }
                 }
+
+                previousVal = val;
             });
         }
     }

@@ -134,6 +134,27 @@ div.map > h2 {
     height: 15px;
 }
 
+.change {
+    font-size: x-small;
+    padding-left: 20px;
+}
+
+.increase {
+    color: green;
+}
+
+.increase:before {
+    content: "⬆";
+}
+
+.decrease {
+    color: red;
+}
+
+.decrease:before {
+    content: "⬇";
+}
+
 .lwrapper{
     position: absolute;
     bottom: 3%;
