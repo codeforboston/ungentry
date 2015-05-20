@@ -81,7 +81,7 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
 
                         changeSpan.addClass((val > previousVal) ?
                                             "increase" : "decrease")
-                            .html((val - previousVal).toFixed(2))
+                            .html(formatter(val - previousVal))
                             .appendTo(li);
                     }
                 }
