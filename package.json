@@ -1,0 +1,28 @@
+{
+  "name": "ungentry",
+  "version": "1.0.0",
+  "description": "An open source mapping exploration of cost of living in the greater Boton area",
+  "main": "main.js",
+  "scripts": {
+    "test": "ok"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codeforboston/ungentry.git"
+  },
+  "keywords": [
+    "gentrification",
+    "maps",
+    "census",
+    "ACS"
+  ],
+  "author": "Code for Boston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeforboston/ungentry/issues"
+  },
+  "homepage": "https://github.com/codeforboston/ungentry",
+  "devDependencies": {
+    "gulp": "^3.8.11"
+  }
+}
