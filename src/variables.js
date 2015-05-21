@@ -1,32 +1,32 @@
 define([], function() {
     return {
         "pcthhchild": {
-            "desc": "Percentage of households per census tract with children residing in them.",
+            "desc": "Percentage of households with children residing in them.",
             "props": "PuRd",
             "name": "% of Households with Children",
             "category": "People"
         },
         "pctind_finance": {
             "name": "% Employed in Finance",
-            "desc": "Percentage of people per census tract employed in jobs qualified by the ACS as \"finance.\"",
+            "desc": "Percentage of people employed in jobs qualified by the ACS as \"finance.\"",
             "props": "PuRd",
             "category": "People"
         },
         "pctind_professional": {
             "name": "% Employed as Professionals",
-            "desc": "Percentage of people per census tract employed in jobs qualified by the ACS as \"professional.\"",
+            "desc": "Percentage of people employed in jobs qualified by the ACS as \"professional.\"",
             "props": "PuRd",
             "category": "People"
         },
         "pctocc_profmanage": {
             "name": "% Employed in Management",
-            "desc": '',
+            "desc": "Percentage of adults employed in management positions",
             "props": "PuRd",
             "category": "People"
         },
         "pctcollege": {
             "name": "% College Educated",
-            "desc": "Percentage of people per census tract that possess a college degree.",
+            "desc": "Percentage of people who possess a college degree.",
             "props": "PuRd",
             "category": "People"
         },
@@ -44,55 +44,55 @@ define([], function() {
         },
         "pctinc_50k_100k": {
             "name": "% Of Household inc. 50-100K",
-            "desc": '',
+            "desc": "Percentage of househoulds that earn between $50,000 and $100,000",
             "props": "GnBu",
             "category": "Economic"
         },
         "pctinc_100k_more": {
             "name": "% Of Household inc. 100K and up",
-            "desc": 'Percentage of people per census tract that have an income of $100,000 or more.',
+            "desc": 'Percentage of people that have an income of $100,000 or more.',
             "props": "GnBu",
             "category": "Economic"
         },
         "medianhhincome": {
             "name": "Median Household Income",
-            "desc": "Median income of all households per census tract",
+            "desc": "Median income of all households",
             "props": "GnBu",
             "category": "Economic"
         },
         "pctpoverty": {
             "name": "% of Residents in Poverty",
-            "desc": "Percentage of people per census tract living under the federal poverty line.",
+            "desc": "Percentage of people living under the federal poverty line.",
             "props": "GnBu",
             "category": "Economic"
         },
         "pctpublicassist": {
             name: "% of Residents on Public Assistance",
-            "desc": "",
+            "desc": "Percentage of people on public assistance.",
             "props": "GnBu",
             "category": "Economic"
         },
         "units": {
             name: "Number of Housing Units",
-            "desc": "Number of housing units per census tract.",
+            "desc": "Number of housing units",
             "props": "OrRd",
             "category": "Housing"
         },
         "pctown": {
             name: "% of Units Owned",
-            "desc": "Percentage of housing units per census tract that are owner-occupied.",
+            "desc": "Percentage of housing units that are owner-occupied.",
             "props": "OrRd",
             "category": "Housing"
         },
         "pctrent": {
             name: "% of Units Rented",
-            "desc": "Percentage of housing units per census tract that are renter-occupied.",
+            "desc": "Percentage of housing units that are renter-occupied.",
             "props": "OrRd",
             "category": "Housing"
         },
         "pctvacant": {
             name: "% of Units Vacant",
-            "desc": "Percentage of housing units per census tract that are vacant.",
+            "desc": "Percentage of housing units that are vacant.",
             "props": "OrRd",
             "category": "Housing"
         },
