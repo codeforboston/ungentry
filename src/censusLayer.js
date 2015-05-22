@@ -293,6 +293,7 @@ define([
                                                                   self.getPropertyData(),
                                                                   colorbrewer[self._colorBrewerName]);
  					              feature.map_mouse_over = true;
+ 					              console.log(feature);
  					         });
 					    layer.on("mouseout", function (e) {
 						       feature.map_mouse_over = false;
