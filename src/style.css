@@ -274,12 +274,12 @@ div.map > h2 {
         width: 100%;
         right: 0;
         top: 100%;
-        height: 50%;
-        z-index: 500;
+        height: 70%;
+        z-index: 1000;
         transition: top 350ms ease-in-out;
     }
     .sidebar-wrapper.active {
-        top: 50%;
+        top: 30%;
     }
     .sidebar-wrapper .sidebar-toggle {
         display: block;
@@ -288,12 +288,19 @@ div.map > h2 {
         border: none;
         background-color: #F5F5F5;
         padding: 20px;
-        top: -50px;
+        top: -55px;
         width: 100%;
     }
 
     .lwrapper {
         left: auto;
         right: 2%;
+    }
+    .iwindow-title {
+        text-align: left;
+    }
+    .iwindow {
+        text-align: left;
+        width: 50%;
     }
 }
