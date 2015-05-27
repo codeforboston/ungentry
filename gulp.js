@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var requirejsOptimize = require('gulp-requirejs-optimize');
 var minifyHTML = require('gulp-minify-html');
 var minifyCss = require('gulp-minify-css');
+var ghPages = require('gulp-gh-pages');
 
 gulp.task('default', function() {
   // place code for your default task here
@@ -28,4 +29,9 @@ gulp.task('minify-css', function() {
   return gulp.src('styles/*.css')
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 });
