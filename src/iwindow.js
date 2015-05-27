@@ -30,15 +30,15 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
     }
 
     var formatters = {
-        "%": function(n) {
+        "{0}%": function(n) {
             return n.toFixed(2) + "%";
         },
 
-        "#": function(n) {
+        "#{0}": function(n) {
             return commaSeparate(n.toFixed(2));
         },
 
-        "$": function(n) {
+        "${0}": function(n) {
             return "$" + commaSeparate(n.toFixed(2));
         }
     };
