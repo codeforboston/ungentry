@@ -1,9 +1,12 @@
+'use strict';
+
 var gulp = require('gulp');
 
 
     //Serve Dependencies
 var connect = require('gulp-connect');
-var del = require('del');  
+var del = require('del');
+var gutil = require('gulp-util');  
 
     //Build Dependencies 
 var requirejsOptimize = require('gulp-requirejs-optimize');
@@ -20,18 +23,26 @@ var jshint = require('gulp-jshint');
 
 
 
-gulp.task('default', ['webserver']);
+
 	
 
-gulp.task('build', ['',''], function(){
+gulp.task('build', ['','']);
 
-});
-
-gulp.task('webserver', function() {
+gulp.task('connect', function() {
   connect.server({
-  	livereload: true
+     root: 'ungentry',
+  	 livereload: true
   });
 });
+
+gulp.task('html', function (){
+  gulp.src('index.html')
+    .pipe(connect.reload());
+});
+
+gulp.task('watch', function (){
+  gulp.watch(['index.html'], ['html']);
+})
 
 gulp.task('scripts', function () {
     return gulp.src('src/main.js')
@@ -44,8 +55,7 @@ gulp.task('minify-html', function() {
     conditionals: true,
     spare:true
   };
- 
-return gulp.src('./static/html/*.html')
+  return gulp.src('./static/html/*.html')
     .pipe(minifyHTML(opts))
     .pipe(gulp.dest('./dist/'));
 });
@@ -59,4 +69,8 @@ gulp.task('minify-css', function() {
 gulp.task('deploy', function() {
   return gulp.src('./dist/**/*')
     .pipe(ghPages());
+});
+
+gulp.task('default', ['connect', 'watch'], function(){
+   return gutil.log('Gulp is running!')
 });
