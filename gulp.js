@@ -1,12 +1,37 @@
 var gulp = require('gulp');
+
+
+    //Serve Dependencies
+var connect = require('gulp-connect');
+var del = require('del');  
+
+    //Build Dependencies 
 var requirejsOptimize = require('gulp-requirejs-optimize');
 var minifyHTML = require('gulp-minify-html');
+
+    //Style Dependencies
+var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
 var ghPages = require('gulp-gh-pages');
 
-gulp.task('default', function() {
-  // place code for your default task here
-})
+    //Dev Dependancies
+var jshint = require('gulp-jshint');
+
+
+
+
+gulp.task('default', ['webserver']);
+	
+
+gulp.task('build', ['',''], function(){
+
+});
+
+gulp.task('webserver', function() {
+  connect.server({
+  	livereload: true
+  });
+});
 
 gulp.task('scripts', function () {
     return gulp.src('src/main.js')

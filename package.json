@@ -26,15 +26,11 @@
     "del": "^1.2.0",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.3.0",
-    "gulp-cache": "^0.2.9",
     "gulp-gh-pages": "^0.5.1",
-    "gulp-imagemin": "^2.2.1",
+    "gulp-connect": "^2.2.0",
     "gulp-jshint": "^1.10.0",
-    "gulp-livereload": "^3.8.0",
     "gulp-minify-css": "^1.1.1",
     "gulp-minify-html": "^1.0.2",
-    "gulp-notify": "^2.2.0",
-    "gulp-rename": "^1.2.2",
     "gulp-requirejs-optimize": "^0.1.3"
   }
 }
