@@ -7,13 +7,13 @@ define(['jquery', 'underscore'], function($, _){
 	//  <i style="background: #fff;"></i> $265 - $756
 	//  <i style="background: #eee;"></i> $756 - $1000
 	// ...
-	var TEMPLATE = '<h4> <%= title %> </h4>'+
+	var TEMPLATE = _.template('<h4> <%= title %> </h4>'+
 									'<% _.each( data, function(entry){ %>'+
 									'<i style="background: <%= entry.color %>;"></i>'+
-									'<%= entry.unit %> <%= entry.min %> - '+
-									'<%= entry.unit %>  <%= entry.max %> '+
+									'<%= entry.unit.replace("{0}", entry.min) %> - '+
+									'<%= entry.unit.replace("{0}", entry.max) %>'+
 									'<br>'+
-									'<% }) %>';
+									'<% }) %>');
 
 	// Legend Data is an object with a title attribute, and a data attribute which is an array of legend entries as follows:
 
@@ -28,7 +28,7 @@ define(['jquery', 'underscore'], function($, _){
 	// ]
 	function render(event, legendData){
 		var $el = $(SELECTOR);
-		$el.html( _.template(TEMPLATE, legendData));
+		$el.html(TEMPLATE(legendData));
 
 	}
 
