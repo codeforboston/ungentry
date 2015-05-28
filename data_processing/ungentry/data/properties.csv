@@ -1,56 +1,67 @@
 accepted                 ,unit,title
-"medianrent_00"		,   $,Avg. Rent
-"medianrent_10"		,   $,Avg. Rent
-"medianrent_90"		,   $,Avg. Rent
-"pctpoverty_00"		,   %,% Poverty
-"pctpoverty_10"		,   %,% Poverty
-"pctpoverty_90"		,   %,% Poverty
-"pcthhchild_00"		,   %,% Households w. Child.
-"pcthhchild_10"		,   %,% Households w. Child.
-"pcthhchild_90"		,   %,% Households w. Child.
-"pctcollege_10"		,   %,College Educated
-"pctcollege_00"		,   %,College Educated
-"pctcollege_90"		,   %,College Educated
-"pctind_professional_10" ,   %,Pro. Indust.
-"pctind_professional_00" ,   %,Pro. Indust.
-"pctind_professional_90" ,   %,Pro. Indust.
-"pctocc_profmanage_10"   ,   %,Management
-"pctocc_profmanage_00"   ,   %,Management
-"pctocc_profmanage_90"   ,   %,Management
-"pctind_finance_10"      ,   %,Finance
-"pctind_finance_00"      ,   %,Finance
-"pctind_finance_90"      ,   %,Finance
-"pctinc_0k_25k_90"       ,   %,25K per year
-"pctinc_0k_25k_00"       ,   %,25K per year
-"pctinc_0k_25k_10"       ,   %,25K per year
-"pctinc_25k_50k_90"      ,  %,50K per year
-"pctinc_25k_50k_00"      ,  %,50K per year
-"pctinc_25k_50k_10"      ,  %,50K per year
-"pctinc_50k_100k_90"     ,  %,100K per year
-"pctinc_50k_100k_00"     ,  %,100K per year
-"pctinc_50k_100k_10"     ,  %,100K per year
-"pctinc_100k_more_90"     ,  %,100k more per year
-"pctinc_100k_more_00"     ,  %,100K more per year
-"pctinc_100k_more_10"     ,  %,100K more per year
-"medianhhincome_90"      ,   $,M. H. Income
-"medianhhincome_00"      ,   $,M. H. Income
-"medianhhincome_10"      ,   $,M. H. Income
-"pctpublicassist_90"     ,   %,Public Assist.
-"pctpublicassist_00"     ,   %,Public Assist.
-"pctpublicassist_10"     ,   %,Public Assist.
-"units_90"               ,   #,Nb H Units
-"units_00"               ,   #,Nb H Units
-"units_10"               ,   #,Nb H Units
-"pctrent_90"             ,   %,Pct. Rental Unit
-"pctrent_00"             ,   %,Pct. Rental Unit
-"pctrent_10"             ,   %,Pct. Rental Unit
-"pctown_90"			,   %,Pct. Unit Owned
-"pctown_00"			,   %,Pct. Unit Owned
-"pctown_10"			,   %,Pct. Unit Owned
-"pctvacant_90"			,   %,Pct. Unit Vacant
-"pctvacant_00"			,   %,Pct. Unit Vacant
-"pctvacant_10"			,   %,Pct. Unit Vacant
-"medianpctincomerent_90" ,   %,Median Pct Income
-"medianpctincomerent_00" ,   %,Median Pct Income
-"medianpctincomerent_10" ,   %,Median Pct Income
-
+"totalpop_90"           ,    {0}, Total Population
+"totalpop_00"           ,    {0}, Total Population
+"totalpop_10"           ,    {0}, Total Population
+"households_90"         ,   {0},  Households per Tract
+"households_00"         ,   {0},  Households per Tract
+"households_10"         ,   {0},  Households per Tract
+"medianvalue_90"       ,   {0}, Median Value per Tract
+"medianvalue_00"       ,   {0}, Median Value per Tract
+"medianvalue_10"       ,   {0}, Median Value per Tract
+"pctrent_300_600_90" ,   {0}%,{0}% Pct. Rent between 300 and 600
+"pctrent_300_600_00" ,   {0}%,{0}% Pct. Rent between 300 and 600
+"pctrent_300_600_10" ,   {0}%,{0}% Pct. Rent between 300 and 600
+"pctrent_600_750_90"    ,   {0}%,{0}% Pct. Rent between 600 and 750
+"pctrent_600_750_00"    ,   {0}%,{0}% Pct. Rent between 600 and 750
+"pctrent_600_750_10"    ,   {0}%,{0}% Pct. Rent between 600 and 750
+"pctrent_750_1000_90"   ,   {0}%,{0}% Pct. Rent between 750 and 1000
+"pctrent_750_1000_00"   ,   {0}%,{0}% Pct. Rent between 750 and 1000
+"pctrent_750_1000_10"   ,   {0}%,{0}% Pct. Rent between 750 and 1000
+"pctrent_1000_more_90"   ,   {0}%, Pct. Rent 1000 and up
+"pctrent_1000_more_00"   ,   {0}%, Pct. Rent 1000 and up
+"pctrent_1000_more_10"   ,   {0}%, Pct. Rent 1000 and up
+"medianrent_00"		,   ${0},Median Rent
+"medianrent_10"		,   ${0},Median Rent
+"medianrent_90"		,   ${0},Median Rent
+"pctpoverty_00"		,   {0}%, Poverty
+"pctpoverty_10"		,   {0}%, Poverty
+"pctpoverty_90"		,   {0}%, Poverty
+"pcthhchild_00"		,   {0}%,{0}% Households w. Child.
+"pcthhchild_10"		,   {0}%,{0}% Households w. Child.
+"pcthhchild_90"		,   {0}%,{0}% Households w. Child.
+"pctcollege_10"		,   {0}%,College Educated
+"pctcollege_00"		,   {0}%,College Educated
+"pctcollege_90"		,   {0}%,College Educated
+"pctinc_100k_more_90"     ,  {0}%,100k more per year
+"pctinc_100k_more_00"     ,  {0}%,100K more per year
+"pctinc_100k_more_10"     ,  {0}%,100K more per year
+"medianhhincome_90"      ,   ${0},M. H. Income
+"medianhhincome_00"      ,   ${0},M. H. Income
+"medianhhincome_10"      ,   ${0},M. H. Income
+"units_90"               ,   {0},Number of Housing Units
+"units_00"               ,   {0},Number of Housing Units
+"units_10"               ,   {0},Number of Housing Units
+"pctrent_90"             ,   {0}%,Pct. Rental Unit
+"pctrent_00"             ,   {0}%,Pct. Rental Unit
+"pctrent_10"             ,   {0}%,Pct. Rental Unit
+"pctown_90"			,   {0}%,Pct. Unit Owned
+"pctown_00"			,   {0}%,Pct. Unit Owned
+"pctown_10"			,   {0}%,Pct. Unit Owned
+"pctvacant_90"			,   {0}%,Pct. Unit Vacant
+"pctvacant_00"			,   {0}%,Pct. Unit Vacant
+"pctvacant_10"			,   {0}%,Pct. Unit Vacant
+"medianpctincomerent_90" ,   {0}%,Median Pct Income
+"medianpctincomerent_00" ,   {0}%,Median Pct Income
+"medianpctincomerent_10" ,   {0}%,Median Pct Income
+"pctincomerent_30_more_90" ,   {0}%,Pct 30% or More
+"pctincomerent_30_more_00" ,   {0}%,Pct 30% or More
+"pctincomerent_30_more_10" ,   {0}%,Pct 30% or More
+"pctinc_mortgage_30_more_90" ,  {0}%,Pct 30% or More
+"pctinc_mortgage_30_more_00" ,  {0}%,Pct 30% or More
+"pctinc_mortgage_30_more_10" ,  {0}%,Pct 30% or More
+"pctunits_newres_90" ,           {0}%,Pct New res
+"pctunits_newres_00" ,           {0}%,Pct New res
+"pctunits_newres_10" ,           {0}%,Pct New res
+"pctsameres_90"  ,                  {0}%,Pct Same Res
+"pctsameres_00"  ,                  {0}%,Pct Same Res
+"pctsameres_10"  ,                  {0}%,Pct Same Res
