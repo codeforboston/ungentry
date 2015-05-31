@@ -10,8 +10,8 @@ define(['jquery', 'underscore'], function($, _){
 	var TEMPLATE = '<h4> <%= title %> </h4>'+
 									'<% _.each( data, function(entry){ %>'+
 									'<i style="background: <%= entry.color %>;"></i>'+
-									'<%= entry.unit %> <%= entry.min %> - '+
-									'<%= entry.unit %>  <%= entry.max %> '+
+									'<%= entry.unit.replace("{0}",entry.min) %> - '+
+									'<%= entry.unit.replace("{0}",entry.max) %>  '+
 									'<br>'+
 									'<% }) %>';
 
