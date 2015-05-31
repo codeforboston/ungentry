@@ -126,6 +126,7 @@ public class SHPtoJson {
 		
 		for (Integer aKey:aReader4._data.keySet()) {
 			TreeMap<String,String> aTuple = aReader4._data.get(aKey);
+			System.out.println(String.format("Merging properties: %s, %s, %s",aTuple.get("item1"),aTuple.get("item2"), aTuple.get("item3")));
 			aCollection.mergeMinMaxProperties(new String[] {
 					aTuple.get("item1"),
 					aTuple.get("item2"),
