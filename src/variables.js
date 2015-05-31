@@ -1,122 +1,136 @@
 define([], function() {
     return {
-        "pcthhchild": {
-            "desc": "Percentage of households per census tract with children residing in them.",
-            "props": "PuRd",
-            "name": "% of Households with Children",
-            "category": "People"
+        'totalpop': {
+            'desc': 'Total Population',
+            'props': 'PuRd',
+            'name': 'Total Population',
+            'category': 'People'
         },
-        "pctind_finance": {
-            "name": "% Employed in Finance",
-            "desc": "Percentage of people per census tract employed in jobs qualified by the ACS as \"finance.\"",
-            "props": "PuRd",
-            "category": "People"
+        'households': {
+            'desc': 'Households',
+            'props': 'PuRd',
+            'name': 'Households',
+            'category': 'People'
         },
-        "pctind_professional": {
-            "name": "% Employed as Professionals",
-            "desc": "Percentage of people per census tract employed in jobs qualified by the ACS as \"professional.\"",
-            "props": "PuRd",
-            "category": "People"
+        'pcthhchild': {
+            'desc': 'Percentage of households with children residing in them.',
+            'props': 'PuRd',
+            'name': '% of Households with Children',
+            'category': 'People'
         },
-        "pctocc_profmanage": {
-            "name": "% Employed in Management",
-            "desc": '',
-            "props": "PuRd",
-            "category": "People"
+        'pctind_finance': {
+            'name': '% Employed in Finance',
+            'desc': 'Percentage of people employed in jobs qualified by the ACS as "finance."',
+            'props': 'PuRd',
+            'category': 'People'
         },
-        "pctcollege": {
-            "name": "% College Educated",
-            "desc": "Percentage of people per census tract that possess a college degree.",
-            "props": "PuRd",
-            "category": "People"
+        'pctind_professional': {
+            'name': '% Employed as Professionals',
+            'desc': 'Percentage of people employed in jobs qualified by the ACS as "professional."',
+            'props': 'PuRd',
+            'category': 'People'
         },
-        "pctinc_0k_25k": {
-            "name": "% Of Household inc. 0-25K",
-            "desc": "Percentage of households that earn less than $25,000",
-            "props": "GnBu",
-            "category": "Economic"
+        'pctocc_profmanage': {
+            'name': '% Employed in Management',
+            'desc': 'Percentage of adults employed in management positions',
+            'props': 'PuRd',
+            'category': 'People'
         },
-        "pctinc_25k_50k": {
-            "name": "% Of Household inc. 25-50K",
-            "desc": "Percentage of households that earn between $25,000 and $50,000",
-            "props": "GnBu",
-            "category": "Economic"
+        'pctcollege': {
+            'name': '% College Educated',
+            'desc': 'Percentage of people who possess a college degree.',
+            'props': 'PuRd',
+            'category': 'People'
         },
-        "pctinc_50k_100k": {
-            "name": "% Of Household inc. 50-100K",
-            "desc": '',
-            "props": "GnBu",
-            "category": "Economic"
+        'pctinc_0k_25k': {
+            'name': '% Of Household inc. 0-25K',
+            'desc': 'Percentage of households that earn less than $25,000',
+            'props': 'GnBu',
+            'category': 'Economic'
         },
-        "pctinc_100k_more": {
-            "name": "% Of Household inc. 100K and up",
-            "desc": 'Percentage of people per census tract that have an income of $100,000 or more.',
-            "props": "GnBu",
-            "category": "Economic"
+        'pctinc_25k_50k': {
+            'name': '% Of Household inc. 25-50K',
+            'desc': 'Percentage of households that earn between $25,000 and $50,000',
+            'props': 'GnBu',
+            'category': 'Economic'
         },
-        "medianhhincome": {
-            "name": "Median Household Income",
-            "desc": "Median income of all households per census tract",
-            "props": "GnBu",
-            "category": "Economic"
+        'pctinc_50k_100k': {
+            'name': '% Of Household inc. 50-100K',
+            'desc': 'Percentage of househoulds that earn between $50,000 and $100,000',
+            'props': 'GnBu',
+            'category': 'Economic'
         },
-        "pctpoverty": {
-            "name": "% of Residents in Poverty",
-            "desc": "Percentage of people per census tract living under the federal poverty line.",
-            "props": "GnBu",
-            "category": "Economic"
+        'pctinc_100k_more': {
+            'name': '% Of Household inc. 100K and up',
+            'desc': 'Percentage of people that have an income of $100,000 or more.',
+            'props': 'GnBu',
+            'category': 'Economic'
         },
-        "pctpublicassist": {
-            name: "% of Residents on Public Assistance",
-            "desc": "",
-            "props": "GnBu",
-            "category": "Economic"
+        'medianhhincome': {
+            'name': 'Median Household Income',
+            'desc': 'Median income of all households',
+            'props': 'GnBu',
+            'category': 'Economic'
         },
-        "units": {
-            name: "Number of Housing Units",
-            "desc": "Number of housing units per census tract.",
-            "props": "OrRd",
-            "category": "Housing"
+        'pctpoverty': {
+            'name': '% of Residents in Poverty',
+            'desc': 'Percentage of people living under the federal poverty line.',
+            'props': 'GnBu',
+            'category': 'Economic'
         },
-        "pctown": {
-            name: "% of Units Owned",
-            "desc": "Percentage of housing units per census tract that are owner-occupied.",
-            "props": "OrRd",
-            "category": "Housing"
+        'pctpublicassist': {
+            name: '% of Residents on Public Assistance',
+            'desc': 'Percentage of people on public assistance.',
+            'props': 'GnBu',
+            'category': 'Economic'
         },
-        "pctrent": {
-            name: "% of Units Rented",
-            "desc": "Percentage of housing units per census tract that are renter-occupied.",
-            "props": "OrRd",
-            "category": "Housing"
+        'units': {
+            name: 'Number of Housing Units',
+            'desc': 'Number of housing units',
+            'props': 'OrRd',
+            'category': 'Housing'
         },
-        "pctvacant": {
-            name: "% of Units Vacant",
-            "desc": "Percentage of housing units per census tract that are vacant.",
-            "props": "OrRd",
-            "category": "Housing"
+        'pctown': {
+            name: '% of Units Owned',
+            'desc': 'Percentage of housing units that are owner-occupied.',
+            'props': 'OrRd',
+            'category': 'Housing'
         },
-        "medianvalue": {
-            name: "Median Home Value",
-            "desc": "Median value of housing units over a given census tract.",
-            "props": "OrRd",
-            "category": "Housing"
+        'pctrent': {
+            name: '% of Units Rented',
+            'desc': 'Percentage of housing units that are renter-occupied.',
+            'props': 'OrRd',
+            'category': 'Housing'
         },
-        "medianrent": {
-            name: "Median rent",
-            "desc": "Median rent paid by residents of a given census tract.",
-            "props": "OrRd",
-            "category": "Housing"
+        'pctvacant': {
+            name: '% of Units Vacant',
+            'desc': 'Percentage of housing units that are vacant.',
+            'props': 'OrRd',
+            'category': 'Housing'
         },
-        "medianpctincomerent": {
-            name: "Median % of Income as Rent",
-            "desc": "Median percentage of residents' income that is paid for rent.",
-            "props": "GnBu",
-            "category": "Housing"
+        'medianvalue': {
+            name: 'Median Home Value',
+            'desc': 'Median value of housing units over a given census tract.',
+            'props': 'OrRd',
+            'category': 'Housing'
         },
-        "pctsameres": {
-            "desc": "",
-            "props": "OrRd"
+        'medianrent': {
+            name: 'Median rent',
+            'desc': 'Median rent paid by residents of a given census tract.',
+            'props': 'OrRd',
+            'category': 'Housing'
+        },
+        'medianpctincomerent': {
+            name: 'Median % of Income as Rent',
+            'desc': "Median percentage of residents' income that is paid for rent.",
+            'props': 'GnBu',
+            'category': 'Housing'
+        },
+        'pctsameres': {
+            'name': '% of owner-occupied',
+            'desc': '',
+            'props': 'OrRd',
+            'category': 'Housing'
         }
     };
 });

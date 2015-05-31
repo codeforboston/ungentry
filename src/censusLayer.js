@@ -293,7 +293,6 @@ define([
                                                                   self.getPropertyData(),
                                                                   colorbrewer[self._colorBrewerName]);
  					              feature.map_mouse_over = true;
- 					              console.log(feature)
  					         });
 					    layer.on("mouseout", function (e) {
 						       feature.map_mouse_over = false;
@@ -332,7 +331,7 @@ define([
 
 					 if (val) {
 						if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
-					 		return {"fillColor": this._getColor(prop.serie,val) , "color" : "#404040" , "weight": 4 , "opacity" : 1.0,  "fillOpacity": 0.6};
+					 		return {"fillColor": this._getColor(prop.serie, val) , "color" : "#404040" , "weight": 4 , "opacity" : 1.0,  "fillOpacity": 0.6};
 						} else {
 							return {"fillColor": this._getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
 						}

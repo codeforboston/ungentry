@@ -2,7 +2,7 @@
 define(['tourLib'], function(tourLib){
 	// Instance the tour
   var tour = new Tour({
-    storage: false,  //remove this before release 
+    storage: false,  //remove this before release
     steps: [
       {
       element: '#about',
@@ -36,10 +36,12 @@ define(['tourLib'], function(tourLib){
     // Initialize the tour
     return {
         init: function() {
-            tour.init();
+            if(document.body.clientWidth > 768) {
+              tour.init();
 
-            // Start the tour
-            tour.start();
+              // Start the tour
+              tour.start();
+            }
         }
     };
 });

@@ -1,12 +1,13 @@
 define([], function() {
     return {
         getColor: function(colorSeries, boundsArray, val) {
+            var colors = colorSeries[boundsArray.length];
             for (var i in boundsArray) {
-                if ((val-boundsArray[i]>=0) && (val-boundsArray[parseInt(i)+1]<0)) {
-	            return colorSeries[boundsArray.length][i];
+                if (val-boundsArray[parseInt(i)+1]<0) {
+	            return colors[i];
                 }
             }
-            return "#7F7F7F";
+            return colors[i - 1];
         }
     };
 });
