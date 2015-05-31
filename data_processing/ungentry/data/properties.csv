@@ -12,14 +12,18 @@ accepted                 ,unit,title
 "pctrent_300_600_00" ,   {0}%,{0}% Pct. Rent between 300 and 600
 "pctrent_300_600_10" ,   {0}%,{0}% Pct. Rent between 300 and 600
 "pctrent_600_750_90"    ,   {0}%,{0}% Pct. Rent between 600 and 750
-"pctrent_600_750_00"    ,   {0}%,{0}% Pct. Rent between 600 and 750
-"pctrent_600_750_10"    ,   {0}%,{0}% Pct. Rent between 600 and 750
+"pctrent_600_800_00"    ,   {0}%,{0}% Pct. Rent between 600 and 750
+"pctrent_600_800_10"    ,   {0}%,{0}% Pct. Rent between 600 and 750
 "pctrent_750_1000_90"   ,   {0}%,{0}% Pct. Rent between 750 and 1000
-"pctrent_750_1000_00"   ,   {0}%,{0}% Pct. Rent between 750 and 1000
-"pctrent_750_1000_10"   ,   {0}%,{0}% Pct. Rent between 750 and 1000
+"pctrent_800_1000_00"   ,   {0}%,{0}% Pct. Rent between 750 and 1000
+"pctrent_800_1000_10"   ,   {0}%,{0}% Pct. Rent between 750 and 1000
 "pctrent_1000_more_90"   ,   {0}%, Pct. Rent 1000 and up
-"pctrent_1000_more_00"   ,   {0}%, Pct. Rent 1000 and up
-"pctrent_1000_more_10"   ,   {0}%, Pct. Rent 1000 and up
+"pctrent_1000_1250_00"   ,   {0}%,{0}% Pct. Rent between 1000 and 1250
+"pctrent_1000_1250_10"   ,   {0}%,{0}% Pct. Rent between 1000 and 1250
+"pctrent_1500_2000_00"  ,   {0}%,{0}% Pct. Rent between 1500 and 2000
+"pctrent_1500_2000_10"  ,   {0}%,{0}% Pct. Rent between 1500 and 2000
+"pctrent_2000_more_00"  ,    {0}%, Pct. Rent 1000 and up
+"pctrent_2000_more_10"  ,    {0}%, Pct. Rent 1000 and up
 "medianrent_00"		,   ${0},Median Rent
 "medianrent_10"		,   ${0},Median Rent
 "medianrent_90"		,   ${0},Median Rent
