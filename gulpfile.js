@@ -30,7 +30,7 @@ gulp.task('build', ['','']);
 
 gulp.task('connect', function() {
   connect.server({
-     root: 'ungentry',
+     //root: 'ungentry',
   	 livereload: true
   });
 });
