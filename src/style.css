@@ -6,6 +6,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 footer {
@@ -66,9 +67,15 @@ footer {
 .maps {
     height:100%;
     margin:0;
-    padding-top:60px;
     margin-top: -60px;
-    padding-bottom: 25px;
+    padding-top: 60px;
+
+}
+@media (max-width: 995px) {
+    .maps {
+        margin-top: -100px;
+        padding-top: 100px;
+    }
 }
 
 .map-wrapper{
@@ -188,65 +195,6 @@ div.map > h2 {
 }
 
 
-
-/* #small_display{
-    display:none;
-}*/
-
-
-/*@media(max-width:992px){
-
-    #small_display{
-        display:inline-block;
-    }
-    #map1{
-        display:none;
-    }
-    #map2{
-        display:none;
-    }
-    #sidebar{
-        display: inline-block;
-    }
-}*/
-/*@media(min-width:768px){
-    #small_display{
-        display:block;
-    }
-    #map0{
-        display:inline-block;
-    }
-    #map1{
-        display:inline-block;
-    }
-    #map2{
-        display:inline-block;
-    }
-}
-@media(min-width:992px){
-    #map0{
-        display:inline-block;
-    }
-    #map1{
-        display:inline-block;
-    }
-    #map2{
-        display:inline-block;
-    }
-}*/
-/*@media(min-width:993px){
-    #map0{
-        display:inline-block;
-    }
-    #map1{
-        display:inline-block;
-    }
-    #map2{
-        display:inline-block;
-    }
-
-
-}
 */
 /*** isse #62 this was to fix overscreen dropdown ***/
 .dropdown.open ul{
@@ -261,4 +209,98 @@ div.map > h2 {
 
 .highlight{
     background-color:yellow;
+}
+
+
+.map-group {
+    position: relative;
+    height: 100%
+}
+
+.map-segment {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 33%;
+}
+
+
+
+.map-segment.first {
+    left: 0;
+}
+.map-segment.second {
+    left: 33%;
+}
+.map-segment.third {
+    left: 66%;
+}
+
+
+
+@media(max-width:955px){
+
+
+    .map-segment.first,
+    .map-segment.second,
+    .map-segment.third {
+        position: absolute;
+        top:0;
+        left: -100%;
+        height: 100%;
+        width: 100%;
+    }
+    .map-segment.first.active,
+    .map-segment.second.active,
+    .map-segment.third.active {
+        left: 0;
+    }
+
+}
+
+
+
+
+.sidebar-wrapper .nav-tabs .dropdown{
+    width: 33%;
+}
+.sidebar-wrapper .sidebar-toggle {
+    display: none;
+}
+@media(max-width:768px){
+    .sidebar-wrapper {
+        position: absolute;
+        width: 100%;
+        right: 0;
+        top: 100%;
+        height: 70%;
+        z-index: 1000;
+        transition: top 350ms ease-in-out;
+    }
+    .sidebar-wrapper.active {
+        top: 30%;
+    }
+    .sidebar-wrapper .sidebar-toggle {
+        display: block;
+        position: absolute;
+        left: 0;
+        border: none;
+        background-color: #F5F5F5;
+        padding: 20px;
+        top: -55px;
+        width: 100%;
+    }
+
+    .lwrapper {
+        left: auto;
+        right: 2%;
+    }
+    .iwindow-title {
+        text-align: left;
+    }
+    .iwindow {
+        text-align: left;
+        width: 50%;
+    }
 }
