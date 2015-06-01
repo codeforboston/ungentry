@@ -1,28 +1,30 @@
+'use strict';
 define([], function() {
     return [
         {
-            name: "Individual",
-            dropdown: "ul.cat-household",
+            name: 'Individual',
+            dropdown: 'ul.cat-household',
             // varnames should be an array of arrays.  When the menu is
             // constructed, the resulting menu items will be separated
             // by dividers.
-            varnames: [["pcthhchild", "pctcollege", "pctind_professional",
-                        "pctocc_profmanage", "pctind_finance"]]
+            varnames: [['totalpop', 'households', 'pcthhchild', 'pctcollege']]
         },
 
         {
-            name: "Housing",
-            dropdown: "ul.cat-housing",
-            varnames: [["units", "pctrent", "pctown", "pctvacant"],
-                       ["medianrent", "medianpctincomerent"]]
-        },
+            name: 'Income',
+            dropdown: 'ul.cat-income',
+            varnames: [['medianhhincome', 'pctpoverty', 'pctinc_100k_more']]
+        },        
 
         {
-            name: "Income",
-            dropdown: "ul.cat-income",
-            varnames: [["medianhhincome", "pctpoverty", "pctpublicassist"],
-                       ["pctinc_0k_25k", "pctinc_25k_50k", "pctinc_50k_100k",
-                        "pctinc_100k_more"]]
+            name: 'Housing',
+            dropdown: 'ul.cat-housing',
+            varnames: [['units', 'medianvalue', 'pctrent', 'pctown', 'pctsameres', 'pctvacant'],
+                       ['medianrent', 'medianpctincomerent', 'pctincomerent_30_more', 'pctinc_mortgage_30_more']
+                       //,['pctrent_300_600','pctrent_600_750', 'pctrent_750_1000', 'pctrent_1000_more']
+                       ]
         }
+
+
     ];
 });
