@@ -195,13 +195,15 @@ div.map > h2 {
 }
 
 
-*/
+
 /*** isse #62 this was to fix overscreen dropdown ***/
-.dropdown.open ul{
 
-    right:0px;
+.open>ul
+{
+
+    right:0;
+    left: auto;
 }
-
 .dropdown.open:first-child ul{
 
     right:inherit;
