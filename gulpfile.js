@@ -11,10 +11,11 @@ var gutil = require('gulp-util');
     //Build Dependencies 
 var requirejsOptimize = require('gulp-requirejs-optimize');
 var minifyHTML = require('gulp-minify-html');
+var minifyCss = require('gulp-minify-css');
 
     //Style Dependencies
 var autoprefixer = require('gulp-autoprefixer');
-var minifyCss = require('gulp-minify-css');
+
 var ghPages = require('gulp-gh-pages');
 
     //Dev Dependancies

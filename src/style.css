@@ -145,7 +145,7 @@ div.map > h2 {
     font-size: x-small;
     padding-left: 20px;
 }
-
+/*
 .increase {
     color: green;
 }
@@ -161,7 +161,13 @@ div.map > h2 {
 .decrease:before {
     content: "⬇";
 }
-
+*/
+.glyphicon-arrow-up{
+    color: green;
+}
+.glyphicon-arrow-down{
+    color: red;
+}
 .lwrapper{
     position: absolute;
     bottom: 3%;

@@ -79,8 +79,7 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
                     if (previousVal) {
                         var changeSpan = $("<span class='change'/>");
 
-                        changeSpan.addClass((val > previousVal) ?
-                                            "increase" : "decrease")
+                        changeSpan.addClass((val > previousVal) ? "glyphicon glyphicon-arrow-up" : "glyphicon glyphicon-arrow-down")
                             .html(formatter(val - previousVal))
                             .appendTo(li);
                     }
