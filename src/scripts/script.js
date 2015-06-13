@@ -2,7 +2,6 @@ define([
   'jquery',
   'leaflet',
   'censusLayer',
-  'stamen',
   'mapSync'
   ], function($, L, CensusLayer){
 
@@ -39,24 +38,6 @@ define([
         census2 = new CensusLayer(map2, "./geodata/common/dataset/");
         map2.addLayer(census2);
 
-
-
-/*
-    	map0 = L.map('map0').setView([42.354, -71.065], 13);
-    	new L.StamenTileLayer("toner", { attribution: "see modal"}).addTo(map0);
-    	census0 = new CensusLayer(map0, "./geodata/common/dataset/");
-    	map0.addLayer(census0);
-
-    	map1 = L.map('map1').setView([42.354, -71.065], 13);
-    	new L.StamenTileLayer("toner").addTo(map1);
-    	census1 = new CensusLayer(map1, "./geodata/common/dataset/");
-    	map1.addLayer(census1);
-
-    	map2 = L.map('map2').setView([42.354, -71.065], 13);
-    	new L.StamenTileLayer("toner").addTo(map2);
-    	census2 = new CensusLayer(map2, "./geodata/common/dataset/");
-    	map2.addLayer(census2);
-*/
     	// synchronize three maps
 
     	map0.sync(map1);
