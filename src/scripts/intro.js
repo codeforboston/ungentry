@@ -2,7 +2,7 @@
 define(['tourLib'], function(tourLib){
 	// Instance the tour
   var tour = new Tour({
-    //storage: false,  //usw this for debugging
+    //storage: false,  //use this for debugging
     steps: [
       {
       element: '#about',
