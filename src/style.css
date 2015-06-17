@@ -36,9 +36,15 @@ footer {
     margin-top: -10px;
 }
 
-.navbar-form {
-    padding-right: 0px;
+@media (min-width: 768px) {
+    .navbar-collapse {
+        padding-right: 0px;
+    }
+    .navbar-form {
+        padding-right: 0px;
+    }
 }
+
 /*
 .navbar-nav>li>a {
     padding-top: 10px;
