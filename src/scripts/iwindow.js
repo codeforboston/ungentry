@@ -99,11 +99,14 @@ define(['jquery', 'underscore', "hoverTract", "variables", "colors"], function($
                     currentVar = varname;
                     render();
                 });
-            hoverTract.watch(function(_, _, feature, prop, colors) {
-                //console.log(feature);
-                currentFeature = feature;
-                currentProp = prop;
-                currentColors = colors;
+
+            // Watch for changes, ignoring any selected
+            // tracts after the first.
+            hoverTract.watch(function(tracts) {
+                var tract = _.first(tracts) || {};
+                currentFeature = tract[0];
+                currentProp = tract[1];
+                currentColors = tract[2];
                 render();
             });
 	}
