@@ -282,21 +282,22 @@ define([
                                             layer.feature.map_mouse_over = false;
                                             hoverTract.watchForValue(feature.id,
                                                          function() {
+                                                             feature.map_mouse_over = true;
                                                              layer.setStyle(self._styleFunction(feature, true));
                                                          },
                                                          function() {
+                                                             feature.map_mouse_over = false;
                                                              layer.setStyle(self._styleFunction(feature));
                                                          });
-					    layer.on("mouseover", function (e) {
+					    layer.on("mouseover click", function (e) {
                                                 hoverTract.select(feature.id,
                                                                   feature,
                                                                   self.getPropertyData(),
                                                                   colorbrewer[self._colorBrewerName]);
- 					              feature.map_mouse_over = true;
+ 					              
  					              console.log(feature);
  					         });
 					    layer.on("mouseout", function (e) {
-						       feature.map_mouse_over = false;
                                                 // TODO: Move this somewhere else
 						       hoverTract.select(null);
 					    });
