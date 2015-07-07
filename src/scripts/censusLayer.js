@@ -277,31 +277,29 @@ define([
 			   		});
 
 					var self = this;
-				    $.each(geojsonLayer._layers,function(idx,layer){
-                                        var feature = layer.feature;
-                                            layer.feature.map_mouse_over = false;
-                                            hoverTract.watchForValue(feature.id,
-                                                         function() {
-                                                             layer.setStyle(self._styleFunction(feature, true));
-                                                         },
-                                                         function() {
-                                                             layer.setStyle(self._styleFunction(feature));
-                                                         });
-					    layer.on("mouseover", function (e) {
-                                                hoverTract.select(feature.id,
-                                                                  feature,
-                                                                  self.getPropertyData(),
-                                                                  colorbrewer[self._colorBrewerName]);
- 					              feature.map_mouse_over = true;
- 					              console.log(feature);
- 					         });
-					    layer.on("mouseout", function (e) {
-						       feature.map_mouse_over = false;
-                                                // TODO: Move this somewhere else
-						       hoverTract.select(null);
-					    });
-
-
+					$.each(geojsonLayer._layers,function(idx,layer){
+						var feature = layer.feature;
+						feature.highlighted = false;
+						hoverTract.watchForValue(feature.id,
+							function() {
+								feature.highlighted = true;
+								layer.setStyle(self._styleFunction(feature));
+							}, function() {
+								feature.highlighted = false;
+								layer.setStyle(self._styleFunction(feature));
+							});
+						layer.on("mouseover click", function (e) {
+							if (!hoverTract.contains(feature.id)) {
+								hoverTract.clear();
+								hoverTract.select(feature.id,
+									feature,
+									self.getPropertyData(),
+									colorbrewer[self._colorBrewerName]);
+							}
+						});
+						layer.on("mouseout", function (e) {
+							hoverTract.deselect(feature.id);
+						});
 					});
 
 					if (this._layers_id[add[i]]) {
@@ -318,7 +316,7 @@ define([
 
 			},
 
-			_styleFunction : function(feature,highlight) {
+			_styleFunction : function(feature) {
 
 				 if (this._itemStyle){
 					return this._itemStyle(feature);
@@ -331,8 +329,8 @@ define([
 					 var val = parseFloat(feature.properties[this._currentProperty]);
 
 					 if (val) {
-						if ((typeof(highlight)!=="undefined") || feature.map_mouse_over==true) {
-					 		return {"fillColor": this._getColor(prop.serie, val) , "color" : "#404040" , "weight": 4 , "opacity" : 1.0,  "fillOpacity": 0.6};
+						if (feature.highlighted) {
+							return {"fillColor": this._getColor(prop.serie, val) , "color" : "#404040" , "weight": 4 , "opacity" : 1.0,  "fillOpacity": 0.6};
 						} else {
 							return {"fillColor": this._getColor(prop.serie,val) ,  "weight": 0 , "opacity" : 0.0,  "fillOpacity": 0.6};
 						}
