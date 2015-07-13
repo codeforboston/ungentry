@@ -16,8 +16,6 @@ var notify = require('gulp-notify');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 
-    //Style Dependencies
-var autoprefixer = require('gulp-autoprefixer');
 
     //Dev Dependancies
 var jshint = require('gulp-jshint');
@@ -27,21 +25,25 @@ var ghPages = require('gulp-gh-pages');
 
 
 
-
-
-
+// #### Task Groups ###
+// Default task.  Serves the app during development.  Enter 'gulp' on the command line.
 gulp.task('default', ['connect', 'watch'], function(){
    return gutil.log('Gulp is running!')
 });	
 
+// Build task.  Minifies files and pushes them to the 'dist' folder.  Enter 'gulp build' on the command line.
 gulp.task('build', ['clean','styles', 'leaflet', 'htmlUgly', 'images', 'scripts']);
 
+// Deploy task.  Pushes the contents of the 'dist' folder to the gh-pages branch.  Enter 'gulp deploy' on the command line.
 gulp.task('deploy', function() {
   return gulp.src('dist/**/*')
     .pipe(ghPages());
 });
 
+//### Subtasks ###
 
+//#Utils for default task#
+  //connect, creates http server
 gulp.task('connect', function() {
   connect.server({
      port: 3000,
@@ -58,6 +60,7 @@ gulp.task('watch', function (){
 
 })
 
+//Live watching and reloading of html and css
 gulp.task('html', function (){
   gulp.src('index.html')
     .pipe(connect.reload());
@@ -67,6 +70,7 @@ gulp.task('css',function(){
     .pipe(connect.reload());
   })
 
+//## Utils for Dev task ##
 // Clean:  cleans paths by deleting temp files and previous build versions
 gulp.task('clean', function(cb) {
     del(['dist/*.html', 'dist/src/*.css', 'dist/src/*.js'], cb)
