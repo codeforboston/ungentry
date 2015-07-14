@@ -17,7 +17,7 @@ Check out the research and brain storm that went into this first: [hackpad](http
 If you have information or ideas that you think would be helpful, add it there.
 
 
-On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/issues) to track the different pieces we are working on and list tasks.  You can either click the link, or if you are used to a Trello type system, use Waffle.io's interface. Just click the badge below.
+On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/issues) to track bugs, the different pieces we are working on and to list tasks.  You can either click the link, or if you are used to a Trello type system, use Waffle.io's interface. Just click the badge below.
 
 [![Stories in Ready](https://badge.waffle.io/codeforboston/ungentry.png?label=ready&title=Ready)](http://waffle.io/codeforboston/ungentry)
 
