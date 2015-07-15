@@ -58,6 +58,8 @@ gulp.task('watch', function (){
   gulp.watch(['index.html'], ['html']);
   //watch css files
   gulp.watch(['./src/*.css'],['css']);
+  //watch hs files
+  gulp.watch(['./src/**/*.js'],['js'])
 
 })
 
@@ -69,7 +71,11 @@ gulp.task('html', function (){
 gulp.task('css',function(){
   gulp.src('./src/*.css')
     .pipe(connect.reload());
-  })
+});
+gulp.task('js',function(){
+  gulp.src('./src/**/*.js')
+    .pipe(connect.reload());
+});
 
 //## Utils for Dev task ##
 // Clean:  cleans paths by deleting temp files and previous build versions
