@@ -24,6 +24,6 @@ On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/is
 
 ##Get Started!
 
-Head over to the [wiki](https://github.com/codeforboston/ungentry/wiki) for instructions on how to get into the code.
+Head over to the [wiki](https://github.com/codeforboston/ungentry/wiki) for more info and instructions on how to get into the code.
 
 
