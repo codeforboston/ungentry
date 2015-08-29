@@ -37,7 +37,9 @@ On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/is
 The sections [Getting Ungentry Set Up](), and [How to Help!]() will be most useful.
 
 
+
 ## License
-Ungnetry is licensed under the MIT license [LICENSE.md file](https://github.com/codeforboston/____/LICENCE.md).
+Ungentry is licensed under the MIT license [LICENSE.md file](https://github.com/codeforboston/____/LICENCE.md).
+
 
 
