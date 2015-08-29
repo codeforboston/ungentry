@@ -10,20 +10,32 @@ http://ungentry.codeforboston.org
   2. We want to get to know our communities better.
   3. We like playing with data and maps.
 
-##How can I help?
+  For a full explination and description of the project, visit our wiki page: [Whats's this all about...](http://github.com/codeforboston/ungentry/wiki/What's-this-all-about...)***********
 
+
+#### Status
+We are currently at the 1.0 milestone.  There are features queued up for milestone 1.5 in the [issues](https://github.com/codeforboston/ungentry/issues)
+
+
+#### Screenshots
+![Infinite Windmills](http://i.giphy.com/SIV3ijAwkNt9C.gif)
+
+
+## Who
+This is a core Code for Boston project.  For more information on our organization visit our [website](http://codeforboston.org).  For more information on our data visit [our wiki](**********)
+
+
+##How can I help?
 Check out the research and brain storm that went into this first: [hackpad](https://codeforboston.hackpad.com/How-can-Code-for-Boston-contribute-to-the-policy-discussion-on-gentrification-in-Boston-fD9RvXalX84#:h=Variable-Wish-List).
 
 If you have information or ideas that you think would be helpful, add it there.
 
 
-On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/issues) to track bugs, the different pieces we are working on and to list tasks.  You can either click the link, or if you are used to a Trello type system, use Waffle.io's interface. Just click the badge below.
+On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/issues) to organize our work.  Please head over to the [wiki](https://github.com/codeforboston/ungentry/wiki) for instructions on how to use issues and into the code. 
 
-[![Stories in Ready](https://badge.waffle.io/codeforboston/ungentry.png?label=ready&title=Ready)](http://waffle.io/codeforboston/ungentry)
+The sections [Getting Ungentry Set Up](), and [How to Help!]() will be most useful.
 
-
-##Get Started!
-
-Head over to the [wiki](https://github.com/codeforboston/ungentry/wiki) for instructions on how to get into the code.
+## License
+Ungnetry is licensed under the MIT license [LICENSE.md file](https://github.com/codeforboston/____/LICENCE.md).
 
 
