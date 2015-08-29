@@ -4,6 +4,11 @@
 
 http://ungentry.codeforboston.org
 
+
+## Who
+This is a core Code for Boston project.  For more information on our organization visit our [website](http://codeforboston.org).  For more information on our data visit [our wiki](**********)
+
+
 ##Why are we doing this?
 
   1. We want to contribute to the policy discussion about cost of living and possible displacement.
@@ -21,10 +26,6 @@ We are currently at the 1.0 milestone.  There are features queued up for milesto
 ![Infinite Windmills](http://i.giphy.com/SIV3ijAwkNt9C.gif)
 
 
-## Who
-This is a core Code for Boston project.  For more information on our organization visit our [website](http://codeforboston.org).  For more information on our data visit [our wiki](**********)
-
-
 ##How can I help?
 Check out the research and brain storm that went into this first: [hackpad](https://codeforboston.hackpad.com/How-can-Code-for-Boston-contribute-to-the-policy-discussion-on-gentrification-in-Boston-fD9RvXalX84#:h=Variable-Wish-List).
 
@@ -34,6 +35,7 @@ If you have information or ideas that you think would be helpful, add it there.
 On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/issues) to organize our work.  Please head over to the [wiki](https://github.com/codeforboston/ungentry/wiki) for instructions on how to use issues and into the code. 
 
 The sections [Getting Ungentry Set Up](), and [How to Help!]() will be most useful.
+
 
 ## License
 Ungnetry is licensed under the MIT license [LICENSE.md file](https://github.com/codeforboston/____/LICENCE.md).
