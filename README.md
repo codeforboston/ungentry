@@ -15,7 +15,7 @@ This is a core Code for Boston project.  For more information on our organizatio
   2. We want to get to know our communities better.
   3. We like playing with data and maps.
 
-  For a full explination and description of the project, visit our wiki page: [Whats's this all about...](http://github.com/codeforboston/ungentry/wiki/What's-this-all-about...)***********
+  For a full explination and description of the project, visit our wiki page: [Whats's this all about...](http://github.com/codeforboston/ungentry/wiki/What's-this-all-about...)
 
 
 #### Status
@@ -32,9 +32,9 @@ Check out the research and brain storm that went into this first: [hackpad](http
 If you have information or ideas that you think would be helpful, add it there.
 
 
-On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/issues) to organize our work.  Please head over to the [wiki](https://github.com/codeforboston/ungentry/wiki) for instructions on how to use issues and into the code. 
+On the tech side, we use ["issues"](https://github.com/codeforboston/ungentry/issues) to organize our work.  Please head over to the [wiki](https://github.com/codeforboston/ungentry/wiki) for instructions on how to use issues and get into the code. 
 
-The sections [Getting Ungentry Set Up](), and [How to Help!]() will be most useful.
+The sections [Getting Ungentry Set Up](https://github.com/codeforboston/ungentry/wiki/Getting%20Ungentry%20Set%20Up), and [How to Help!](https://github.com/codeforboston/ungentry/wiki/How%20to%20Help!) will be most useful.
 
 
 
