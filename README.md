@@ -15,7 +15,7 @@ This is a core Code for Boston project.  For more information on our organizatio
   2. We want to get to know our communities better.
   3. We like playing with data and maps.
 
-  For a full explination and description of the project, visit our wiki page: [Whats's this all about...](http://github.com/codeforboston/ungentry/wiki/What's-this-all-about...)
+  For a full explanation and description of the project, visit our wiki page: [Whats's this all about...](http://github.com/codeforboston/ungentry/wiki/What's-this-all-about...)
 
 
 #### Status
@@ -23,7 +23,7 @@ We are currently at the 1.0 milestone.  There are features queued up for milesto
 
 
 #### Screenshots
-![Infinite Windmills](http://i.giphy.com/SIV3ijAwkNt9C.gif)
+![Home page](https://github.com/codeforboston/ungentry/images/home.png)
 
 
 ##How can I help?
