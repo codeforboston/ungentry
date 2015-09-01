@@ -39,7 +39,7 @@ The sections [Getting Ungentry Set Up](https://github.com/codeforboston/ungentry
 
 
 ## License
-Ungentry is licensed under the MIT license [LICENSE.md file](https://github.com/codeforboston/____/LICENCE.md).
+Ungentry is licensed under the MIT license [LICENSE file](https://github.com/codeforboston/ungentry/blob/master/LICENSE).
 
 
 
