@@ -23,7 +23,7 @@ We are currently at the 1.0 milestone.  There are features queued up for milesto
 
 
 #### Screenshots
-![Home page](https://github.com/codeforboston/ungentry/images/home.png)
+![Home page](https://github.com/codeforboston/ungentry/blob/master/images/home.png)
 
 
 ##How can I help?
