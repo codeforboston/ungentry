@@ -20,7 +20,7 @@ This is a core Code for Boston project.  For more information on our organizatio
 
 
 #### Status
-We are currently at the 1.0 milestone.  There are features queued up for milestone 1.5 in the [issues](https://github.com/codeforboston/ungentry/issues)
+We are currently at the 1.0 milestone.  The project is still in active development and there are features queued up for milestone 1.5 in the [issues](https://github.com/codeforboston/ungentry/issues)
 
 
 #### Screenshots
@@ -40,7 +40,7 @@ The sections [Getting Ungentry Set Up](https://github.com/codeforboston/ungentry
 
 
 ## License
-Ungentry is licensed under the MIT license [LICENSE file](https://github.com/codeforboston/ungentry/blob/master/LICENSE).
+Ungentry is licensed under the MIT license ([LICENSE file](https://github.com/codeforboston/ungentry/blob/master/LICENSE)).
 
 
 
