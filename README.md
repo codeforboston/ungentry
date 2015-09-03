@@ -14,6 +14,7 @@ This is a core Code for Boston project.  For more information on our organizatio
   1. We want to contribute to the policy discussion about cost of living and possible displacement.
   2. We want to get to know our communities better.
   3. We like playing with data and maps.
+  
 
   For a full explanation and description of the project, visit our wiki page: [Whats's this all about...](http://github.com/codeforboston/ungentry/wiki/What's-this-all-about...)
 
