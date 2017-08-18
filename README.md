@@ -1,4 +1,4 @@
-#ungentry
+# ungentry
 
 *Code for Boston cares about innovation and technology.  It also cares about the ways it affects its surroundings.*
 
@@ -9,7 +9,7 @@ http://ungentry.codeforboston.org
 This is a core Code for Boston project.  For more information on our organization visit our [website](http://codeforboston.org).  For more information on our data visit [our wiki](**********)
 
 
-##Why are we doing this?
+## Why are we doing this?
 
   1. We want to contribute to the policy discussion about cost of living and possible displacement.
   2. We want to get to know our communities better.
@@ -27,7 +27,7 @@ We are currently at the 1.0 milestone.  The project is still in active developme
 ![Home page](https://github.com/codeforboston/ungentry/blob/master/images/home.png)
 
 
-##How can I help?
+## How can I help?
 Check out the research and brain storm that went into this first: [hackpad](https://codeforboston.hackpad.com/How-can-Code-for-Boston-contribute-to-the-policy-discussion-on-gentrification-in-Boston-fD9RvXalX84#:h=Variable-Wish-List).
 
 If you have information or ideas that you think would be helpful, add it there.
